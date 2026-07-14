@@ -111,6 +111,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-    console.log(`HMS Node server running on http://0.0.0.0:${PORT}`);
+    console.log(`Tenadam Node server running on http://0.0.0.0:${PORT}`);
     fs.appendFileSync('/tmp/hms_node_errors.log', `Server started at ${new Date().toISOString()}\n`);
 });

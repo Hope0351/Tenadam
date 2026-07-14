@@ -1,7 +1,7 @@
 
 <p><img src="https://track.infyom.com/assets/img/logo-red-black.png"></p>
 
-## Hospital Management System
+## Tenadam (ጤና አዳም)
 
 ## Installation Step
 
@@ -13,7 +13,7 @@ Clone a Project
 - **Setup .env file**
 - **Run migration `php artisan migrate`**
 - **Run seeder `php artisan db:seed`**
-- **Create virtual host with name `local.hms.com`**
+- **Create virtual host with name `local.tenadam.com`**
 - **Run `npm install`**
 - **Run `npm run dev`**
 

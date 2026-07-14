@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="title" content="{{config('app.name')}}">
 
-    <meta name="keywords" content="Hospital Management System"/>
+    <meta name="keywords" content="Tenadam (ጤና አዳም)"/>
 
-    <meta name="description" content="Hospital Management System | HMS"/>
-    <meta name="author" content="hms.infyom.com">
+    <meta name="description" content="Tenadam (ጤና አዳም) | HMS"/>
+    <meta name="author" content="tenadam.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>404 Not Found | {{ config('app.name') }}</title>

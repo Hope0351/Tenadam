@@ -17,10 +17,10 @@ return [
     'testimonials' => '感言',
     'login' => '登录',
     'register' => '登记',
-    'start_using_InfyHMS_now' => '立即开始使用InfyHMS。',
+    'start_using_Tenadam_now' => '立即开始使用Tenadam。',
     'get_started' => '开始使用',
     'welcome_to' => '欢迎来到',
-    'infyhms' => 'InfyHMS',
+    'tenadam' => 'Tenadam',
     'manage_your_hospital_day_to_day_operations_digitally_with_ease_and_effortlessly' => '轻松，轻松地以数字方式管理医院的日常运营。',
     'buy_now' => '立即购买',
     'home' => '家',
@@ -69,7 +69,7 @@ return [
 
     //MISCELLANEOUS FACILITIES keys
     'miscellaneous_facilities' => [
-        'miscellaneous_facilities_of_infyhms' => '其他杂项设施',
+        'miscellaneous_facilities_of_tenadam' => '其他杂项设施',
         'host_in_your_Own_secure_server' => '在您自己的安全服务器中托管。',
         'no_monthly_or_yearly_fees' => '无月费或年费。',
         'customer_support' => '24 / 7客户支持',
@@ -101,7 +101,7 @@ return [
         'facebook' => 'Facebook',
         'linkedin' => 'Linkedin',
         'github' => 'Github',
-        'made_with_by_infyOm_technologies' => '由InfyOm Technologies制造',
+        'made_with_by_infyOm_technologies' => '由Tenadam制造',
         'we_are_group' => '我们是一群富有创意的书呆子，为Web＆Mobile制作了很棒的东西。 我们只是喜欢
                  为开源技术做出贡献。 我们始终尝试构建有助于开发人员
                  节省时间。 因此他们可以花更多的时间与朋友和家人在一起。',

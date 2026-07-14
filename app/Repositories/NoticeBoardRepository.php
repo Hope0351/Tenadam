@@ -35,7 +35,7 @@ class NoticeBoardRepository extends BaseRepository
     public function createNotification()
     {
         try {
-            $users = User::where('email', '!=', 'admin@hms.com')
+            $users = User::where('email', '!=', 'admin@tenadam.com')
                 ->pluck('owner_type', 'id')
                 ->toArray();
 

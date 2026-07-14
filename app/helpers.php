@@ -51,7 +51,8 @@ function getLoggedInUserId()
 function getCurrentVersion()
 {
     if (config('app.is_version') == 'true') {
-        $composerFile = file_get_contents('../composer.json');
+        $composerPath = base_path('composer.json');
+        $composerFile = file_get_contents($composerPath);
         $composerData = json_decode($composerFile, true);
 
         return $composerData['version'];

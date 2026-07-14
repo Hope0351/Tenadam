@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@yield('title') | {{ getAppName() }}</title>
-    <meta name="description" content="Hospital management system">
+    <meta name="description" content="Tenadam - Health of Adam">
     <meta name="keyword" content="hospital,doctor,patient,fever,MD,MS,MBBS">
     <link rel="icon" href="{{ getSettingValue()['favicon']['value'] }}" type="image/png">
     <link rel="canonical" href="{{ route('front') }}" />

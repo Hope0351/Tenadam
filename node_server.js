@@ -148,5 +148,5 @@ server.on('error', err => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`HMS Node+PHP-CGI server running on http://0.0.0.0:${PORT}`);
+  console.log(`Tenadam Node+PHP-CGI server running on http://0.0.0.0:${PORT}`);
 });

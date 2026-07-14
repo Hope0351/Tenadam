@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="title" content="{{ config('app.name') }}">
 
-    <meta name="keywords" content="Hospital Management System" />
+    <meta name="keywords" content="Tenadam (ጤና አዳም)" />
 
-    <meta name="description" content="Hospital Management System | HMS" />
+    <meta name="description" content="Tenadam (ጤና አዳም) | HMS" />
     <meta name="author" content="{{ getAppName() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">

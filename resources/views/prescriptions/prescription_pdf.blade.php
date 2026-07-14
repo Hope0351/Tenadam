@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="icon" href="{{ asset('web/img/hms-saas-favicon.ico') }}" type="image/png">
+    <link rel="icon" href="{{ asset('web/img/tenadam-favicon.ico') }}" type="image/png">
     <title>{{ __('messages.prescription.prescription') }}</title>
     <link href="{{ asset('assets/css/prescriptions-pdf.css') }}" rel="stylesheet" type="text/css" />
     <style>

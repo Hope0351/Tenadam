@@ -86,9 +86,9 @@ class AuthController extends AppBaseController
 
         $data['token'] = encrypt($data['user']->email.''.$data['user']->id);
 
-        // $data['link'] = 'https://infyhmsflutter.page.link/?link=http://com.example.infyhms_flutter/'.$data['token'].'&apn=com.example.infyhms_flutter';
+        // $data['link'] = 'https://tenadam_flutter.page.link/?link=http://com.example.tenadam_flutter/'.$data['token'].'&apn=com.example.tenadam_flutter';
 
-        $data['link'] = $request->url_domain.'//hms.com/createNewPassword?token='.$data['token'].'&email='.$request->email.'&apn=com.example.infyhms_flutter';
+        $data['link'] = $request->url_domain.'//tenadam.com/createNewPassword?token='.$data['token'].'&email='.$request->email.'&apn=com.example.tenadam_flutter';
 
         Mail::to($data['user']->email)
         ->send(new ForgotPasswordMail($data));

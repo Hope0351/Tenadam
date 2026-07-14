@@ -20,7 +20,7 @@ class AdminUserSeeder extends Seeder
         $input = [
             'first_name' => 'Super',
             'last_name' => 'Admin',
-            'email' => 'admin@hms.com',
+            'email' => 'admin@tenadam.com',
             'password' => Hash::make('123456789'),
             'phone' => '7878454512',
             'gender' => 1,
