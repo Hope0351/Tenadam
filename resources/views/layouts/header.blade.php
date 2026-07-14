@@ -116,7 +116,7 @@
                 <div class="dropdown-menu py-7 pb-4 my-2" aria-labelledby="dropdownMenuButton1">
                     <div class="text-center border-bottom pb-5">
                         <div class="image image-circle image-tiny mb-5">
-                            <img alt="InfyOm" src="{{ Auth::user()->image_url ?? '' }}" class="img-fluid"
+                            <img alt="Tenadam" src="{{ Auth::user()->image_url ?? '' }}" class="img-fluid"
                                 alt="profile image" id="loginUserImage">
                         </div>
                         <h3 class="text-gray-900">{{ Auth::user()->full_name ?? '' }}</h3>

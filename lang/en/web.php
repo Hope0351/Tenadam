@@ -76,7 +76,7 @@ return [
         'multi_language_system' => 'Multi Language System',
         'admin_and_customer_has_separate_ui_and_login' => 'Admin and Customer Has separate UI and Login',
         'email_and_sms_gateway_adding_for_marketing' => 'Email and Sms gateway adding for marketing',
-        'complete_hospital_management_solution' => 'Complete Hospital Management Solution',
+        'complete_hospital_management_solution' => 'Tenadam - Complete Health Management Solution',
         'prescription_management_system' => 'Prescription Management System',
         'doctor_management_system' => 'Doctor Management System',
         'insurance_management_system' => 'Insurance Management System',

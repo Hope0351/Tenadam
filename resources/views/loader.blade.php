@@ -1,4 +1,4 @@
-<div id="infyLoader" class="infy-loader">
+<div id="appLoader" class="app-loader">
     <svg class="loader-position" width="150px" height="75px" viewBox="0 0 187.3 93.7"
          preserveAspectRatio="xMidYMid meet">
         <path stroke="#00c6ff" id="outline" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"

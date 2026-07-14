@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Tenadam Log Viewer | {{getAppName()}}</title>
-    <meta name="description" content="Hospital management system">
+    <meta name="description" content="Tenadam Health Management System">
     <meta name="keyword" content="hospital,doctor,patient,fever,MD,MS,MBBS">
     <link href="{{ asset('css/pages.css') }}" rel="stylesheet" type="text/css"/>
     <link rel="canonical" href="{{ route('front') }}"/>

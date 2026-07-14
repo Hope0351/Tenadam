@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 text-lg-end text-center">
-                        <img src="{{ asset('web_front/images/page-banner/Doctors.png') }}" alt="Infy Care"
+                        <img src="{{ asset('web_front/images/page-banner/Doctors.png') }}" alt="Tenadam"
                             class="img-fluid" />
                     </div>
                 </div>
