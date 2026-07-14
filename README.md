@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/web/img/logo.jpg" alt="Tenadam Logo" width="90" height="90" style="border-radius:18px;"/>
+<img src="public/web/img/logo.jpg" alt="Tenadam Logo" width="100" height="100" style="border-radius:20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);"/>
 
 # Tenadam — Health of Adam
 
@@ -14,17 +14,96 @@
 
 **ጤና አዳም** — *Your complete digital healthcare platform*
 
-[Getting Started](#-getting-started) · [Features](#-features) · [Tech Stack](#-tech-stack) · [Screenshots](#-screenshots) · [Modules](#-modules)
-
 </div>
 
 ---
 
-## 🚀 Overview
+## 🖼️ Screenshots
 
-Tenadam is a comprehensive Hospital Management System designed to streamline every aspect of healthcare operations. From patient registration and appointment scheduling to IPD/OPD management, billing, pharmacy, pathology, radiology, and beyond — Tenadam covers the entire clinical and administrative workflow.
+### Public Website
 
-Built on **Laravel 10** with a modern **AdminLTE**-based interface, **Livewire 3** for reactive components, and a robust modular architecture, Tenadam is engineered for reliability, scalability, and ease of use.
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/00-homepage.png" alt="Tenadam Homepage"></td>
+<td width="50%"><img src="docs/screenshots/00-login.png" alt="Login Page"></td>
+</tr>
+<tr>
+<td align="center"><b>Homepage</b></td>
+<td align="center"><b>Login</b></td>
+</tr>
+</table>
+
+---
+
+### 👑 Admin Dashboard
+
+The Admin has full control over every module — patients, doctors, billing, pharmacy, and more.
+
+<img src="docs/screenshots/01-admin-dashboard.png" alt="Admin Dashboard" width="100%">
+
+#### Admin — Key Sections
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/09-admin-patients.png" alt="Patient Management"></td>
+<td width="50%"><img src="docs/screenshots/10-admin-doctors.png" alt="Doctor Management"></td>
+</tr>
+<tr>
+<td align="center"><b>Patients</b></td>
+<td align="center"><b>Doctors</b></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/11-admin-appointments.png" alt="Appointments"></td>
+<td width="50%"><img src="docs/screenshots/12-admin-medicines.png" alt="Medicine Inventory"></td>
+</tr>
+<tr>
+<td align="center"><b>Appointments</b></td>
+<td align="center"><b>Medicines</b></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/14-admin-bills.png" alt="Bills & Invoices"></td>
+</tr>
+<tr>
+<td align="center"><b>Billing & Invoices</b></td>
+</tr>
+</table>
+
+---
+
+### 👨‍⚕️ Role-Based Access — Each Role Sees Their Own Workspace
+
+Tenadam provides tailored interfaces for every healthcare role. Users are automatically redirected to their relevant workspace after login.
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/04-receptionist-appointments.png" alt="Receptionist Workspace"></td>
+<td width="50%"><img src="docs/screenshots/03-nurse-bed-management.png" alt="Nurse Workspace"></td>
+</tr>
+<tr>
+<td align="center"><b>Receptionist</b><br>Appointment booking & patient flow</td>
+<td align="center"><b>Nurse</b><br>Bed management & patient care</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/05-pharmacist-medicines.png" alt="Pharmacist Workspace"></td>
+<td width="50%"><img src="docs/screenshots/06-accountant-accounts.png" alt="Accountant Workspace"></td>
+</tr>
+<tr>
+<td align="center"><b>Pharmacist</b><br>Medicine inventory & prescriptions</td>
+<td align="center"><b>Accountant</b><br>Financial accounts & payments</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/07-lab-technician.png" alt="Lab Technician Workspace"></td>
+</tr>
+<tr>
+<td align="center"><b>Lab Technician</b><br>Pathology & radiology tests</td>
+</tr>
+</table>
 
 ---
 
@@ -84,7 +163,8 @@ Built on **Laravel 10** with a modern **AdminLTE**-based interface, **Livewire 3
 - Payment reports and financial analytics
 
 ### 🔐 Security & Access
-- Role-based access control (Admin, Doctor, Nurse, Pharmacist, etc.)
+- **8 role-based interfaces** — Admin, Doctor, Nurse, Receptionist, Pharmacist, Accountant, Lab Technician, Patient
+- Each role sees only their authorized modules on login
 - Two-factor authentication (Google 2FA)
 - Laravel Sanctum for API authentication
 - JWT token support
@@ -115,20 +195,6 @@ Built on **Laravel 10** with a modern **AdminLTE**-based interface, **Livewire 3
 | **PDF** | DomPDF |
 | **Excel** | Laravel Excel (Maatwebsite) |
 | **Build** | Laravel Mix, Node.js, NPM |
-
----
-
-## 📸 Screenshots
-
-<p align="center">
-  <strong>Homepage</strong><br>
-  <img src="resources/views/web/img/hero-bg.jpg" alt="Tenadam Homepage" width="80%">
-</p>
-
-<p align="center">
-  <strong>Admin Dashboard</strong><br>
-  <img src="resources/views/dashboard" alt="Dashboard" width="80%">
-</p>
 
 ---
 
@@ -198,7 +264,7 @@ npm run production # Production
 php artisan serve
 ```
 
-> **Default Login:** `admin@tenedam.com` / `123456789`
+> **Default Admin Login:** `admin@tenedam.com` / `123456789`
 
 ### Virtual Host (Recommended)
 
@@ -227,6 +293,8 @@ Tenadam/
 │   └── Providers/       # Service providers
 ├── config/              # Configuration files
 ├── database/            # Migrations, seeders, SQLite DB
+├── docs/
+│   └── screenshots/     # Project screenshots
 ├── Modules/             # Modular feature packages
 ├── public/              # Web-accessible root
 │   ├── assets/          # Compiled CSS, JS, images
