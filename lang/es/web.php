@@ -17,10 +17,10 @@ return [
     'testimonials' => 'Testimonios',
     'login' => 'Iniciar sesión',
     'register' => 'Registrarse',
-    'start_using_Tenadam_now' => 'Empiece a usar Tenadam ahora.',
+    'start_using_Tenedam_now' => 'Empiece a usar Tenedam ahora.',
     'get_started' => 'Empezar',
     'welcome_to' => 'Bienvenido a',
-    'tenadam' => 'Tenadam',
+    'tenedam' => 'Tenedam',
     'manage_your_hospital_day_to_day_operations_digitally_with_ease_and_effort without' => 'Administre las operaciones del día a día de su Hospital digitalmente con facilidad y sin esfuerzo.',
     'buy_now' => 'Comprar ahora',
     'home' => 'Hogar',
@@ -69,7 +69,7 @@ return [
 
     //MISCELLANEOUS FACILITIES keys
     'miscellaneous_facilities' => [
-        'miscellaneous_facilities_of_tenadam' => 'DIVERSAS INSTALACIONES DE TENADAM',
+        'miscellaneous_facilities_of_tenedam' => 'DIVERSAS INSTALACIONES DE TENEDAM',
         'host_in_your_Own_secure_server' => 'Alojar en su propio servidor seguro.',
         'no_monthly_or_yearly_fees' => 'Sin cuotas mensuales o anuales',
         'customer_support' => 'Soporte al cliente 24/7',
@@ -101,7 +101,7 @@ return [
         'facebook' => 'Facebook',
         'linkedin' => 'Linkedin',
         'github' => 'Github',
-        'made_with_by_infyOm_technologies' => 'Hecho con por Tenadam',
+        'made_with_by_infyOm_technologies' => 'Hecho con por Tenedam',
         'we_are_group' => 'Somos un grupo de nerds creativos que hacen cosas increíbles para Web y dispositivos móviles. Nos encanta
                  Contribuir a las tecnologías de código abierto. Siempre intentamos crear algo que ayude a los desarrolladores a
                  ahorre su tiempo. para que puedan pasar un poco más de tiempo con sus amigos y familiares. ',

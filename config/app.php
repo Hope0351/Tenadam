@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Tenadam'),
+    'name' => env('APP_NAME', 'Tenedam'),
 
     'footer_version_show' => env('VERSION_NUMBER', true),
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ultra-reliable PHP server for Tenadam HMS
+# Ultra-reliable PHP server for Tenedam HMS
 cd /home/z/my-project/hms
 
 PHP_BIN="/home/z/.local/php/bin/php"

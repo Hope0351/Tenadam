@@ -17,10 +17,10 @@ return [
     'testimonials' => 'Testimonials',
     'login' => 'Login',
     'register' => 'Register',
-    'start_using_Tenadam_now' => 'Start Using Tenadam now.',
+    'start_using_Tenedam_now' => 'Start Using Tenedam now.',
     'get_started' => 'Get Started',
     'welcome_to' => 'Welcome to',
-    'tenadam' => 'Tenadam',
+    'tenedam' => 'Tenedam',
     'manage_your_hospital_day_to_day_operations_digitally_with_ease_and_effortlessly' => 'Manage your Hospital\'s day to day operations digitally with ease and effortlessly.',
     'buy_now' => 'Buy Now',
     'home' => 'Home',
@@ -69,14 +69,14 @@ return [
 
     //MISCELLANEOUS FACILITIES keys
     'miscellaneous_facilities' => [
-        'miscellaneous_facilities_of_tenadam' => 'MISCELLANEOUS FACILITIES OF TENADAM',
+        'miscellaneous_facilities_of_tenedam' => 'MISCELLANEOUS FACILITIES OF TENEDAM',
         'host_in_your_Own_secure_server' => 'Host In Your Own Secure Server.',
         'no_monthly_or_yearly_fees' => 'No Monthly Or Yearly Fees.',
         'customer_support' => '24/7 Customer Support',
         'multi_language_system' => 'Multi Language System',
         'admin_and_customer_has_separate_ui_and_login' => 'Admin and Customer Has separate UI and Login',
         'email_and_sms_gateway_adding_for_marketing' => 'Email and Sms gateway adding for marketing',
-        'complete_hospital_management_solution' => 'Tenadam - Complete Health Management Solution',
+        'complete_hospital_management_solution' => 'Tenedam - Complete Health Management Solution',
         'prescription_management_system' => 'Prescription Management System',
         'doctor_management_system' => 'Doctor Management System',
         'insurance_management_system' => 'Insurance Management System',
@@ -101,7 +101,7 @@ return [
         'facebook' => 'Facebook',
         'linkedin' => 'Linkedin',
         'github' => 'Github',
-        'made_with_by_infyOm_technologies' => 'Made with by Tenadam',
+        'made_with_by_infyOm_technologies' => 'Made with by Tenedam',
         'we_are_group' => 'We are a group of creative nerds making awesome stuff for Web & Mobile. We just love to
                 contribute to open source technologies. We always try to build something which helps developers to
                 save their time. so they can spend a bit more time with their friends & family.',

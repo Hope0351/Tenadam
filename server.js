@@ -80,4 +80,4 @@ http.createServer((req, res) => {
     }
     
     sendToPhp(req, res);
-}).listen(PORT, '0.0.0.0', () => console.log(`Tenadam on :${PORT}, PHP at ${PHP_URL}`));
+}).listen(PORT, '0.0.0.0', () => console.log(`Tenedam on :${PORT}, PHP at ${PHP_URL}`));

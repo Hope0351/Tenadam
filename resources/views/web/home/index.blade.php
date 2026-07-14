@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-lg-6 text-lg-end text-center">
                         <img src="{{ !empty($frontSetting['home_page_image']) ? $frontSetting['home_page_image'] : asset('web_front/images/main-banner/banner-one/Home.png') }}"
-                             alt="Tenadam" class="img-fluid"/>
+                             alt="Tenedam" class="img-fluid"/>
                     </div>
                 </div>
             </div>

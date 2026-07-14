@@ -45,6 +45,8 @@
 
     {{--    <link href="{{ asset('css/pages.css') }}" rel="stylesheet" type="text/css"/> --}}
     <link href="{{ mix('assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
+    {{-- Tenedam Design System --}}
+    <link href="{{ asset('assets/css/tenedam-design-system.css') }}" rel="stylesheet" type="text/css" />
     {{--    <link rel="stylesheet" href="{{ asset('assets/css/livewire-table.css') }}"> --}}
     @routes
     @livewireScripts

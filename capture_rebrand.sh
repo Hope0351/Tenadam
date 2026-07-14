@@ -23,7 +23,7 @@ echo "=== Taking Rebranded Screenshots ==="
 # 1. Login page screenshot
 agent-browser open http://localhost:3000/login
 sleep 2
-agent-browser screenshot --full /home/z/my-project/download/tenadam_login.png
+agent-browser screenshot --full /home/z/my-project/download/tenedam_login.png
 echo "1. Login page captured"
 
 # 2. Fill and login
@@ -45,14 +45,14 @@ if [ "$REFS" != "NOT_FOUND" ]; then
     PASS_REF=$(echo $REFS | awk '{print $2}')
     BTN_REF=$(echo $REFS | awk '{print $3}')
     
-    agent-browser fill @$EMAIL_REF "admin@tenadam.com"
+    agent-browser fill @$EMAIL_REF "admin@tenedam.com"
     agent-browser fill @$PASS_REF "123456789"
     agent-browser click @$BTN_REF
     echo "2. Logged in"
     sleep 6
     
     # 3. Dashboard screenshot
-    agent-browser screenshot --full /home/z/my-project/download/tenadam_dashboard.png
+    agent-browser screenshot --full /home/z/my-project/download/tenedam_dashboard.png
     echo "3. Dashboard captured"
     agent-browser get url
 else

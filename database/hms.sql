@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tenadam`
+-- Database: `tenedam`
 --
 
 -- --------------------------------------------------------
@@ -863,8 +863,8 @@ CREATE TABLE `front_settings` (
 --
 
 INSERT INTO `front_settings` (`id`, `key`, `value`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'about_us_title', 'About Tenadam', '1', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
-(2, 'about_us_description', 'Tenadam will help' physicians and nurses from around the world the principles of blood management, as well as how to manage their own blood conservation programs. The hospital was chosen based on the reputation its bloodless program has established in the medical community and because of its nationally recognized results.\n\nWe are a group of creative nerds making awesome stuff for Web and Mobile. We just love to contribute to open source technologies. We always try to build something which helps developers to save their time. so they can spend a bit more time with their friends And family.', '1', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
+(1, 'about_us_title', 'About Tenedam', '1', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
+(2, 'about_us_description', 'Tenedam will help' physicians and nurses from around the world the principles of blood management, as well as how to manage their own blood conservation programs. The hospital was chosen based on the reputation its bloodless program has established in the medical community and because of its nationally recognized results.\n\nWe are a group of creative nerds making awesome stuff for Web and Mobile. We just love to contribute to open source technologies. We always try to build something which helps developers to save their time. so they can spend a bit more time with their friends And family.', '1', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (3, 'about_us_mission', 'We are providing advanced emergency services. We have well-equipped emergency and trauma center with facilities.', '1', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (4, 'about_us_image', 'http://e-hms.test/assets/img/default_image.jpg', '1', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (5, 'home_page_experience', '10', '2', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
@@ -2780,12 +2780,12 @@ INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
 (26, 'flutterwave_secret_key', NULL, '2026-04-29 06:55:57', '2026-04-29 06:55:57'),
 (27, 'open_ai_enable', '0', '2026-04-29 06:56:09', '2026-04-29 06:56:09'),
 (28, 'open_ai_key', NULL, '2026-04-29 06:56:09', '2026-04-29 06:56:09'),
-(29, 'app_name', 'Tenadam', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
+(29, 'app_name', 'Tenedam', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (30, 'app_logo', 'web/img/logo.jpg', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
-(31, 'company_name', 'Tenadam', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
+(31, 'company_name', 'Tenedam', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (32, 'current_currency', 'inr', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (33, 'hospital_address', '', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
-(34, 'hospital_email', 'admin@tenadam.com', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
+(34, 'hospital_email', 'admin@tenedam.com', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (35, 'hospital_phone', '+919876543210', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (36, 'hospital_from_day', 'Mon to Fri', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
 (37, 'hospital_from_time', '9 AM to 9 PM', '2026-04-29 06:56:12', '2026-04-29 06:56:12'),
@@ -2945,7 +2945,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `department_id`, `first_name`, `last_name`, `email`, `password`, `designation`, `phone`, `gender`, `qualification`, `blood_group`, `dob`, `email_verified_at`, `enable_two_factor_authentication`, `google2fa_secret`, `two_factor_recovery_codes`, `owner_id`, `owner_type`, `status`, `language`, `remember_token`, `facebook_url`, `twitter_url`, `instagram_url`, `linkedIn_url`, `created_at`, `updated_at`, `stripe_id`, `pm_type`, `pm_last_four`, `trial_ends_at`, `thememode`, `card_brand`) VALUES
-(1, 1, 'Super', 'Admin', 'admin@tenadam.com', '$2y$10$dFxRTaah2erckwFKjrhVHOurd.i1rBEdQc4LaPYx7CUdiHhteMRCK', NULL, '7878454512', 1, NULL, 'B+', '1994-12-12', '2026-04-29 06:56:12', 0, NULL, NULL, NULL, NULL, 1, 'en', NULL, NULL, NULL, NULL, NULL, '2026-04-29 06:56:12', '2026-04-29 06:56:12', NULL, NULL, NULL, NULL, '0', '');
+(1, 1, 'Super', 'Admin', 'admin@tenedam.com', '$2y$10$dFxRTaah2erckwFKjrhVHOurd.i1rBEdQc4LaPYx7CUdiHhteMRCK', NULL, '7878454512', 1, NULL, 'B+', '1994-12-12', '2026-04-29 06:56:12', 0, NULL, NULL, NULL, NULL, 1, 'en', NULL, NULL, NULL, NULL, NULL, '2026-04-29 06:56:12', '2026-04-29 06:56:12', NULL, NULL, NULL, NULL, '0', '');
 
 -- --------------------------------------------------------
 

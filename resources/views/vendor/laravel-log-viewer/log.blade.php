@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Tenadam Log Viewer | {{getAppName()}}</title>
-    <meta name="description" content="Tenadam Health Management System">
+    <title>Tenedam Log Viewer | {{getAppName()}}</title>
+    <meta name="description" content="Tenedam Health Management System">
     <meta name="keyword" content="hospital,doctor,patient,fever,MD,MS,MBBS">
     <link href="{{ asset('css/pages.css') }}" rel="stylesheet" type="text/css"/>
     <link rel="canonical" href="{{ route('front') }}"/>
@@ -173,7 +173,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col sidebar mb-3">
-            <h1><i class="fa fa-calendar" aria-hidden="true"></i> Tenadam Log Viewer</h1>
+            <h1><i class="fa fa-calendar" aria-hidden="true"></i> Tenedam Log Viewer</h1>
             <p class="text-muted"><i>by Rap2h</i></p>
 
             <div class="custom-control custom-switch" style="padding-bottom:20px;">

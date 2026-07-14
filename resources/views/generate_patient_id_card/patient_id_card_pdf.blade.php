@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="icon" href="{{ asset('web/img/tenadam-favicon.ico') }}" type="image/png">
+    <link rel="icon" href="{{ asset('web/img/tenedam-favicon.ico') }}" type="image/png">
     <title>{{ __('messages.patient_id_card.patient_id_card') }}</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link rel="stylesheet" href="{{ asset('assets/css/patient-id-card_pdf.css') }}">

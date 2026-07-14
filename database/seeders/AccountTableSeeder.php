@@ -14,13 +14,13 @@ class AccountTableSeeder extends Seeder
     {
         $input = [
             [
-                'name' => 'Tenadam Debit Account',
+                'name' => 'Tenedam Debit Account',
                 'type' => 1,
                 'description' => 'This is the savings account',
                 'status' => 1,
             ],
             [
-                'name' => 'Tenadam Credit Account',
+                'name' => 'Tenedam Credit Account',
                 'type' => 2,
                 'description' => 'This is the current account',
                 'status' => 1,

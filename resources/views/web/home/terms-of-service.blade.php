@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 text-lg-end text-center">
-                        <img src="{{ asset('web_front/images/page-banner/Terms-of-Service.png') }}" alt="Tenadam" class="img-fluid" />
+                        <img src="{{ asset('web_front/images/page-banner/Terms-of-Service.png') }}" alt="Tenedam" class="img-fluid" />
                     </div>
                 </div>
             </div>

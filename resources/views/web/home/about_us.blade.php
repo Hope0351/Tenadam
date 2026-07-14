@@ -30,8 +30,8 @@
                     </div>
                     <div class="col-lg-6 text-lg-end text-center">
                         <img src="{{ !empty($frontSetting['about_us_image']) ? $frontSetting['about_us_image'] : asset('web_front/images/page-banner/About.png') }}"
-                            alt="Tenadam" class="img-fluid" />
-                        {{--                        <img src="{{ asset('web_front/images/page-banner/About.png') }}" alt="Tenadam" class="img-fluid" /> --}}
+                            alt="Tenedam" class="img-fluid" />
+                        {{--                        <img src="{{ asset('web_front/images/page-banner/About.png') }}" alt="Tenedam" class="img-fluid" /> --}}
                     </div>
                 </div>
             </div>

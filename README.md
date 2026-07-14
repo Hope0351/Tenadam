@@ -1,7 +1,7 @@
 
 <p></p>
 
-## Tenadam (ጤና አዳም)
+## Tenedam (ጤና አዳም)
 
 ## Installation Step
 
@@ -13,7 +13,7 @@ Clone a Project
 - **Setup .env file**
 - **Run migration `php artisan migrate`**
 - **Run seeder `php artisan db:seed`**
-- **Create virtual host with name `local.tenadam.com`**
+- **Create virtual host with name `local.tenedam.com`**
 - **Run `npm install`**
 - **Run `npm run dev`**
 

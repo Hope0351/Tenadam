@@ -17,10 +17,10 @@ return [
     'testimonials' => 'Témoignages',
     'login' => 'Connexion',
     'register' => 'S\'inscrire',
-    'start_using_Tenadam_now' => 'Commencez à utiliser Tenadam maintenant.',
+    'start_using_Tenedam_now' => 'Commencez à utiliser Tenedam maintenant.',
     'get_started' => 'Commencer',
     'welcome_to' => 'Bienvenue dans',
-    'tenadam' => 'Tenadam',
+    'tenedam' => 'Tenedam',
     'manage_your_hospital_day_to_day_operations_digitally_with_ease_and_effortlessly' => 'Gérez les opérations quotidiennes de votre hôpital numériquement avec facilité et sans effort.',
     'buy_now' => 'Acheter maintenant',
     'home' => 'Maison',
@@ -69,7 +69,7 @@ return [
 
     //MISCELLANEOUS FACILITIES keys
     'miscellaneous_facilities' => [
-        'miscellaneous_facilities_of_tenadam' => 'FACILITÉS DIVERSES D\'TENADAM',
+        'miscellaneous_facilities_of_tenedam' => 'FACILITÉS DIVERSES D\'TENEDAM',
         'host_in_your_Own_secure_server' => 'Hébergez dans votre propre serveur sécurisé.',
         'no_monthly_or_yearly_fees' => 'Pas de frais mensuels ou annuels.',
         'customer_support' => 'Assistance clientèle 24/7',
@@ -101,7 +101,7 @@ return [
         'facebook' => 'Facebook',
         'linkedin' => 'Linkedin',
         'github' => 'Github',
-        'made_with_by_infyOm_technologies' => 'Fabriqué avec par Tenadam',
+        'made_with_by_infyOm_technologies' => 'Fabriqué avec par Tenedam',
         'we_are_group' => 'Nous sommes un groupe de nerds créatifs qui créent des trucs géniaux pour le Web et le mobile. Nous aimons juste
                  contribuer aux technologies open source. Nous essayons toujours de créer quelque chose qui aide les développeurs à
                  gagner du temps. afin qu\'ils puissent passer un peu plus de temps avec leurs amis et leur famille. ',

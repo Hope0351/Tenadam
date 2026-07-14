@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@yield('title') | {{ getAppName() }}</title>
-    <meta name="description" content="Tenadam - Health of Adam">
+    <meta name="description" content="Tenedam - Health of Adam">
     <meta name="keyword" content="hospital,doctor,patient,fever,MD,MS,MBBS">
     <link rel="icon" href="{{ getSettingValue()['favicon']['value'] }}" type="image/png">
     <link rel="canonical" href="{{ route('front') }}" />
@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/third-party.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link href="{{ mix('/assets/css/custom-auth.css') }}" rel="stylesheet" type="text/css" />
+    {{-- Tenedam Design System --}}
+    <link href="{{ asset('assets/css/tenedam-design-system.css') }}" rel="stylesheet" type="text/css" />
     {{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages.css') }}"> --}}
     <!-- CSS Libraries -->
     @yield('css')

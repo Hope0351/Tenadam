@@ -17,10 +17,10 @@ return [
     'testimonials' => 'Referanslar',
     'login' => 'Giriş',
     'register' => 'Kaydol',
-    'start_using_Tenadam_now' => 'Şimdi Tenadam\'yi Kullanmaya Başlayın.',
+    'start_using_Tenedam_now' => 'Şimdi Tenedam\'yi Kullanmaya Başlayın.',
     'get_started' => 'Başlayın',
     'welcome_to' => 'Hoş Geldiniz',
-    'tenadam' => 'Tenadam',
+    'tenedam' => 'Tenedam',
     'manage_your_hospital_day_to_day_operations_digitally_with_ease_and_effortlessly' => 'Hastanenizin günlük operasyonlarını dijital olarak kolaylıkla ve zahmetsizce yönetin.',
     'buy_now' => 'Şimdi Satın Alın',
     'home' => 'ev',
@@ -70,7 +70,7 @@ return [
 
     //MISCELLANEOUS FACILITIES keys
     'miscellaneous_facilities' => [
-        'miscellaneous_facilities_of_tenadam' => 'ÇEŞİTLİ ENFYHMS TESİSLERİ',
+        'miscellaneous_facilities_of_tenedam' => 'ÇEŞİTLİ ENFYHMS TESİSLERİ',
         'host_in_your_Own_secure_server' => 'Kendi Güvenli Sunucunuzda Barındırın.',
         'no_monthly_or_yearly_fees' => 'Aylık Veya Yıllık Ücret Yok.',
         'customer_support' => '24 / 7 Müşteri Desteği ',
@@ -102,7 +102,7 @@ return [
         'facebook' => 'Facebook',
         'linkedin' => 'Linkedin',
         'github' => 'Github',
-        'made_with_by_infyOm_technologies' => 'Tenadam tarafından yapılmıştır',
+        'made_with_by_infyOm_technologies' => 'Tenedam tarafından yapılmıştır',
         'we_are_group' => 'Web ve Mobil için harika şeyler yapan bir grup yaratıcı meraklıyız. Biz sadece seviyoruz
                  açık kaynak teknolojilerine katkıda bulunur. Her zaman geliştiricilerin
                  zamanlarından tasarruf edin. böylece arkadaşları ve aileleriyle biraz daha fazla zaman geçirebilirler. ',

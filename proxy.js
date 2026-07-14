@@ -76,6 +76,6 @@ http.createServer((req, res) => {
         }
     });
 }).listen(PORT, '0.0.0.0', () => {
-    console.log(`Tenadam server listening on http://0.0.0.0:${PORT}`);
+    console.log(`Tenedam server listening on http://0.0.0.0:${PORT}`);
     fs.appendFileSync('/tmp/hms_proxy.log', `Started at ${new Date().toISOString()}\n`);
 });

@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="title" content="{{ config('app.name') }}">
 
-    <meta name="keywords" content="Tenadam (ጤና አዳም)" />
+    <meta name="keywords" content="Tenedam (ጤና አዳም)" />
 
-    <meta name="description" content="Tenadam (ጤና አዳም) | Health Management System" />
+    <meta name="description" content="Tenedam (ጤና አዳም) | Health Management System" />
     <meta name="author" content="{{ getAppName() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -35,6 +35,8 @@
     {{--    <link rel="stylesheet" href="{{ asset('web_front/css/style.css') }}"> --}}
     <link rel="stylesheet" href="{{ mix('css/front-third-party.css') }}">
     <link rel="stylesheet" href="{{ mix('css/front-pages.css') }}">
+    {{-- Tenedam Public Site Design --}}
+    <link href="{{ asset('assets/css/tenedam-public.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     @yield('page_css')
