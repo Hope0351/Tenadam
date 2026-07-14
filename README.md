@@ -20,90 +20,81 @@
 
 ## 🖼️ Screenshots
 
-### Public Website
+### Login
 
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/00-homepage.png" alt="Tenadam Homepage"></td>
-<td width="50%"><img src="docs/screenshots/00-login.png" alt="Login Page"></td>
-</tr>
-<tr>
-<td align="center"><b>Homepage</b></td>
-<td align="center"><b>Login</b></td>
-</tr>
-</table>
+<img src="docs/screenshots/login_page.png" alt="Tenadam Login Page" width="100%">
 
 ---
 
 ### 👑 Admin Dashboard
 
-The Admin has full control over every module — patients, doctors, billing, pharmacy, and more.
+Full control over every module — patients, doctors, billing, pharmacy, inventory, and more. The admin sees comprehensive analytics, revenue charts, appointment stats, and quick-access cards for all hospital operations.
 
-<img src="docs/screenshots/01-admin-dashboard.png" alt="Admin Dashboard" width="100%">
-
-#### Admin — Key Sections
-
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/09-admin-patients.png" alt="Patient Management"></td>
-<td width="50%"><img src="docs/screenshots/10-admin-doctors.png" alt="Doctor Management"></td>
-</tr>
-<tr>
-<td align="center"><b>Patients</b></td>
-<td align="center"><b>Doctors</b></td>
-</tr>
-<tr>
-<td width="50%"><img src="docs/screenshots/11-admin-appointments.png" alt="Appointments"></td>
-<td width="50%"><img src="docs/screenshots/12-admin-medicines.png" alt="Medicine Inventory"></td>
-</tr>
-<tr>
-<td align="center"><b>Appointments</b></td>
-<td align="center"><b>Medicines</b></td>
-</tr>
-<tr>
-<td width="50%"><img src="docs/screenshots/14-admin-bills.png" alt="Bills & Invoices"></td>
-</tr>
-<tr>
-<td align="center"><b>Billing & Invoices</b></td>
-</tr>
-</table>
+<img src="docs/screenshots/admin_dashboard.png" alt="Admin Dashboard" width="100%">
 
 ---
 
-### 👨‍⚕️ Role-Based Access — Each Role Sees Their Own Workspace
+### 👨‍⚕️ Doctor Dashboard
 
-Tenadam provides tailored interfaces for every healthcare role. Users are automatically redirected to their relevant workspace after login.
+Doctors see their daily appointments, patient lists, OPD/IPD cases, prescriptions, and schedules at a glance. Quick access to diagnosis and prescription workflows.
 
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/04-receptionist-appointments.png" alt="Receptionist Workspace"></td>
-<td width="50%"><img src="docs/screenshots/03-nurse-bed-management.png" alt="Nurse Workspace"></td>
-</tr>
-<tr>
-<td align="center"><b>Receptionist</b><br>Appointment booking & patient flow</td>
-<td align="center"><b>Nurse</b><br>Bed management & patient care</td>
-</tr>
-</table>
+<img src="docs/screenshots/doctor_dashboard.png" alt="Doctor Dashboard" width="100%">
 
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/05-pharmacist-medicines.png" alt="Pharmacist Workspace"></td>
-<td width="50%"><img src="docs/screenshots/06-accountant-accounts.png" alt="Accountant Workspace"></td>
-</tr>
-<tr>
-<td align="center"><b>Pharmacist</b><br>Medicine inventory & prescriptions</td>
-<td align="center"><b>Accountant</b><br>Financial accounts & payments</td>
-</tr>
-</table>
+---
 
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/07-lab-technician.png" alt="Lab Technician Workspace"></td>
-</tr>
-<tr>
-<td align="center"><b>Lab Technician</b><br>Pathology & radiology tests</td>
-</tr>
-</table>
+### 👩‍⚕️ Nurse Dashboard
+
+Nurses are redirected to bed management — tracking bed types, bed availability, ward status, and patient bed assignments in real-time.
+
+<img src="docs/screenshots/nurse_dashboard.png" alt="Nurse Dashboard" width="100%">
+
+---
+
+### 🏢 Receptionist Dashboard
+
+Receptionists manage the front desk — appointment booking, patient registration, visitor logs, and the daily appointment flow.
+
+<img src="docs/screenshots/receptionist_dashboard.png" alt="Receptionist Dashboard" width="100%">
+
+---
+
+### 💊 Pharmacist Dashboard
+
+Pharmacists manage the entire medicine inventory — stock levels, purchase orders, medicine categories, brands, and prescription fulfillment.
+
+<img src="docs/screenshots/pharmacist_dashboard.png" alt="Pharmacist Dashboard" width="100%">
+
+---
+
+### 💰 Accountant Dashboard
+
+Accountants handle financial operations — accounts, invoices, payments, income/expense tracking, payroll management, and financial reporting.
+
+<img src="docs/screenshots/accountant_dashboard.png" alt="Accountant Dashboard" width="100%">
+
+---
+
+### 📋 Case Manager Dashboard
+
+Case managers coordinate patient cases — tracking case progression, assigning doctors, managing patient flow between departments, and ensuring continuity of care.
+
+<img src="docs/screenshots/case_manager_dashboard.png" alt="Case Manager Dashboard" width="100%">
+
+---
+
+### 🧪 Lab Technician Dashboard
+
+Lab technicians access the employee/doctor directory and manage pathology and radiology test workflows — test categories, parameters, investigation reports, and results.
+
+<img src="docs/screenshots/lab_technician_dashboard.png" alt="Lab Technician Dashboard" width="100%">
+
+---
+
+### 🤒 Patient Dashboard
+
+Patients get a self-service portal — viewing their appointments, medical records, prescriptions, bills, vaccination history, and communicating with their healthcare providers.
+
+<img src="docs/screenshots/patient_dashboard.png" alt="Patient Dashboard" width="100%">
 
 ---
 
@@ -163,7 +154,7 @@ Tenadam provides tailored interfaces for every healthcare role. Users are automa
 - Payment reports and financial analytics
 
 ### 🔐 Security & Access
-- **8 role-based interfaces** — Admin, Doctor, Nurse, Receptionist, Pharmacist, Accountant, Lab Technician, Patient
+- **9 role-based interfaces** — Admin, Doctor, Nurse, Receptionist, Pharmacist, Accountant, Case Manager, Lab Technician, Patient
 - Each role sees only their authorized modules on login
 - Two-factor authentication (Google 2FA)
 - Laravel Sanctum for API authentication
