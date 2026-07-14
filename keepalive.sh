@@ -1,15 +1,19 @@
 #!/bin/bash
-export PATH="/home/z/.local/bin:$PATH"
-export LD_LIBRARY_PATH="/home/z/.local/php/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
-export PHPRC="/home/z/my-project/hms/php.ini"
+# Ultra-reliable PHP server for Tenadam HMS
 cd /home/z/my-project/hms
 
-echo "Keeper starting at $(date)" >> /tmp/hms_keeper.log
+PHP_BIN="/home/z/.local/php/bin/php"
+PHP_INI="/home/z/.local/php/php.ini"
+PORT=8000
+LOG="/tmp/php_server.log"
+
+# Clear old log
+> "$LOG"
 
 while true; do
-    echo "Starting PHP server at $(date)" >> /tmp/hms_keeper.log
-    php -S 0.0.0.0:8000 server.php >> /tmp/hms_server.log 2>&1
-    EXIT_CODE=$?
-    echo "PHP server exited with code $EXIT_CODE at $(date)" >> /tmp/hms_keeper.log
+    echo "[$(date '+%H:%M:%S')] Starting PHP server on 0.0.0.0:$PORT..." >> "$LOG"
+    $PHP_BIN -c "$PHP_INI" -S "0.0.0.0:$PORT" server.php >> "$LOG" 2>&1
+    EXIT=$?
+    echo "[$(date '+%H:%M:%S')] PHP exited ($EXIT), restarting in 0.5s..." >> "$LOG"
     sleep 0.5
 done

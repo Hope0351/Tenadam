@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'sqlite',
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => null,
-            'database' => database_path('hms.sqlite'),
+            'database' => '/home/z/my-project/hms/database/hms.sqlite',
             'prefix' => '',
             'foreign_key_constraints' => false,
         ],

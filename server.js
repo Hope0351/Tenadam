@@ -1,116 +1,83 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { execSync, spawn } = require('child_process');
 
 const PORT = 8000;
-const PUBLIC_DIR = path.join(__dirname, 'public');
-const PHP_INI = '/home/z/my-project/hms/php.ini';
-const PHP_BIN = '/home/z/.local/php/usr/bin/php8.4';
-const LD_PATH = '/home/z/.local/php/usr/lib/x86_64-linux-gnu';
+const PHP_URL = 'http://127.0.0.1:8001';
+const PUBLIC = path.join(__dirname, 'public');
 
-const MIME_TYPES = {
-    '.css': 'text/css', '.js': 'application/javascript', '.png': 'image/png',
-    '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif',
-    '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.woff': 'font/woff',
-    '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.eot': 'application/vnd.ms-fontobject',
-    '.json': 'application/json', '.pdf': 'application/pdf',
-    '.webp': 'image/webp', '.mp4': 'video/mp4', '.webm': 'video/webm',
+const MIME = {
+    '.css':'text/css','.js':'application/javascript','.png':'image/png',
+    '.jpg':'image/jpeg','.jpeg':'image/jpeg','.gif':'image/gif',
+    '.svg':'image/svg+xml','.ico':'image/x-icon','.woff2':'font/woff2',
+    '.woff':'font/woff','.ttf':'font/ttf','.eot':'application/vnd.ms-fontobject',
+    '.json':'application/json','.webp':'image/webp','.pdf':'application/pdf',
+    '.mp4':'video/mp4','.mp3':'audio/mpeg','.webm':'video/webm',
+    '.map':'application/json','.txt':'text/plain','.html':'text/html',
+    '.xml':'application/xml','.otf':'font/otf',
 };
 
-const server = http.createServer((req, res) => {
-    const uri = decodeURIComponent(req.url.split('?')[0]);
-    const filePath = path.join(PUBLIC_DIR, uri);
+// Serialize PHP requests
+let phpReq = null;
 
-    // Try to serve static file
-    if (uri !== '/' && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-        const ext = path.extname(filePath).toLowerCase();
-        res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
-        fs.createReadStream(filePath).pipe(res);
-        return;
-    }
-
-    // Route to PHP
-    const phpRouter = path.join(__dirname, 'server.php');
-    const env = {
-        ...process.env,
-        PATH: `/home/z/.local/bin:${process.env.PATH}`,
-        LD_LIBRARY_PATH: LD_PATH,
-        PHPRC: PHP_INI,
-    };
-
-    // Use CGI approach - pipe request to php-cgi
-    const php = spawn(PHP_BIN, [phpRouter], { env, stdio: ['pipe', 'pipe', 'pipe'] });
-
-    // Write CGI headers
-    const body = [];
-    req.on('data', chunk => body.push(chunk));
-    req.on('end', () => {
-        // Set up PHP CGI environment
-        php.stdin.write(
-            `REQUEST_METHOD=${req.method}\n` +
-            `REQUEST_URI=${req.url}\n` +
-            `SCRIPT_NAME=/index.php\n` +
-            `SCRIPT_FILENAME=${path.join(PUBLIC_DIR, 'index.php')}\n` +
-            `DOCUMENT_ROOT=${PUBLIC_DIR}\n` +
-            `SERVER_NAME=localhost\n` +
-            `SERVER_PORT=${PORT}\n` +
-            `HTTP_HOST=${req.headers.host || 'localhost'}\n` +
-            `CONTENT_TYPE=${req.headers['content-type'] || ''}\n` +
-            `CONTENT_LENGTH=${body.length}\n` +
-            `REMOTE_ADDR=127.0.0.1\n` +
-            `\n`
-        );
-        php.stdin.write(Buffer.concat(body));
-        php.stdin.end();
-    });
-
-    let output = Buffer.alloc(0);
-    let headersParsed = false;
-
-    php.stdout.on('data', (chunk) => {
-        if (!headersParsed) {
-            output = Buffer.concat([output, chunk]);
-            const headerEnd = output.indexOf('\r\n\r\n');
-            if (headerEnd !== -1) {
-                headersParsed = true;
-                const headerStr = output.slice(0, headerEnd).toString();
-                const bodyChunk = output.slice(headerEnd + 4);
-                
-                const headers = headerStr.split('\r\n');
-                const statusLine = headers[0];
-                const statusCode = parseInt(statusLine.match(/\d{3}/)?.[0] || '200');
-                
-                res.writeHead(statusCode, {
-                    'Content-Type': 'text/html; charset=UTF-8',
-                    'X-Powered-By': 'PHP/8.4',
-                });
-                if (bodyChunk.length > 0) res.write(bodyChunk);
+function sendToPhp(req, res) {
+    // Queue: wait for current PHP request to finish
+    const check = () => {
+        if (phpReq) {
+            setTimeout(check, 50);
+            return;
+        }
+        phpReq = { done: false };
+        
+        const proxyReq = http.request(PHP_URL + req.url, {
+            method: req.method,
+            headers: req.headers,
+            timeout: 60000,
+        }, (proxyRes) => {
+            // Rewrite set-cookie domain
+            const h = {...proxyRes.headers};
+            if (h['set-cookie']) {
+                const cookies = Array.isArray(h['set-cookie']) ? h['set-cookie'] : [h['set-cookie']];
+                h['set-cookie'] = cookies.map(c => c.replace(/Domain=[^;]+;?/gi, ''));
             }
-        } else {
-            res.write(chunk);
-        }
-    });
+            res.writeHead(proxyRes.statusCode, h);
+            proxyRes.pipe(res);
+        });
+        
+        proxyReq.on('error', () => {
+            if (!res.headersSent) res.writeHead(502, {'Content-Type':'text/html'});
+            res.end('<h1>502 PHP Busy</h1>');
+            phpReq = null;
+        });
+        
+        proxyReq.on('timeout', () => {
+            proxyReq.destroy();
+            if (!res.headersSent) res.writeHead(504, {'Content-Type':'text/html'});
+            res.end('<h1>504 Timeout</h1>');
+            phpReq = null;
+        });
+        
+        req.pipe(proxyReq);
+        
+        res.on('finish', () => { phpReq = null; });
+        res.on('close', () => { phpReq = null; });
+    };
+    check();
+}
 
-    php.stderr.on('data', (data) => {
-        fs.appendFileSync('/tmp/hms_node_errors.log', data.toString());
-    });
-
-    php.on('close', (code) => {
-        if (!headersParsed) {
-            res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' });
-            res.end(output.toString());
-        } else {
-            res.end();
-        }
-    });
-
-    req.on('close', () => {
-        if (!php.exitCode) php.kill();
-    });
-});
-
-server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Tenadam Node server running on http://0.0.0.0:${PORT}`);
-    fs.appendFileSync('/tmp/hms_node_errors.log', `Server started at ${new Date().toISOString()}\n`);
-});
+http.createServer((req, res) => {
+    const urlPath = decodeURIComponent(new URL(req.url, 'x://x').pathname);
+    const filePath = path.join(PUBLIC, urlPath);
+    
+    // Static file?
+    if (urlPath !== '/' && fs.existsSync(filePath) && fs.statSync(filePath).isFile() && !filePath.endsWith('.php')) {
+        const ext = path.extname(filePath).toLowerCase();
+        try {
+            res.writeHead(200, {'Content-Type': MIME[ext]||'application/octet-stream', 'Content-Length': fs.statSync(filePath).size});
+            fs.createReadStream(filePath).pipe(res);
+            return;
+        } catch(e) {}
+    }
+    
+    sendToPhp(req, res);
+}).listen(PORT, '0.0.0.0', () => console.log(`HMS on :${PORT}, PHP at ${PHP_URL}`));
