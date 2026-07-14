@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 8000;
-const PHP_URL = 'http://127.0.0.1:8001';
 const PUBLIC = path.join(__dirname, 'public');
 
 const MIME = {
@@ -17,67 +16,84 @@ const MIME = {
     '.xml':'application/xml','.otf':'font/otf',
 };
 
-// Serialize PHP requests
-let phpReq = null;
+let processing = false;
+const queue = [];
 
-function sendToPhp(req, res) {
-    // Queue: wait for current PHP request to finish
-    const check = () => {
-        if (phpReq) {
-            setTimeout(check, 50);
-            return;
+function drainQueue() {
+    if (processing || queue.length === 0) return;
+    processing = true;
+    const item = queue.shift();
+    console.log(`[PHP] Sending ${item.req.method} ${item.req.url} (queue: ${queue.length})`);
+    sendToPhp(item);
+}
+
+function sendToPhp({req, res, body}) {
+    const headers = {...req.headers};
+    if (body.length > 0) headers['content-length'] = body.length;
+    delete headers['transfer-encoding'];
+    
+    const proxyReq = http.request({
+        hostname: '127.0.0.1', port: 8001, path: req.url,
+        method: req.method, headers, timeout: 120000,
+    }, (proxyRes) => {
+        const h = {...proxyRes.headers};
+        if (h['set-cookie']) {
+            const cks = Array.isArray(h['set-cookie']) ? h['set-cookie'] : [h['set-cookie']];
+            h['set-cookie'] = cks.map(c => c.replace(/Domain=[^;]+;?/gi, ''));
         }
-        phpReq = { done: false };
-        
-        const proxyReq = http.request(PHP_URL + req.url, {
-            method: req.method,
-            headers: req.headers,
-            timeout: 60000,
-        }, (proxyRes) => {
-            // Rewrite set-cookie domain
-            const h = {...proxyRes.headers};
-            if (h['set-cookie']) {
-                const cookies = Array.isArray(h['set-cookie']) ? h['set-cookie'] : [h['set-cookie']];
-                h['set-cookie'] = cookies.map(c => c.replace(/Domain=[^;]+;?/gi, ''));
-            }
-            res.writeHead(proxyRes.statusCode, h);
-            proxyRes.pipe(res);
-        });
-        
-        proxyReq.on('error', () => {
-            if (!res.headersSent) res.writeHead(502, {'Content-Type':'text/html'});
-            res.end('<h1>502 PHP Busy</h1>');
-            phpReq = null;
-        });
-        
-        proxyReq.on('timeout', () => {
-            proxyReq.destroy();
-            if (!res.headersSent) res.writeHead(504, {'Content-Type':'text/html'});
-            res.end('<h1>504 Timeout</h1>');
-            phpReq = null;
-        });
-        
-        req.pipe(proxyReq);
-        
-        res.on('finish', () => { phpReq = null; });
-        res.on('close', () => { phpReq = null; });
-    };
-    check();
+        if (h.location) h.location = h.location.replace(/:8001/g, ':8000');
+        res.writeHead(proxyRes.statusCode, h);
+        proxyRes.pipe(res);
+        console.log(`[PHP] Response ${proxyRes.statusCode} for ${req.url}`);
+    });
+    
+    proxyReq.on('end', () => {
+        console.log(`[PHP] End for ${req.url}`);
+        processing = false;
+        setTimeout(drainQueue, 100);
+    });
+    proxyReq.on('error', (err) => {
+        console.error(`[PHP] Error for ${req.url}:`, err.message);
+        if (!res.headersSent) { res.writeHead(502); res.end('502'); }
+        processing = false;
+        setTimeout(drainQueue, 100);
+    });
+    proxyReq.on('timeout', () => {
+        console.error(`[PHP] Timeout for ${req.url}`);
+        proxyReq.destroy();
+        if (!res.headersSent) { res.writeHead(504); res.end('504'); }
+        processing = false;
+        setTimeout(drainQueue, 100);
+    });
+    
+    if (body.length > 0) proxyReq.write(body);
+    proxyReq.end();
 }
 
 http.createServer((req, res) => {
-    const urlPath = decodeURIComponent(new URL(req.url, 'x://x').pathname);
-    const filePath = path.join(PUBLIC, urlPath);
-    
-    // Static file?
-    if (urlPath !== '/' && fs.existsSync(filePath) && fs.statSync(filePath).isFile() && !filePath.endsWith('.php')) {
-        const ext = path.extname(filePath).toLowerCase();
-        try {
-            res.writeHead(200, {'Content-Type': MIME[ext]||'application/octet-stream', 'Content-Length': fs.statSync(filePath).size});
-            fs.createReadStream(filePath).pipe(res);
-            return;
-        } catch(e) {}
+    try {
+        const urlPath = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+        const fp = path.join(PUBLIC, urlPath);
+        
+        if (urlPath !== '/' && fs.existsSync(fp) && fs.statSync(fp).isFile() && !fp.endsWith('.php')) {
+            const ext = path.extname(fp).toLowerCase();
+            if (MIME[ext]) {
+                res.writeHead(200, {'Content-Type': MIME[ext], 'Content-Length': fs.statSync(fp).size});
+                fs.createReadStream(fp).pipe(res);
+                return;
+            }
+        }
+        
+        console.log(`[REQ] ${req.method} ${req.url} → PHP queue (${queue.length})`);
+        const chunks = [];
+        req.on('data', c => chunks.push(c));
+        req.on('end', () => {
+            queue.push({req, res, body: Buffer.concat(chunks)});
+            drainQueue();
+        });
+        req.on('error', () => { res.writeHead(400); res.end(); });
+    } catch(e) {
+        console.error('[ERR]', e.message);
+        if (!res.headersSent) { res.writeHead(500); res.end('500'); }
     }
-    
-    sendToPhp(req, res);
-}).listen(PORT, '0.0.0.0', () => console.log(`Tenedam on :${PORT}, PHP at ${PHP_URL}`));
+}).listen(PORT, '0.0.0.0', () => console.log(`Tenadam HMS on :${PORT}`));
