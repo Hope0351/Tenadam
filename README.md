@@ -104,31 +104,39 @@ Patients get a self-service portal — viewing their appointments, medical recor
 
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshots/patients.png" alt="Patient Management"></td>
-<td width="50%"><img src="docs/screenshots/doctors.png" alt="Doctor Management"></td>
+<td width="50%"><img src="docs/screenshots/patients_list.png" alt="Patient Management"></td>
+<td width="50%"><img src="docs/screenshots/doctors_list.png" alt="Doctor Management"></td>
 </tr>
 <tr>
 <td align="center"><b>Patients</b> — Full patient directory with smart search, filters, and OPD/IPD tracking</td>
 <td align="center"><b>Doctors</b> — Doctor profiles, departments, specialties, and schedule management</td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/screenshots/appointments.png" alt="Appointments"></td>
-<td width="50%"><img src="docs/screenshots/medicines.png" alt="Medicine Inventory"></td>
+<td width="50%"><img src="docs/screenshots/appointments_list.png" alt="Appointments"></td>
+<td width="50%"><img src="docs/screenshots/medicines_list.png" alt="Medicine Inventory"></td>
 </tr>
 <tr>
 <td align="center"><b>Appointments</b> — Calendar and list views with status tracking and booking management</td>
 <td align="center"><b>Medicines</b> — Complete inventory with categories, brands, and stock alerts</td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/screenshots/bills.png" alt="Bills"></td>
-<td width="50%"><img src="docs/screenshots/invoices.png" alt="Invoices"></td>
+<td width="50%"><img src="docs/screenshots/bills_list.png" alt="Bills"></td>
+<td width="50%"><img src="docs/screenshots/invoices_list.png" alt="Invoices"></td>
 </tr>
 <tr>
 <td align="center"><b>Bills</b> — OPD and IPD billing with multi-payment support and PDF export</td>
 <td align="center"><b>Invoices</b> — Invoice generation, tracking, and payment status management</td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/screenshots/pathology.png" alt="Pathology Tests"></td>
+<td width="50%"><img src="docs/screenshots/beds_list.png" alt="Bed Management"></td>
+<td width="50%"><img src="docs/screenshots/bed_types.png" alt="Bed Types"></td>
+</tr>
+<tr>
+<td align="center"><b>Beds</b> — Ward bed management with real-time availability status</td>
+<td align="center"><b>Bed Types</b> — Bed type categories with charge configuration</td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/pathology_tests.png" alt="Pathology Tests"></td>
 </tr>
 <tr>
 <td align="center"><b>Pathology</b> — Test categories, parameters, units, and investigation report generation</td>
