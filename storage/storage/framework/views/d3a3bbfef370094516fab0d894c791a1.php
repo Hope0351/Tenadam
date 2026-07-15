@@ -1,0 +1,2 @@
+<a href="<?php echo e(route('bills.create')); ?>" class="btn btn-primary"><?php echo e(__('messages.bill.new_bill')); ?></a>
+<?php /**PATH /home/z/my-project/hms/resources/views/bills/add-button.blade.php ENDPATH**/ ?>

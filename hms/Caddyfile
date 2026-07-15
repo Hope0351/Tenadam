@@ -1,0 +1,10 @@
+:8000 {
+	root * /home/z/my-project/hms/public
+
+	# Serve static files directly
+	@static path *.css *.js *.png *.jpg *.jpeg *.gif *.svg *.ico *.woff *.woff2 *.ttf *.eot *.map *.json *.webp *.webm *.mp4 *.mp3 *.pdf *.woff1
+	file_server @static
+
+	# Everything else goes to PHP
+	reverse_proxy 127.0.0.1:9000
+}
