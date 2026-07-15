@@ -1,26 +1,36 @@
 #!/bin/bash
-cd /home/z/my-project/hms
+# HMS Keepalive Server
+# Starts PHP dev server and auto-restarts on crash
 
-# Kill existing PHP on port 8000
-kill $(lsof -t -i:8000 2>/dev/null) 2>/dev/null
+HMS_DIR="/home/z/my-project/hms"
+PHP="/home/z/.local/php/bin/php"
+PHP_INI="/home/z/.local/php/php.ini"
+PORT=8000
+
+# Kill any existing process on our port
+kill $(lsof -t -i:$PORT 2>/dev/null) 2>/dev/null
 sleep 1
 
-# Start PHP with keepalive
-(
-  while true; do
-    /home/z/.local/php/bin/php -c /home/z/.local/php/php.ini -S 0.0.0.0:8000 -t public 2>/tmp/php_server.log
-    sleep 1
-  done
-) &
-disown
+echo "Starting HMS keepalive server on port $PORT..."
 
-# Wait for ready
-for i in $(seq 1 15); do
-  if curl -s --max-time 2 http://127.0.0.1:8000/login > /dev/null 2>&1; then
-    echo "Tenadam HMS running on port 8000"
+while true; do
+  $PHP -c $PHP_INI -S 0.0.0.0:$PORT -t "$HMS_DIR/public" 2>/dev/null
+  # If we get here, PHP died. Wait briefly and restart.
+  sleep 1
+done &
+KEEP_PID=$!
+
+echo "Keepalive PID: $KEEP_PID"
+
+# Wait for server to be ready
+for i in $(seq 1 30); do
+  if curl -s -o /dev/null -w "%{http_code}" http://localhost:$PORT/login 2>/dev/null | grep -q "200"; then
+    echo "Server is ready!"
     exit 0
   fi
   sleep 1
 done
-echo "Failed to start HMS"
+
+echo "Server failed to start"
+kill $KEEP_PID 2>/dev/null
 exit 1

@@ -1,1 +1,185 @@
-!function(){"use strict";$(document).ready((function(){var e=$("#clock-time"),n=$("#clock-date"),t=$("#queue-body");if(t.length){var l=$("#fullscreen-btn"),u=$("#fullscreen-label"),c=$("#ring-circle"),r=$("#countdown-num"),o=$("#countdown-text"),i=$("#refresh-icon"),s=$("#refresh-label"),a=$("#stat-serving"),d=$("#stat-waiting"),m=$("#stat-total"),f=$(),g=$(),h=window.fullscreenText||"Fullscreen",w=window.exitFullscreenText||"Exit Fullscreen",F=window.refreshingInText||"Refreshing in",x=window.refreshingText||"Refreshing...",E=window.refreshNowText||"Refresh now",b=window.refreshUrl||"/patient-queue-refresh",k=!1,v=20;window.manualRefresh=function(){C(),v=20,I()},T(),setInterval(T,1e3),q(),function(){if(l.length){if(!(document.fullscreenEnabled||document.webkitFullscreenEnabled||document.mozFullScreenEnabled||document.msFullscreenEnabled))return l.hide();l.on("click",S),$(document).on("fullscreenchange webkitfullscreenchange",y),y()}}(),z(),I(),window.addEventListener("storage",(function(e){"queueRefresh"===e.key&&window.location.reload()})),setInterval((function(){--v<=0&&C(),v<=0&&(v=20),I()}),1e3)}function q(){f=$("#patient-list"),g=f.find(".patient-row[data-status]")}function R(){return document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement||null}function y(){u.length&&u.text(R()?w:h)}function S(){try{R()?document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen?document.webkitExitFullscreen():document.mozCancelFullScreen?document.mozCancelFullScreen():document.msExitFullscreen&&document.msExitFullscreen():(e=document.documentElement).requestFullscreen?e.requestFullscreen():e.webkitRequestFullscreen?e.webkitRequestFullscreen():e.mozRequestFullScreen?e.mozRequestFullScreen():e.msRequestFullscreen&&e.msRequestFullscreen()}catch(e){}var e}function T(){var t=new Date;e.length&&e.text(t.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})),n.length&&n.text(t.toLocaleDateString([],{weekday:"long",day:"numeric",month:"long",year:"numeric"}))}function p(e){i.length&&i.toggleClass("spin",e),s.length&&s.text(e?x:E),f.length&&f.toggleClass("fading",e)}function z(){var e=0,n=0;g.each((function(){var t=$(this).data("status");"serving"===t&&e++,"waiting"===t&&n++})),a.length&&a.text(e),d.length&&d.text(n),m.length&&m.text(g.length)}function C(){k||(k=!0,p(!0),$.ajax({url:b,type:"GET",success:function(e){t.html(e),q(),z()},complete:function(){v=20,I(),p(!1),k=!1}}))}function I(){var e=100.53*(1-v/20);c.length&&c.css("stroke-dashoffset",e.toFixed(2)),r.length&&r.text(v),o.length&&o.text(F+" "+v+"s")}}))}();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!**********************************************************!*\
+  !*** ./resources/assets/js/patient_queue/video-queue.js ***!
+  \**********************************************************/
+(function () {
+  "use strict";
+
+  var intervalSec = 20;
+  var ringCircumference = 100.53;
+  $(document).ready(function () {
+    var $clockTimeEl = $("#clock-time");
+    var $clockDateEl = $("#clock-date");
+    var $queueBody = $("#queue-body");
+    if (!$queueBody.length) return;
+    var $fullScreenBtn = $("#fullscreen-btn");
+    var $fsLabel = $("#fullscreen-label");
+    var $ringEl = $("#ring-circle");
+    var $ringNumEl = $("#countdown-num");
+    var $ringTextEl = $("#countdown-text");
+    var $refreshIcon = $("#refresh-icon");
+    var $refreshLabel = $("#refresh-label");
+    var $servingEl = $("#stat-serving");
+    var $waitingEl = $("#stat-waiting");
+    var $totalEl = $("#stat-total");
+    var $patientList = $();
+    var $rows = $();
+    var fullscreenText = window.fullscreenText || "Fullscreen";
+    var exitFullscreenText = window.exitFullscreenText || "Exit Fullscreen";
+    var refreshingInText = window.refreshingInText || "Refreshing in";
+    var refreshingText = window.refreshingText || "Refreshing...";
+    var refreshNowText = window.refreshNowText || "Refresh now";
+    var refreshUrl = window.refreshUrl || "/patient-queue-refresh";
+    var busy = false;
+    var seconds = intervalSec;
+
+    function cacheList() {
+      $patientList = $("#patient-list");
+      $rows = $patientList.find(".patient-row[data-status]");
+    }
+
+    function fullscreenEnabled() {
+      return !!(document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled);
+    }
+
+    function fullscreenElement() {
+      return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
+    }
+
+    function setFullscreenLabel() {
+      if (!$fsLabel.length) return;
+      $fsLabel.text(fullscreenElement() ? exitFullscreenText : fullscreenText);
+    }
+
+    function requestFullscreen(el) {
+      if (el.requestFullscreen) return el.requestFullscreen();
+      if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
+      if (el.mozRequestFullScreen) return el.mozRequestFullScreen();
+      if (el.msRequestFullscreen) return el.msRequestFullscreen();
+    }
+
+    function exitFullscreen() {
+      if (document.exitFullscreen) return document.exitFullscreen();
+      if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+      if (document.mozCancelFullScreen) return document.mozCancelFullScreen();
+      if (document.msExitFullscreen) return document.msExitFullscreen();
+    }
+
+    function toggleFullscreen() {
+      try {
+        if (fullscreenElement()) {
+          exitFullscreen();
+        } else {
+          requestFullscreen(document.documentElement);
+        }
+      } catch (_) {}
+    }
+
+    function updateClock() {
+      var now = new Date();
+
+      if ($clockTimeEl.length) {
+        $clockTimeEl.text(now.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit"
+        }));
+      }
+
+      if ($clockDateEl.length) {
+        $clockDateEl.text(now.toLocaleDateString([], {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }));
+      }
+    }
+
+    function setRefreshing(state) {
+      if ($refreshIcon.length) $refreshIcon.toggleClass("spin", state);
+      if ($refreshLabel.length) $refreshLabel.text(state ? refreshingText : refreshNowText);
+      if ($patientList.length) $patientList.toggleClass("fading", state);
+    }
+
+    function updateStatsFromDom() {
+      var serving = 0;
+      var waiting = 0;
+      $rows.each(function () {
+        var status = $(this).data("status");
+        if (status === "serving") serving++;
+        if (status === "waiting") waiting++;
+      });
+      if ($servingEl.length) $servingEl.text(serving);
+      if ($waitingEl.length) $waitingEl.text(waiting);
+      if ($totalEl.length) $totalEl.text($rows.length);
+    }
+
+    function doneRefresh() {
+      seconds = intervalSec;
+      ring();
+      setRefreshing(false);
+      busy = false;
+    }
+
+    function refreshQueue() {
+      if (busy) return;
+      busy = true;
+      setRefreshing(true);
+      $.ajax({
+        url: refreshUrl,
+        type: "GET",
+        success: function success(html) {
+          $queueBody.html(html);
+          cacheList();
+          updateStatsFromDom();
+        },
+        complete: function complete() {
+          doneRefresh();
+        }
+      });
+    }
+
+    function ring() {
+      var fraction = seconds / intervalSec;
+      var offset = ringCircumference * (1 - fraction);
+      if ($ringEl.length) $ringEl.css("stroke-dashoffset", offset.toFixed(2));
+      if ($ringNumEl.length) $ringNumEl.text(seconds);
+      if ($ringTextEl.length) $ringTextEl.text(refreshingInText + " " + seconds + "s");
+    }
+
+    function manualRefresh() {
+      refreshQueue();
+      seconds = intervalSec;
+      ring();
+    }
+
+    function bindFullscreenEvents() {
+      if (!$fullScreenBtn.length) return;
+      var enabled = fullscreenEnabled();
+      if (!enabled) return $fullScreenBtn.hide();
+      $fullScreenBtn.on("click", toggleFullscreen);
+      $(document).on("fullscreenchange webkitfullscreenchange", setFullscreenLabel);
+      setFullscreenLabel();
+    }
+
+    window.manualRefresh = manualRefresh;
+    updateClock();
+    setInterval(updateClock, 1000);
+    cacheList();
+    bindFullscreenEvents();
+    updateStatsFromDom();
+    ring();
+    window.addEventListener("storage", function (e) {
+      if (e.key === "queueRefresh") window.location.reload();
+    });
+    setInterval(function () {
+      seconds--;
+      if (seconds <= 0) refreshQueue();
+      if (seconds <= 0) seconds = intervalSec;
+      ring();
+    }, 1000);
+  });
+})();
+/******/ })()
+;

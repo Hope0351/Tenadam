@@ -1,1 +1,163 @@
-!function(){"use strict";var e=2*Math.PI*15;$(document).ready((function(){var t=$(".js-clock"),n=$(".js-date"),l=$(".js-queue-body");if(l.length){var s=$(".js-refresh-btn"),c=$(".js-refresh-icon"),r=$(".js-refresh-label"),u=$(".js-ring-progress"),o=$(".js-ring-num"),a=$(".js-refresh-countdown"),i=$(".js-stat-serving"),d=$(".js-stat-waiting"),m=$(".js-stat-total"),f=$(".js-fullscreen-btn"),g=$(".js-fullscreen-label"),h=!1,x=20;j(),setInterval(j,1e3),s.length&&s.on("click",b),f.length&&(document.fullscreenEnabled||document.webkitFullscreenEnabled||document.mozFullScreenEnabled||document.msFullscreenEnabled?(f.on("click",(function(){try{if(w())(document.exitFullscreen||document.webkitExitFullscreen||document.mozCancelFullScreen||document.msExitFullscreen).call(document);else{var e=document.documentElement;(e.requestFullscreen||e.webkitRequestFullscreen||e.mozRequestFullScreen||e.msRequestFullscreen).call(e)}}catch(e){}})),$(document).on("fullscreenchange webkitfullscreenchange",E),E()):f.hide()),F(),v(),window.addEventListener("storage",(function(e){"queueRefresh"===e.key&&window.location.reload()})),setInterval((function(){--x<=0&&b(),x<=0&&(x=20),F()}),1e3)}function j(){var e=new Date;t.length&&t.text(e.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})),n.length&&n.text(e.toLocaleDateString([],{weekday:"long",year:"numeric",month:"long",day:"numeric"}))}function v(){var e=l.find("tr[data-status]"),t=0,n=0;e.each((function(){var e=$(this).attr("data-status");"serving"===e&&t++,"waiting"===e&&n++})),i.length&&i.text(t),d.length&&d.text(n),m.length&&m.text(e.length)}function F(){var t=x/20;u.length&&u.css("stroke-dashoffset",e*(1-t)),o.length&&o.text(x),a.length>0&&a.text(refreshingText+" "+x+"s")}function b(){h||(h=!0,l.addClass("fading"),c.addClass("spin"),r.text(refreshingText),$.ajax({url:"/patient-queue-refresh",type:"GET",success:function(e){l.html(e)},complete:function(){x=20,F(),v(),l.removeClass("fading"),c.removeClass("spin"),r.text(refreshText),h=!1}}))}function w(){return document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement||null}function E(){g.length&&g.text(w()?exitFullscreenText:fullscreenText)}}))}();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!****************************************************!*\
+  !*** ./resources/assets/js/patient_queue/queue.js ***!
+  \****************************************************/
+(function () {
+  "use strict";
+
+  var intervalSec = 20;
+  var ringRadius = 15;
+  var ringCircumference = 2 * Math.PI * ringRadius;
+  $(document).ready(function () {
+    var clockEl = $(".js-clock");
+    var dateEl = $(".js-date");
+    var bodyEl = $(".js-queue-body");
+    if (!bodyEl.length) return;
+    var refreshBtn = $(".js-refresh-btn");
+    var refreshIcon = $(".js-refresh-icon");
+    var refreshLabel = $(".js-refresh-label");
+    var ringEl = $(".js-ring-progress");
+    var ringNumEl = $(".js-ring-num");
+    var ringTextEl = $(".js-refresh-countdown");
+    var servingEl = $(".js-stat-serving");
+    var waitingEl = $(".js-stat-waiting");
+    var totalEl = $(".js-stat-total");
+    var fullScreenBtn = $(".js-fullscreen-btn");
+    var fsLabel = $(".js-fullscreen-label");
+    var busy = false;
+    var seconds = intervalSec;
+
+    function clock() {
+      var now = new Date();
+
+      if (clockEl.length) {
+        clockEl.text(now.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit"
+        }));
+      }
+
+      if (dateEl.length) {
+        dateEl.text(now.toLocaleDateString([], {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        }));
+      }
+    }
+
+    function updateStats() {
+      var rows = bodyEl.find("tr[data-status]");
+      var serving = 0;
+      var waiting = 0;
+      rows.each(function () {
+        var status = $(this).attr("data-status");
+        if (status === "serving") serving++;
+        if (status === "waiting") waiting++;
+      });
+      if (servingEl.length) servingEl.text(serving);
+      if (waitingEl.length) waitingEl.text(waiting);
+      if (totalEl.length) totalEl.text(rows.length);
+    }
+
+    function ring() {
+      var fraction = seconds / intervalSec;
+
+      if (ringEl.length) {
+        ringEl.css("stroke-dashoffset", ringCircumference * (1 - fraction));
+      }
+
+      if (ringNumEl.length) ringNumEl.text(seconds);
+
+      if (ringTextEl.length > 0) {
+        ringTextEl.text(refreshingText + " " + seconds + "s");
+      }
+    }
+
+    function doneRefresh() {
+      seconds = intervalSec;
+      ring();
+      updateStats();
+      bodyEl.removeClass("fading");
+      refreshIcon.removeClass("spin");
+      refreshLabel.text(refreshText);
+      busy = false;
+    }
+
+    function refresh() {
+      if (busy) return;
+      busy = true;
+      bodyEl.addClass("fading");
+      refreshIcon.addClass("spin");
+      refreshLabel.text(refreshingText);
+      var url = "/patient-queue-refresh";
+      $.ajax({
+        url: url,
+        type: "GET",
+        success: function success(html) {
+          bodyEl.html(html);
+        },
+        complete: function complete() {
+          doneRefresh();
+        }
+      });
+    }
+
+    function fullScreenEl() {
+      return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement || null;
+    }
+
+    function setFsLabel() {
+      if (!fsLabel.length) return;
+      fsLabel.text(fullScreenEl() ? exitFullscreenText : fullscreenText);
+    }
+
+    function toggleFs() {
+      try {
+        if (fullScreenEl()) {
+          (document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen).call(document);
+        } else {
+          var el = document.documentElement;
+          (el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen).call(el);
+        }
+      } catch (_) {}
+    } // Clock
+
+
+    clock();
+    setInterval(clock, 1000); // Refresh click
+
+    if (refreshBtn.length) refreshBtn.on("click", refresh); // Fullscreen
+
+    if (fullScreenBtn.length) {
+      var enabled = document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled;
+
+      if (!enabled) {
+        fullScreenBtn.hide();
+      } else {
+        fullScreenBtn.on("click", toggleFs);
+        $(document).on("fullscreenchange webkitfullscreenchange", setFsLabel);
+        setFsLabel();
+      }
+    } // Initial UI
+
+
+    ring();
+    updateStats(); // Refresh when another tab signals it (e.g. settings save)
+
+    window.addEventListener("storage", function (e) {
+      if (e.key === "queueRefresh") window.location.reload();
+    }); // Countdown + auto refresh
+
+    setInterval(function () {
+      seconds--;
+      if (seconds <= 0) refresh();
+      if (seconds <= 0) seconds = intervalSec;
+      ring();
+    }, 1000);
+  });
+})();
+/******/ })()
+;

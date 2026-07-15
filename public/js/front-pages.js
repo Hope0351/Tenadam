@@ -1,2 +1,4901 @@
-/*! For license information please see front-pages.js.LICENSE.txt */
-(()=>{var e={2743:e=>{!function(t,n){var a=n.jQuery;e.exports=a?t(n,a):function(e){if(e&&!e.fn)throw"Provide jQuery or null";return t(n,e)}}((function(e,t){"use strict";var n=!1===t;t=t&&t.fn?t:e.jQuery;var a,o,r,i,s,l,d,c,p,u,f,m,g,h,v,$,w,y,b,_,x,k,C="v1.0.7",D="_ocp",T=/[ \t]*(\r\n|\n|\r)/g,S=/\\(['"\\])/g,j=/['"\\]/g,L=/(?:\x08|^)(onerror:)?(?:(~?)(([\w$.]+):)?([^\x08]+))\x08(,)?([^\x08]+)/gi,M=/^if\s/,E=/<(\w+)[>\s]/,I=/[\x00`><\"'&=]/,A=/^on[A-Z]|^convert(Back)?$/,O=/^\#\d+_`[\s\S]*\/\d+_`$/,F=/[\x00`><"'&=]/g,P=/[&<>]/g,N=/&(amp|gt|lt);/g,B=/\[['"]?|['"]?\]/g,Y=0,R={"&":"&amp;","<":"&lt;",">":"&gt;","\0":"&#0;","'":"&#39;",'"':"&#34;","`":"&#96;","=":"&#61;"},q={amp:"&",gt:">",lt:"<"},U="html",V="object",z="data-jsv-tmpl",G="jsvTmpl",J="For #index in nested block use #getIndex().",H={},K={},Q=e.jsrender,W=Q&&t&&!t.render,X={template:{compile:function e(n,a,o,r){function s(a){var i,s;if(""+a===a||a.nodeType>0&&(l=a)){if(!l)if(/^\.?\/[^\\:*?"<>]*$/.test(a))(s=c[n=n||a])?a=s:l=document.getElementById(a);else if(t.fn&&!m.rTmpl.test(a))try{l=t(a,document)[0]}catch(e){}l&&("SCRIPT"!==l.tagName&&_e(a+": Use script block, not "+l.tagName),r?a=l.innerHTML:((i=l.getAttribute(z))&&(i!==G?(a=c[i],delete c[i]):t.fn&&(a=t.data(l).jsvTmpl)),i&&a||(n=n||(t.fn?G:a),a=e(n,l.innerHTML,o,r)),a.tmplName=n=n||i,n!==G&&(c[n]=a),l.setAttribute(z,n),t.fn&&t.data(l,G,a))),l=void 0}else a.fn||(a=void 0);return a}var l,d,u=a=a||"";m._html=p.html,0===r&&(r=void 0,u=s(u));(r=r||(a.markup?a.bnds?re({},a):a:{})).tmplName=r.tmplName||n||"unnamed",o&&(r._parentTmpl=o);!u&&a.markup&&(u=s(a.markup))&&u.fn&&(u=u.markup);if(void 0!==u)return u.render||a.render?u.tmpls&&(d=u):(a=he(u,r),ke(u.replace(j,"\\$&"),a)),d||function(e){var t,n,a;for(t in X)e[n=t+"s"]&&(a=e[n],e[n]={},i[n](a,e))}(d=re((function(){return d.render.apply(d,arguments)}),a)),d}},tag:{compile:function(e,t,n){var a,o,r,i=new m._tg;function s(){var t=this;t._={unlinked:!0},t.inline=!0,t.tagName=e}l(t)?t={depends:t.depends,render:t}:""+t===t&&(t={template:t});if(o=t.baseTag)for(r in t.flow=!!t.flow,(o=""+o===o?n&&n.tags[o]||f[o]:o)||_e('baseTag: "'+t.baseTag+'" not found'),i=re(i,o),t)i[r]=ee(o[r],t[r]);else i=re(i,t);void 0!==(a=i.template)&&(i.template=""+a===a?c[a]||c(a):a);(s.prototype=i).constructor=i._ctr=s,n&&(i._parentTmpl=n);return i}},viewModel:{compile:function(e,n){var a,o,r,i=this,c=n.getters,p=n.extend,u=n.id,f=t.extend({_is:e||"unnamed",unmap:x,merge:_},p),m="",g="",h=c?c.length:0,v=t.observable,$={};function w(e){o.apply(this,e)}function y(){return new w(arguments)}function b(e,t){for(var n,a,o,r,s,l=0;l<h;l++)n=void 0,(o=c[l])+""!==o&&(o=(n=o).getter,s=n.parentRef),void 0===(r=e[o])&&n&&void 0!==(a=n.defaultVal)&&(r=me(a,e)),t(r,n&&i[n.type],o,s)}function _(e,t,n){e=e+""===e?JSON.parse(e):e;var a,o,r,i,l,c,p,f,m,g,h=0,w=this;if(d(w)){for(p={},m=[],o=e.length,r=w.length;h<o;h++){for(f=e[h],c=!1,a=0;a<r&&!c;a++)p[a]||(l=w[a],u&&(p[a]=c=u+""===u?f[u]&&($[u]?l[u]():l[u])===f[u]:u(l,f)));c?(l.merge(f),m.push(l)):(m.push(g=y.map(f)),n&&ge(g,n,t))}v?v(w).refresh(m,!0):w.splice.apply(w,[0,w.length].concat(m))}else for(i in b(e,(function(e,t,n,a){t?w[n]().merge(e,w,a):w[n]()!==e&&w[n](e)})),e)i===s||$[i]||(w[i]=e[i])}function x(){var e,t,n,a,o=0,r=this;function p(e){for(var t=[],n=0,a=e.length;n<a;n++)t.push(e[n].unmap());return t}if(d(r))return p(r);for(e={};o<h;o++)n=void 0,(t=c[o])+""!==t&&(t=(n=t).getter),a=r[t](),e[t]=n&&a&&i[n.type]?d(a)?p(a):a.unmap():a;for(t in r)!r.hasOwnProperty(t)||"_"===t.charAt(0)&&$[t.slice(1)]||t===s||l(r[t])||(e[t]=r[t]);return e}for(w.prototype=f,a=0;a<h;a++)!function(e){e=e.getter||e,$[e]=a+1;var t="_"+e;m+=(m?",":"")+e,g+="this."+t+" = "+e+";\n",f[e]=f[e]||function(n){if(!arguments.length)return this[t];v?v(this).setProperty(e,n):this[t]=n},v&&(f[e].set=f[e].set||function(e){this[t]=e})}(c[a]);return g=new Function(m,g),(o=function(){g.apply(this,arguments),(r=arguments[h+1])&&ge(this,arguments[h],r)}).prototype=f,f.constructor=o,y.map=function(t){t=t+""===t?JSON.parse(t):t;var n,a,o,r,i=0,l=t,p=[];if(d(t)){for(n=(t=t||[]).length;i<n;i++)p.push(this.map(t[i]));return p._is=e,p.unmap=x,p.merge=_,p}if(t){for(b(t,(function(e,t){t&&(e=t.map(e)),p.push(e)})),l=this.apply(this,p),i=h;i--;)if(o=p[i],(r=c[i].parentRef)&&o&&o.unmap)if(d(o))for(n=o.length;n--;)ge(o[n],r,l);else ge(o,r,l);for(a in t)a===s||$[a]||(l[a]=t[a])}return l},y.getters=c,y.extend=p,y.id=u,y}},helper:{},converter:{}};function Z(e,t){return function(){var n,a=this,o=a.base;return a.base=e,n=t.apply(a,arguments),a.base=o,n}}function ee(e,t){return l(t)&&((t=Z(e?e._d?e:Z(ae,e):ae,t))._d=(e&&e._d||0)+1),t}function te(e,t){var n,a=t.props;for(n in a)!A.test(n)||e[n]&&e[n].fix||(e[n]="convert"!==n?ee(e.constructor.prototype[n],a[n]):a[n])}function ne(e){return e}function ae(){return""}function oe(e){this.name=(t.link?"JsViews":"JsRender")+" Error",this.message=e||this.name}function re(e,t){if(e){for(var n in t)e[n]=t[n];return e}}function ie(){var e=this.get("item");return e?e.index:void 0}function se(){return this.index}function le(e,t,n,a){var o,r,i,s=0;if(1===n&&(a=1,n=void 0),t)for(i=(r=t.split(".")).length;e&&s<i;s++)o=e,e=r[s]?e[r[s]]:e;return n&&(n.lt=n.lt||s<i),void 0===e?a?ae:"":a?function(){return e.apply(o,arguments)}:e}function de(n,a,o){var r,i,s,d,c,p,f,g=this,h=!k&&arguments.length>1,v=g.ctx;if(n){if(g._||(c=g.index,g=g.tag),p=g,v&&v.hasOwnProperty(n)||(v=u).hasOwnProperty(n)){if(s=v[n],"tag"===n||"tagCtx"===n||"root"===n||"parentTags"===n)return s}else v=void 0;if((!k&&g.tagCtx||g.linked)&&(s&&s._cxp||(g=g.tagCtx||l(s)?g:!(g=g.scope||g).isTop&&g.ctx.tag||g,void 0!==s&&g.tagCtx&&(g=g.tagCtx.view.scope),v=g._ocps,(s=v&&v.hasOwnProperty(n)&&v[n]||s)&&s._cxp||!o&&!h||((v||(g._ocps=g._ocps||{}))[n]=s=[{_ocp:s,_vw:p,_key:n}],s._cxp={path:D,ind:0,updateValue:function(e,n){return t.observable(s[0]).setProperty(D,e),this}})),d=s&&s._cxp)){if(arguments.length>2)return(i=s[1]?m._ceo(s[1].deps):[D]).unshift(s[0]),i._cxp=d,i;if(c=d.tagElse,f=s[1]?d.tag&&d.tag.cvtArgs?d.tag.cvtArgs(c,1)[d.ind]:s[1](s[0].data,s[0],m):s[0]._ocp,h)return m._ucp(n,a,g,d),g;s=f}return s&&l(s)&&re(r=function(){return s.apply(this&&this!==e?this:p,arguments)},s),r||s}}function ce(e,t){var n,a,o,r,i,s,l,c=this;if(c.tagName){if(!(c=((s=c).tagCtxs||[c])[e||0]))return}else s=c.tag;if(i=s.bindFrom,r=c.args,(l=s.convert)&&""+l===l&&(l="true"===l?void 0:c.view.getRsc("converters",l)||_e("Unknown converter: '"+l+"'")),l&&!t&&(r=r.slice()),i){for(o=[],n=i.length;n--;)a=i[n],o.unshift(pe(c,a));t&&(r=o)}if(l){if(void 0===(l=l.apply(s,o||r)))return r;if(n=(i=i||[0]).length,d(l)&&l.length===n||(l=[l],i=[0],n=1),t)r=l;else for(;n--;)+(a=i[n])===a&&(r[a]=l[n])}return r}function pe(e,t){return(e=e[+t===t?"args":"props"])&&e[t]}function ue(e){return this.cvtArgs(e,1)}function fe(e,t,n,a,o,r,i,s){var l,d,c,p=this,u="array"===t;p.content=s,p.views=u?[]:{},p.data=a,p.tmpl=o,c=p._={key:0,useKey:u?0:1,id:""+Y++,onRender:i,bnds:{}},p.linked=!!i,p.type=t||"top",t&&(p.cache={_ct:g._cchCt}),n&&"top"!==n.type||((p.ctx=e||{}).root=p.data),(p.parent=n)?(p.root=n.root||p,l=n.views,d=n._,p.isTop=d.scp,p.scope=(!e.tag||e.tag===n.ctx.tag)&&!p.isTop&&n.scope||p,d.useKey?(l[c.key="_"+d.useKey++]=p,p.index=J,p.getIndex=ie):l.length===(c.key=p.index=r)?l.push(p):l.splice(r,0,p),p.ctx=e||n.ctx):t&&(p.root=p)}function me(e,t){return l(e)?e.call(t):e}function ge(e,t,n){Object.defineProperty(e,t,{value:n,configurable:!0})}function he(e,n){var a,o=h._wm||{},r={tmpls:[],links:{},bnds:[],_is:"template",render:ye};return n&&(r=re(r,n)),r.markup=e,r.htmlTag||(a=E.exec(e),r.htmlTag=a?a[1].toLowerCase():""),(a=o[r.htmlTag])&&a!==o.div&&(r.markup=t.trim(r.markup)),r}function ve(e,t){var n=e+"s";i[n]=function a(o,r,s){var l,d,c,p=m.onStore[e];if(o&&typeof o===V&&!o.nodeType&&!o.markup&&!o.getTgt&&!("viewModel"===e&&o.getters||o.extend)){for(d in o)a(d,o[d],r);return r||i}return o&&""+o!==o&&(s=r,r=o,o=void 0),c=s?"viewModel"===e?s:s[n]=s[n]||{}:a,l=t.compile,void 0===r&&(r=l?o:c[o],o=void 0),null===r?o&&delete c[o]:(l&&((r=l.call(c,o,r,s,0)||{})._is=e),o&&(c[o]=r)),p&&p(o,r,s,l),r}}function $e(e){v[e]=v[e]||function(t){return arguments.length?(g[e]=t,v):g[e]}}function we(e){function t(t,n){this.tgt=e.getTgt(t,n),n.map=this}return l(e)&&(e={getTgt:e}),e.baseMap&&(e=re(re({},e.baseMap),e)),e.map=function(e,n){return new t(e,n)},e}function ye(e,t,n,a,o,i){var s,c,p,u,f,g,v,$,w=a,y="";if(!0===t?(n=t,t=void 0):typeof t!==V&&(t=void 0),(p=this.tag)?(f=this,u=(w=w||f.view)._getTmpl(p.template||f.tmpl),arguments.length||(e=p.contentCtx&&l(p.contentCtx)?e=p.contentCtx(e):w)):u=this,u){if(!a&&e&&"view"===e._is&&(w=e),w&&e===w&&(e=w.data),g=!w,k=k||g,g&&((t=t||{}).root=e),!k||h.useViews||u.useViews||w&&w!==r)y=be(u,e,t,n,w,o,i,p);else{if(w?(v=w.data,$=w.index,w.index=J):(v=(w=r).data,w.data=e,w.ctx=t),d(e)&&!n)for(s=0,c=e.length;s<c;s++)w.index=s,w.data=e[s],y+=u.fn(e[s],w,m);else w.data=e,y+=u.fn(e,w,m);w.data=v,w.index=$}g&&(k=void 0)}return y}function be(e,t,n,a,o,r,i,s){var l,c,p,u,f,g,h,v,$,w,y,b,_,x="";if(s&&($=s.tagName,b=s.tagCtx,n=n?je(n,s.ctx):s.ctx,e===o.content?h=e!==o.ctx._wrp?o.ctx._wrp:void 0:e!==b.content?e===s.template?(h=b.tmpl,n._wrp=b.content):h=b.content||o.content:h=o.content,!1===b.props.link&&((n=n||{}).link=!1)),o&&(i=i||o._.onRender,(_=n&&!1===n.link)&&o._.nl&&(i=void 0),n=je(n,o.ctx),b=!s&&o.tag?o.tag.tagCtxs[o.tagElse]:b),(w=b&&b.props.itemVar)&&("~"!==w[0]&&xe("Use itemVar='~myItem'"),w=w.slice(1)),!0===r&&(g=!0,r=0),i&&s&&s._.noVws&&(i=void 0),v=i,!0===i&&(v=void 0,i=o._.onRender),y=n=e.helpers?je(e.helpers,n):n,d(t)&&!a)for((p=g?o:void 0!==r&&o||new fe(n,"array",o,t,e,r,i,h))._.nl=_,o&&o._.useKey&&(p._.bnd=!s||s._.bnd&&s,p.tag=s),l=0,c=t.length;l<c;l++)u=new fe(y,"item",p,t[l],e,(r||0)+l,i,p.content),w&&((u.ctx=re({},y))[w]=m._cp(t[l],"#data",u)),f=e.fn(t[l],u,m),x+=p._.onRender?p._.onRender(f,u):f;else p=g?o:new fe(y,$||"data",o,t,e,r,i,h),w&&((p.ctx=re({},y))[w]=m._cp(t,"#data",p)),p.tag=s,p._.nl=_,x+=e.fn(t,p,m);return s&&(p.tagElse=b.index,b.contentView=p),v?v(x,p):x}function _e(e){throw new m.Err(e)}function xe(e){_e("Syntax error\n"+e)}function ke(e,t,n,a,r){function i(t){(t-=h)&&_.push(e.substr(h,t).replace(T,"\\n"))}function s(t,n){t&&(t+="}}",xe((n?"{{"+n+"}} block has {{/"+t+" without {{"+t:"Unmatched or missing {{/"+t)+", in template:\n"+e))}var l,d,c,p,u,f=g.allowCode||t&&t.allowCode||!0===v.allowCode,m=[],h=0,w=[],_=m,x=[,,m];if(f&&t._is&&(t.allowCode=f),n&&(void 0!==a&&(e=e.slice(0,-a.length-2)+y),e=$+e+b),s(w[0]&&w[0][2].pop()[0]),e.replace(o,(function(o,l,d,u,m,g,v,$,y,b,k,C){(v&&l||y&&!d||$&&":"===$.slice(-1)||b)&&xe(o),g&&(m=":",u=U);var D,j,E,I=(l||n)&&[[]],O="",F="",P="",N="",B="",Y="",R="",q="",V=!(y=y||n&&!r)&&!m;d=d||($=$||"#data",m),i(C),h=C+o.length,v?f&&_.push(["*","\n"+$.replace(/^:/,"ret+= ").replace(S,"$1")+";\n"]):d?("else"===d&&(M.test($)&&xe('For "{{else if expr}}" use "{{else expr}}"'),I=x[9]&&[[]],x[10]=e.substring(x[10],C),j=x[11]||x[0]||xe("Mismatched: "+o),x=w.pop(),_=x[2],V=!0),$&&Te($.replace(T," "),I,t,n).replace(L,(function(e,t,n,a,o,r,i,s){return"this:"===a&&(r="undefined"),s&&(E=E||"@"===s[0]),a="'"+o+"':",i?(F+=n+r+",",N+="'"+s+"',"):n?(P+=a+"j._cp("+r+',"'+s+'",view),',Y+=a+"'"+s+"',"):t?R+=r:("trigger"===o&&(q+=r),"lateRender"===o&&(D="false"!==s),O+=a+r+",",B+=a+"'"+s+"',",p=p||A.test(o)),""})).slice(0,-1),I&&I[0]&&I.pop(),c=[d,u||!!a||p||"",V&&[],De(N||(":"===d?"'#data',":""),B,Y),De(F||(":"===d?"data,":""),O,P),R,q,D,E,I||0],_.push(c),V&&(w.push(x),(x=c)[10]=h,x[11]=j)):k&&(s(k!==x[0]&&k!==x[11]&&k,x[0]),x[10]=e.substring(x[10],C),x=w.pop()),s(!x&&k),_=x[2]})),i(e.length),(h=m[m.length-1])&&s(""+h!==h&&+h[10]===h[10]&&h[0]),n){for(d=Se(m,e,n),u=[],l=m.length;l--;)u.unshift(m[l][9]);Ce(d,u)}else d=Se(m,t);return d}function Ce(e,t){var n,a,o=0,r=t.length;for(e.deps=[],e.paths=[];o<r;o++)for(n in e.paths.push(a=t[o]),a)"_jsvto"!==n&&a.hasOwnProperty(n)&&a[n].length&&!a[n].skp&&(e.deps=e.deps.concat(a[n]))}function De(e,t,n){return[e.slice(0,-1),t.slice(0,-1),n.slice(0,-1)]}function Te(e,n,a,o){var r,i,s,l,d,c=n&&n[0],p={bd:c},u={0:p},f=0,g=0,v=0,$={},w=0,y={},b={},_={},x={0:0},k={0:""},C=0;return"@"===e[0]&&(e=e.replace(B,".")),s=(e+(a?" ":"")).replace(m.rPrm,(function(a,s,D,T,S,L,M,E,I,A,O,F,P,N,B,Y,R,q,U,V,z){T&&!E&&(S=T+S),L=L||"",P=P||"",D=D||s||P,S=S||I,A&&(A=!/\)|]/.test(z[V-1]))&&(S=S.slice(1).split(".").join("^")),O=O||q||"";var G,J,K,Q,W,X,Z,ee=V;if(!d&&!l){if(M&&xe(e),R&&c){if(G=_[v-1],z.length-1>ee-(G||0)){if(G=t.trim(z.slice(G,ee+a.length)),J=i||u[v-1].bd,(K=J[J.length-1])&&K.prm){for(;K.sb&&K.sb.prm;)K=K.sb;Q=K.sb={path:K.sb,bnd:K.bnd}}else J.push(Q={path:J.pop()});K&&K.sb===Q&&(k[v]=k[v-1].slice(K._cpPthSt)+k[v],k[v-1]=k[v-1].slice(0,K._cpPthSt)),Q._cpPthSt=x[v-1],Q._cpKey=G,k[v]+=z.slice(C,V),C=V,Q._cpfn=H[G]=H[G]||new Function("data,view,j","//"+G+"\nvar v;\nreturn ((v="+k[v]+("]"===Y?")]":Y)+")!=null?v:null);"),k[v-1]+=b[g]&&h.cache?'view.getCache("'+G.replace(j,"\\$&")+'"':k[v],Q.prm=p.bd,Q.bnd=Q.bnd||Q.path&&Q.path.indexOf("^")>=0}k[v]=""}"["===O&&(O="[j._sq("),"["===D&&(D="[j._sq(")}return Z=d?(d=!N)?a:P+'"':l?(l=!B)?a:P+'"':(D?(y[++g]=!0,$[g]=0,c&&(_[v++]=ee++,p=u[v]={bd:[]},k[v]="",x[v]=1),D):"")+(U?g?"":(f=z.slice(f,ee),(r?(r=i=!1,"\b"):"\b,")+f+(f=ee+a.length,c&&n.push(p.bd=[]),"\b")):E?(v&&xe(e),c&&n.pop(),r="_"+S,T,f=ee+a.length,c&&((c=p.bd=n[r]=[]).skp=!T),S+":"):S?S.split("^").join(".").replace(m.rPath,(function(e,t,a,s,l,d,u,f){if(W="."===a,a&&(S=S.slice(t.length),/^\.?constructor$/.test(f||S)&&xe(e),W||(e=(A?(o?"":"(ltOb.lt=ltOb.lt||")+"(ob=":"")+(s?'view.ctxPrm("'+s+'")':l?"view":"data")+(A?")===undefined"+(o?"":")")+'?"":view._getOb(ob,"':"")+(f?(d?"."+d:s||l?"":"."+a)+(u||""):(f=s?"":l?d||"":a,"")),e=t+("view.data"===(e+=f?"."+f:"").slice(0,9)?e.slice(5):e)+(A?(o?'"':'",ltOb')+(O?",1)":")"):"")),c)){if(J="_linkTo"===r?i=n._jsvto=n._jsvto||[]:p.bd,K=W&&J[J.length-1]){if(K._cpfn){for(;K.sb;)K=K.sb;K.prm&&(K.bnd&&(S="^"+S.slice(1)),K.sb=S,K.bnd=K.bnd||"^"===S[0])}}else J.push(S);O&&!W&&(_[v]=ee,x[v]=k[v].length)}return e}))+(O||L):L||(Y?"]"===Y?")]":")":F?(b[g]||xe(e),","):s?"":(d=N,l=B,'"'))),d||l||Y&&(b[g]=!1,g--),c&&(d||l||(Y&&(y[g+1]&&(p=u[--v],y[g+1]=!1),w=$[g+1]),O&&($[g+1]=k[v].length+(D?1:0),(S||Y)&&(p=u[++v]={bd:[]},y[g+1]=!0))),k[v]=(k[v]||"")+z.slice(C,V),C=V+a.length,d||l||((X=D&&y[g+1])&&(k[v-1]+=D,x[v-1]++),"("===O&&W&&!Q&&(k[v]=k[v-1].slice(w)+k[v],k[v-1]=k[v-1].slice(0,w))),k[v]+=X?Z.slice(1):Z),d||l||!O||(g++,S&&"("===O&&(b[g]=!0)),d||l||!q||(c&&(k[v]+=O),Z+=O),Z})),c&&(s=k[0]),!g&&s||xe(e)}function Se(e,t,n){var a,o,r,i,s,l,d,c,p,u,m,v,$,w,y,b,_,x,k,C,D,j,L,M,E,I,A,O,F,P,N,B,Y,R,q=0,V=h.useViews||t.useViews||t.tags||t.templates||t.helpers||t.converters,z="",G={},J=e.length;for(""+t===t?(_=n?'data-link="'+t.replace(T," ").slice(1,-1)+'"':t,t=0):(_=t.tmplName||"unnamed",t.allowCode&&(G.allowCode=!0),t.debug&&(G.debug=!0),u=t.bnds,b=t.tmpls),a=0;a<J;a++)if(""+(o=e[a])===o)z+='+"'+o+'"';else if("*"===(r=o[0]))z+=";\n"+o[1]+"\nret=ret";else{if(i=o[1],C=!n&&o[2],Y=o[3],R=v=o[4],s="\n\tparams:{args:["+Y[0]+"],\n\tprops:{"+Y[1]+"}"+(Y[2]?",\n\tctx:{"+Y[2]+"}":"")+"},\n\targs:["+R[0]+"],\n\tprops:{"+R[1]+"}"+(R[2]?",\n\tctx:{"+R[2]+"}":""),F=o[6],P=o[7],o[8]?(N="\nvar ob,ltOb={},ctxs=",B=";\nctxs.lt=ltOb.lt;\nreturn ctxs;"):(N="\nreturn ",B=""),D=o[10]&&o[10].replace(S,"$1"),(M="else"===r)?m&&m.push(o[9]):(A=o[5]||!1!==g.debugMode&&"undefined",u&&(m=o[9])&&(m=[m],q=u.push(1))),V=V||v[1]||v[2]||m||/view.(?!index)/.test(v[0]),(E=":"===r)?i&&(r=i===U?">":i+r):(C&&((x=he(D,G)).tmplName=_+"/"+r,x.useViews=x.useViews||V,Se(C,x),V=x.useViews,b.push(x)),M||(k=r,V=V||r&&(!f[r]||!f[r].flow),L=z,z=""),j=(j=e[a+1])&&"else"===j[0]),O=A?";\ntry{\nret+=":"\n+",$="",w="",E&&(m||F||i&&i!==U||P)){if((I=new Function("data,view,j","// "+_+" "+ ++q+" "+r+N+"{"+s+"};"+B))._er=A,I._tag=r,I._bd=!!m,I._lr=P,n)return I;Ce(I,m),p=!0,$=(y='c("'+i+'",view,')+q+",",w=")"}if(z+=E?(n?(A?"try{\n":"")+"return ":O)+(p?(p=void 0,V=c=!0,y+(I?(u[q-1]=I,q):"{"+s+"}")+")"):">"===r?(d=!0,"h("+v[0]+")"):(!0,"((v="+v[0]+")!=null?v:"+(n?"null)":'"")'))):(l=!0,"\n{view:view,content:false,tmpl:"+(C?b.length:"false")+","+s+"},"),k&&!j){if(z="["+z.slice(0,-1)+"]",y='t("'+k+'",view,this,',n||m){if((z=new Function("data,view,j"," // "+_+" "+q+" "+k+N+z+B))._er=A,z._tag=k,m&&Ce(u[q-1]=z,m),z._lr=P,n)return z;$=y+q+",undefined,",w=")"}z=L+O+y+(m&&q||z)+")",m=0,k=0}A&&!j&&(V=!0,z+=";\n}catch(e){ret"+(n?"urn ":"+=")+$+"j._err(e,view,"+A+")"+w+";}"+(n?"":"\nret=ret"))}z="// "+_+(G.debug?"\ndebugger;":"")+"\nvar v"+(l?",t=j._tag":"")+(c?",c=j._cnvt":"")+(d?",h=j._html":"")+(n?(o[8]?", ob":"")+";\n":',ret=""')+z+(n?"\n":";\nreturn ret;");try{z=new Function("data,view,j",z)}catch(e){xe("Compiled template code:\n\n"+z+'\n: "'+(e.message||e)+'"')}return t&&(t.fn=z,t.useViews=!!V),z}function je(e,t){return e&&e!==t?t?re(re({},t),e):e:t&&re({},t)}function Le(e,n){var a,o,r,i=n.tag,s=n.props,c=n.params.props,p=s.filter,u=s.sort,f=!0===u,m=parseInt(s.step),g=s.reverse?-1:1;if(!d(e))return e;if(f||u&&""+u===u?((a=e.map((function(e,t){return{i:t,v:""+(e=f?e:le(e,u))===e?e.toLowerCase():e}}))).sort((function(e,t){return e.v>t.v?g:e.v<t.v?-g:0})),e=a.map((function(t){return e[t.i]}))):(u||g<0)&&!i.dataMap&&(e=e.slice()),l(u)&&(e=e.sort((function(){return u.apply(n,arguments)}))),g<0&&(!u||l(u))&&(e=e.reverse()),e.filter&&p&&(e=e.filter(p,n),n.tag.onFilter&&n.tag.onFilter(n)),c.sorted&&(a=u||g<0?e:e.slice(),i.sorted?t.observable(i.sorted).refresh(a):n.map.sorted=a),o=s.start,r=s.end,(c.start&&void 0===o||c.end&&void 0===r)&&(o=r=0),isNaN(o)&&isNaN(r)||(o=+o||0,r=void 0===r||r>e.length?e.length:+r,e=e.slice(o,r)),m>1){for(o=0,r=e.length,a=[];o<r;o+=m)a.push(e[o]);e=a}return c.paged&&i.paged&&$observable(i.paged).refresh(e),e}function Me(e,n,a){var o=this.jquery&&(this[0]||_e("Unknown template")),r=o.getAttribute(z);return ye.call(r&&t.data(o).jsvTmpl||c(o),e,n,a)}function Ee(e){return R[e]||(R[e]="&#"+e.charCodeAt(0)+";")}function Ie(e,t){return q[t]||""}function Ae(e){return null!=e?I.test(e)&&(""+e).replace(F,Ee)||e:""}if(i={jsviews:C,sub:{rPath:/^(!*?)(?:null|true|false|\d[\d.]*|([\w$]+|\.|~([\w$]+)|#(view|([\w$]+))?)([\w$.^]*?)(?:[.[^]([\w$]+)\]?)?)$/g,rPrm:/(\()(?=\s*\()|(?:([([])\s*)?(?:(\^?)(~?[\w$.^]+)?\s*((\+\+|--)|\+|-|~(?![\w$])|&&|\|\||===|!==|==|!=|<=|>=|[<>%*:?\/]|(=))\s*|(!*?(@)?[#~]?[\w$.^]+)([([])?)|(,\s*)|(?:(\()\s*)?\\?(?:(')|("))|(?:\s*(([)\]])(?=[.^]|\s*$|[^([])|[)\]])([([]?))|(\s+)/g,View:fe,Err:oe,tmplFn:ke,parse:Te,extend:re,extendCtx:je,syntaxErr:xe,onStore:{template:function(e,t){null===t?delete K[e]:e&&(K[e]=t)}},addSetting:$e,settings:{allowCode:!1},advSet:ae,_thp:te,_gm:ee,_tg:function(){},_cnvt:function(e,t,n,a){var o,r,i,s,l,d="number"==typeof n&&t.tmpl.bnds[n-1];void 0===a&&d&&d._lr&&(a="");void 0!==a?n=a={props:{},args:[a]}:d&&(n=d(t.data,t,m));if(d=d._bd&&d,e||d){if(r=t._lc,o=r&&r.tag,n.view=t,!o){if(o=re(new m._tg,{_:{bnd:d,unlinked:!0,lt:n.lt},inline:!r,tagName:":",convert:e,onArrayChange:!0,flow:!0,tagCtx:n,tagCtxs:[n],_is:"tag"}),(s=n.args.length)>1)for(l=o.bindTo=[];s--;)l.unshift(s);r&&(r.tag=o,o.linkCtx=r),n.ctx=je(n.ctx,(r?r.view:t).ctx),te(o,n)}o._er=a&&i,o.ctx=n.ctx||o.ctx||{},n.ctx=void 0,i=o.cvtArgs()[0],o._er=a&&i}else i=n.args[0];return null!=(i=d&&t._.onRender?t._.onRender(i,t,o):i)?i:""},_tag:function(e,t,n,a,o,i){function s(e){var t=l[e];if(void 0!==t)for(t=d(t)?t:[t],v=t.length;v--;)F=t[v],isNaN(parseInt(F))||(t[v]=parseInt(F));return t||[0]}var l,c,u,f,g,h,v,$,w,y,b,_,x,k,C,D,T,S,j,L,M,E,I,A,F,P,N,B,Y,R=0,q="",V=(t=t||r)._lc||!1,z=t.ctx,G=n||t.tmpl,J="number"==typeof a&&t.tmpl.bnds[a-1];"tag"===e._is?(e=(l=e).tagName,a=l.tagCtxs,l.template):(c=t.getRsc("tags",e)||_e("Unknown tag: {{"+e+"}} "),c.template);void 0===i&&J&&(J._lr=c.lateRender&&!1!==J._lr||J._lr)&&(i="");void 0!==i?(q+=i,a=i=[{props:{},args:[],params:{props:{}}}]):J&&(a=J(t.data,t,m));for(h=a.length;R<h;R++)y=a[R],D=y.tmpl,(!V||!V.tag||R&&!V.tag.inline||l._er||D&&+D===D)&&(D&&G.tmpls&&(y.tmpl=y.content=G.tmpls[D-1]),y.index=R,y.ctxPrm=de,y.render=ye,y.cvtArgs=ce,y.bndArgs=ue,y.view=t,y.ctx=je(je(y.ctx,c&&c.ctx),z)),(n=y.props.tmpl)&&(y.tmpl=t._getTmpl(n),y.content=y.content||y.tmpl),l?V&&V.fn._lr&&(T=!!l.init):(l=new c._ctr,T=!!l.init,l.parent=g=z&&z.tag,l.tagCtxs=a,V&&(l.inline=!1,V.tag=l),l.linkCtx=V,(l._.bnd=J||V.fn)?(l._.ths=y.params.props.this,l._.lt=a.lt,l._.arrVws={}):l.dataBoundOnly&&_e(e+" must be data-bound:\n{^{"+e+"}}")),I=l.dataMap,y.tag=l,I&&a&&(y.map=a[R].map),l.flow||(b=y.ctx=y.ctx||{},u=l.parents=b.parentTags=z&&je(b.parentTags,z.parentTags)||{},g&&(u[g.tagName]=g),u[l.tagName]=b.tag=l,b.tagCtx=y);if(!(l._er=i)){for(te(l,a[0]),l.rendering={rndr:l.rendering},R=0;R<h;R++){if(y=l.tagCtx=a[R],E=y.props,l.ctx=y.ctx,!R){if(T&&(l.init(y,V,l.ctx),T=void 0),y.args.length||!1===y.argDefault||!1===l.argDefault||(y.args=L=[y.view.data],y.params.args=["#data"]),x=s("bindTo"),void 0!==l.bindTo&&(l.bindTo=x),void 0!==l.bindFrom?l.bindFrom=s("bindFrom"):l.bindTo&&(l.bindFrom=l.bindTo=x),k=l.bindFrom||x,N=x.length,P=k.length,l._.bnd&&(B=l.linkedElement)&&(l.linkedElement=B=d(B)?B:[B],N!==B.length&&_e("linkedElement not same length as bindTo")),(B=l.linkedCtxParam)&&(l.linkedCtxParam=B=d(B)?B:[B],P!==B.length&&_e("linkedCtxParam not same length as bindFrom/bindTo")),k)for(l._.fromIndex={},l._.toIndex={},$=P;$--;)for(F=k[$],v=N;v--;)F===x[v]&&(l._.fromIndex[v]=$,l._.toIndex[$]=v);V&&(V.attr=l.attr=V.attr||l.attr||V._dfAt),f=l.attr,l._.noVws=f&&f!==U}if(L=l.cvtArgs(R),l.linkedCtxParam)for(M=l.cvtArgs(R,1),v=P,Y=l.constructor.prototype.ctx;v--;)(_=l.linkedCtxParam[v])&&(F=k[v],C=M[v],y.ctx[_]=m._cp(Y&&void 0===C?Y[_]:C,void 0!==C&&pe(y.params,F),y.view,l._.bnd&&{tag:l,cvt:l.convert,ind:v,tagElse:R}));(S=E.dataMap||I)&&(L.length||E.dataMap)&&((j=y.map)&&j.src===L[0]&&!o||(j&&j.src&&j.unmap(),S.map(L[0],y,j,!l._.bnd),j=y.map),L=[j.tgt]),w=void 0,l.render&&(w=l.render.apply(l,L),t.linked&&w&&!O.test(w)&&((n={links:[]}).render=n.fn=function(){return w},w=be(n,t.data,void 0,!0,t,void 0,void 0,l))),L.length||(L=[t]),void 0===w&&(A=L[0],l.contentCtx&&(A=!0===l.contentCtx?t:l.contentCtx(A)),w=y.render(A,!0)||(o?void 0:"")),q=q?q+(w||""):void 0!==w?""+w:void 0}l.rendering=l.rendering.rndr}l.tagCtx=a[0],l.ctx=l.tagCtx.ctx,l._.noVws&&l.inline&&(q="text"===f?p.html(q):"");return J&&t._.onRender?t._.onRender(q,t,l):q},_er:_e,_err:function(e,t,n){var a=void 0!==n?l(n)?n.call(t.data,e,t):n||"":"{Error: "+(e.message||e)+"}";g.onError&&void 0!==(n=g.onError.call(t.data,e,n&&a,t))&&(a=n);return t&&!t._lc?p.html(a):a},_cp:ne,_sq:function(e){return"constructor"===e&&xe(""),e}},settings:{delimiters:function e(t,n,a){if(!t)return g.delimiters;if(d(t))return e.apply(i,t);_=a?a[0]:_,/^(\W|_){5}$/.test(t+n+_)||_e("Invalid delimiters");return $=t[0],w=t[1],y=n[0],b=n[1],g.delimiters=[$+w,y+b,_],t="\\"+$+"(\\"+_+")?\\"+w,n="\\"+y+"\\"+b,o="(?:(\\w+(?=[\\/\\s\\"+y+"]))|(\\w+)?(:)|(>)|(\\*))\\s*((?:[^\\"+y+"]|\\"+y+"(?!\\"+b+"))*?)",m.rTag="(?:"+o+")",o=new RegExp("(?:"+t+o+"(\\/)?|\\"+$+"(\\"+_+")?\\"+w+"(?:(?:\\/(\\w+))\\s*|!--[\\s\\S]*?--))"+n,"g"),m.rTmpl=new RegExp("^\\s|\\s$|<.*>|([^\\\\]|^)[{}]|"+t+".*"+n),v},advanced:function(e){return e?(re(h,e),m.advSet(),v):h}},map:we},(oe.prototype=new Error).constructor=oe,ie.depends=function(){return[this.get("item"),"index"]},se.depends="index",fe.prototype={get:function(e,t){t||!0===e||(t=e,e=void 0);var n,a,o,r,i=this,s="root"===t;if(e){if(!(r=t&&i.type===t&&i))if(n=i.views,i._.useKey){for(a in n)if(r=t?n[a].get(e,t):n[a])break}else for(a=0,o=n.length;!r&&a<o;a++)r=t?n[a].get(e,t):n[a]}else if(s)r=i.root;else if(t)for(;i&&!r;)r=i.type===t?i:void 0,i=i.parent;else r=i.parent;return r||void 0},getIndex:se,ctxPrm:de,getRsc:function(e,t){var n,a,o=this;if(""+t===t){for(;void 0===n&&o;)n=(a=o.tmpl&&o.tmpl[e])&&a[t],o=o.parent;return n||i[e][t]}},_getTmpl:function(e){return e&&(e.fn?e:this.getRsc("templates",e)||c(e))},_getOb:le,getCache:function(e){return g._cchCt>this.cache._ct&&(this.cache={_ct:g._cchCt}),this.cache[e]||(this.cache[e]=H[e](this.data,this,m))},_is:"view"},m=i.sub,v=i.settings,!(Q||t&&t.render)){for(a in X)ve(a,X[a]);if(p=i.converters,u=i.helpers,f=i.tags,m._tg.prototype={baseApply:function(e){return this.base.apply(this,e)},cvtArgs:ce,bndArgs:ue,ctxPrm:de},r=m.topView=new fe,t){if(t.fn.render=Me,s=t.expando,t.observable){if(C!==(C=t.views.jsviews))throw"jquery.observable.js requires jsrender.js "+C;re(m,t.views.sub),i.map=t.views.map}}else t={},n&&(e.jsrender=t),t.renderFile=t.__express=t.compile=function(){throw"Node.js: use npm jsrender, or jsrender-node.js"},t.isFunction=function(e){return"function"==typeof e},t.isArray=Array.isArray||function(e){return"[object Array]"==={}.toString.call(e)},m._jq=function(e){e!==t&&(re(e,t),(t=e).fn.render=Me,delete t.jsrender,s=t.expando)},t.jsrender=C;for(x in(g=m.settings).allowCode=!1,l=t.isFunction,t.render=K,t.views=i,t.templates=c=i.templates,g)$e(x);(v.debugMode=function(e){return void 0===e?g.debugMode:(g._clFns&&g._clFns(),g.debugMode=e,g.onError=e+""===e?function(){return e}:l(e)?e:void 0,v)})(!1),h=g.advanced={cache:!0,useViews:!1,_jsv:!1},f({if:{render:function(e){var t=this,n=t.tagCtx;return t.rendering.done||!e&&(n.args.length||!n.index)?"":(t.rendering.done=!0,void(t.selected=n.index))},contentCtx:!0,flow:!0},for:{sortDataMap:we(Le),init:function(e,t){this.setDataMap(this.tagCtxs)},render:function(e){var t,n,a,o,r,i=this,s=i.tagCtx,l=!1===s.argDefault,c=s.props,p=l||s.args.length,u="",f=0;if(!i.rendering.done){if(t=p?e:s.view.data,l)for(l=c.reverse?"unshift":"push",o=+c.end,r=+c.step||1,t=[],a=+c.start||0;(o-a)*r>0;a+=r)t[l](a);void 0!==t&&(n=d(t),u+=s.render(t,!p||c.noIteration),f+=n?t.length:1),(i.rendering.done=f)&&(i.selected=s.index)}return u},setDataMap:function(e){for(var t,n,a,o=e.length;o--;)n=(t=e[o]).props,a=t.params.props,t.argDefault=void 0===n.end||t.args.length>0,n.dataMap=!1!==t.argDefault&&d(t.args[0])&&(a.sort||a.start||a.end||a.step||a.filter||a.reverse||n.sort||n.start||n.end||n.step||n.filter||n.reverse)&&this.sortDataMap},flow:!0},props:{baseTag:"for",dataMap:we((function(e,n){var a,o,r=n.map,i=r&&r.propsArr;if(!i){if(i=[],typeof e===V||l(e))for(a in e)o=e[a],a===s||!e.hasOwnProperty(a)||n.props.noFunctions&&t.isFunction(o)||i.push({key:a,prop:o});r&&(r.propsArr=r.options&&i)}return Le(i,n)})),init:ae,flow:!0},include:{flow:!0},"*":{render:ne,flow:!0},":*":{render:ne,flow:!0},dbg:u.dbg=p.dbg=function(e){try{throw console.log("JsRender dbg breakpoint: "+e),"dbg breakpoint"}catch(e){}return this.base?this.baseApply(arguments):e}}),p({html:Ae,attr:Ae,encode:function(e){return""+e===e?e.replace(P,Ee):e},unencode:function(e){return""+e===e?e.replace(N,Ie):e},url:function(e){return null!=e?encodeURI(""+e):null===e?e:""}})}return g=m.settings,d=(t||Q).isArray,v.delimiters("{{","}}","^"),W&&Q.views.sub._jq(t),t||Q}),window)}},t={};function n(a){var o=t[a];if(void 0!==o)return o.exports;var r=t[a]={exports:{}};return e[a](r,r.exports,n),r.exports}document.addEventListener("DOMContentLoaded",(function(){$(".lightGallery").length&&$(".lightgallery").lightGallery({mode:"lg-slide-circular",counter:!1})})),(()=>{"use strict";window.isEmpty=function(e){return null==e||""===e},window.randomCode=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:6;return Math.random().toString(36).slice(-e)},window.listen=function(e,t,n){$(document).on(e,t,n)},window.listenClick=function(e,t){$(document).on("click",e,t)},window.listenSubmit=function(e,t){$(document).on("submit",e,t)},window.listenHiddenBsModal=function(e,t){$(document).on("hidden.bs.modal",e,t)},window.listenChange=function(e,t){$(document).on("change",e,t)},window.listenKeyup=function(e,t){$(document).on("keyup",e,t)},window.listenShownBsModal=function(e,t){$(document).on("shown.bs.modal",e,t)}})(),(()=>{"use strict";var e=n(2743),t=$('meta[name="csrf-token"]').attr("content");$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}}),document.addEventListener("DOMContentLoaded",(function(){var e=$(".userCurrentLanguage").val();void $('[data-control="select2"]').each((function(){$(this).select2()})),t=$('meta[name="csrf-token"]').attr("content"),void $.ajaxSetup({headers:{"X-CSRF-TOKEN":t}}),void $(".alert").delay(5e3).slideUp(300),a(),o(),IOInitImageComponent(),IOInitSidebar(),toastr.options="ar"==e?{closeButton:!0,debug:!1,rtl:!0,newestOnTop:!1,progressBar:!0,positionClass:"toast-top-left",preventDuplicates:!1,onclick:null,showDuration:"300",hideDuration:"1000",timeOut:"5000",extendedTimeOut:"1000",showEasing:"swing",hideEasing:"linear",showMethod:"fadeIn",hideMethod:"fadeOut"}:{closeButton:!0,debug:!1,newestOnTop:!1,progressBar:!0,positionClass:"toast-top-right",preventDuplicates:!1,onclick:null,showDuration:"300",hideDuration:"1000",timeOut:"5000",extendedTimeOut:"1000",showEasing:"swing",hideEasing:"linear",showMethod:"fadeIn",hideMethod:"fadeOut"}}));$(".getLanguage").val();var a=function(){$((function(){$(".modal").on("shown.bs.modal",(function(){$(this).find("input:text").first().focus()}))}))},o=function(){$('input:text:not([readonly="readonly"]):not([name="search"]):not(.front-input)').first().focus()};$(document).on("keydown",(function(e){27===e.keyCode&&$(".modal").modal("hide")})),$('input:text:not([readonly="readonly"])').first().focus(),$(document).on("select2:open",(function(){var e=document.querySelectorAll(".select2-container--open .select2-search__field");e[e.length-1].focus()})),$('[data-control="select2"]').each((function(){$(this).select2()})),document.addEventListener("livewire:load",(function(){window.livewire.hook("message.processed",(function(){$('[data-control="select2"]').each((function(){$(this).select2()}))}))})),$(document).on("focus",".select2.select2-container",(function(e){var t=e.originalEvent,n=$(this).find(".select2-selection--single").length>0;t&&n&&$(this).siblings("select:enabled").select2("open")})),$(document).ready((function(){$('[data-bs-toggle="tooltip"]').tooltip(),$(document).find(".nav-item.nav-dropdown ul li.nav-item").hasClass("active")&&$(document).find(".nav-item.nav-dropdown ul li.nav-item.active").parent("ul").parent("li").addClass("open"),listenClick(".nav-item.nav-dropdown",(function(){$(document).find(".nav-item.nav-dropdown").hasClass("open")&&$(this).hasClass("open")?setTimeout((function(){$(this).removeClass("open")}),1e3):$(document).find(".nav-item.nav-dropdown").removeClass("open")})),listenKeyup('input[name="email"]',(function(){this.value=this.value.toLowerCase()})),$('input[name="email"]').keypress((function(e){if(32===e.which)return!1}))})),$((function(){listenShownBsModal(".modal",(function(){$(this).find("input:text").first().focus()})),listenHiddenBsModal(".modal",(function(){$(".image-input.image-input-empty").attr("style","display:inline-block")}))})),window.resetModalForm=function(e,t){var n=$(e)[0].elements;$.each(n,(function(e,t){void 0!==t._flatpickr&&(t._flatpickr.clear(),t._flatpickr.setDate(new Date))})),$(e)[0].reset(),$("select.select2Selector").each((function(e,t){var n="#"+$(this).attr("id");$(n).val(""),$(n).trigger("change")})),$(t).hide()},window.processingBtn=function(e,t){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:null,a=$(e).find(t);"loading"===n?a.button("loading"):a.button("reset")},window.printErrorMessage=function(e,t){displayErrorMessage(t.responseJSON.message)},window.manageAjaxErrors=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"editValidationErrorsBox";404==e.status?toastr.error(e.responseJSON.message):printErrorMessage("#"+t,e)},window.displaySuccessMessage=function(e){toastr.success(e)},window.displayErrorMessage=function(e){toastr.error(e)},window.displayPhoto=function(e,t){var n=!0;if(e.files&&e.files[0]){var a=new FileReader;a.onload=function(e){var a=new Image;a.src=e.target.result,a.onload=function(){$(t).attr("src",e.target.result),n=!0}},n&&(a.readAsDataURL(e.files[0]),$(t).show())}},window.isValidFile=function(e,t){var n=$(e).val().split(".").pop().toLowerCase();return-1==$.inArray(n,["gif","png","jpg","jpeg"])?($(e).val(""),$(t).html(Lang.get("js.validate_image_type")).removeClass("d-none").show(),setTimeout((function(){$(t).slideUp(300)}),5e3),!1):($(t).addClass("d-none"),!0)},window.format=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"YYYY-MM-DD";return moment(e).format(t)},window.DatetimepickerDefaults=function(e){return $.extend({},{sideBySide:!0,ignoreReadonly:!0,icons:{up:"icon-arrow-up-circle icons font-2xl",down:"icon-arrow-down-circle icons font-2xl",previous:"icon-arrow-left icons",next:"icon-arrow-right icons",time:"fa fa-clock-o",date:"fa fa-calendar",today:"fa fa-crosshairs",clear:"fa fa-trash",close:"fa fa-times"}},e)},window.screenLock=function(){$("#overlay-screen-lock").show(),$("body").css({"pointer-events":"none",opacity:"0.6"})},window.screenUnLock=function(){$("body").css({"pointer-events":"auto",opacity:"1"}),$("#overlay-screen-lock").hide()},window.prepareTemplateRender=function(t,n){return e.templates(t).render(n)},window.getCurrentCurrencyClass=function(){return"<b>"+$(".currentCurrency").val()+"</b>"},window.getCurrentCurrency=function(){return $(".getCurrentCurrency").val()},window.hideDropdownManually=function(e,t){e.removeClass("show"),t.removeClass("show")},window.displayDocument=function(e,t,n){var a=!0;if(e.files&&e.files[0]){var o=new FileReader;o.onload=function(e){var o=new Image;-1==$.inArray(n,["pdf","doc","docx","mp3","mp4"])?o.src=e.target.result:"pdf"==n?($("#editPhoto").css("background-image",'url("'+$(".pdfDocumentImageUrl").val()+'")'),o.src=$(".pdfDocumentImageUrl").val()):o.src="mp3"==n?$(".audioDocumentImageUrl").val():"mp4"==n?$(".videoDocumentImageUrl").val():$(".docxDocumentImageUrl").val(),o.onload=function(){$(t).attr("src",o.src),$(t).css("background-image",'url("'+o.src+'")'),a=!0}},a&&(o.readAsDataURL(e.files[0]),$(t).show())}};$(".ajaxCallIsRunning").val();window.ajaxCallInProgress=function(){!0},window.ajaxCallCompleted=function(){!1},window.UnprocessableInputError=function(e){toastr.error(e.responseJSON.message)},window.setValueOfEmptySpan=function(){$("span.showSpan").each((function(){$(this).text()||$(this).text(Lang.get("js.n/a"))}))},window.addCommas=function(e){for(var t=(e+="").split("."),n=t[0],a=t.length>1?"."+t[1]:"",o=/(\d+)(\d{3})/;o.test(n);)n=n.replace(o,"$1,$2");return n+a},$((function(){listenClick(".notification",(function(e){e.stopPropagation();var t=$(this).data("id"),n=$(this);$('[data-toggle="tooltip"]').tooltip("hide"),$.ajax({type:"get",url:"/notification/"+t+"/read",success:function(){n.remove(),displaySuccessMessage(Lang.get("js.notification_read_successfully"));var e=document.getElementsByClassName("notification").length;$("#counter").text(e),0==e&&($(".read-all-notification").addClass("d-none"),$(".empty-state").removeClass("d-none"),$("#counter").text(e),$(".notification-count").addClass("d-none"))},error:function(e){manageAjaxErrors(e)}})})),listenClick("#readAllNotification",(function(e){e.stopPropagation(),$.ajax({type:"post",url:"/read-all-notification",success:function(){$(".notification").remove();var e=document.getElementsByClassName("notification").length;$("#counter").text(e),$("#readAllNotification").addClass("d-none"),$(".empty-state").addClass("d-none"),$(".empty-state.empty-notification").removeClass("d-none"),$(".notification-count").addClass("d-none"),displaySuccessMessage(Lang.get("js.all_notification_read_successfully"))},error:function(e){manageAjaxErrors(e)}})}))})),window.avoidSpace=function(e){if(32==(e?e.which:window.event.keyCode)&&e.path[0].value.length<=0)return!1};var r="asset('assets/img/avatar.png')";window.defaultImagePreview=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;1==t?$(e).css("background-image",'url("'+r+'")'):$(e).css("background-image",'url("'+$(".defaultDocumentImageUrl").val()+'")')},window.cancelAppointment=function(e,t,n,a){swal({title:Lang.get("js.cancel")+" "+Lang.get("js.appointment"),text:Lang.get("js.are_you_sure_want_to_cancel")+" "+n+" ?",type:"warning",icon:"warning",closeOnConfirm:!1,confirmButtonColor:"#000000",showLoaderOnConfirm:!0,buttons:{confirm:Lang.get("js.yes"),cancel:Lang.get("js.no")}}).then((function(t){t&&function(e,t,n,a){$.ajax({url:e,type:"POST",success:function(e){e.success&&Livewire.dispatch("refresh"),swal({title:Lang.get("js.canceled")+" "+Lang.get("js.appointment"),text:n+Lang.get("js.has_been_cancelled"),icon:"success",confirmButtonColor:"#D9214E",buttons:{confirm:Lang.get("js.ok")},timer:2e3})},error:function(e){swal({title:"Error",icon:"error",text:e.responseJSON.message,type:"error",confirmButtonColor:"#D9214E",buttons:{confirm:Lang.get("js.ok")},timer:5e3})}})}(e,0,n)}))}})(),document.addEventListener("DOMContentLoaded",(function(){$(".doctor-name-filter").selectize(),$.datepicker.setDefaults($.datepicker.regional[$(".userCurrentLanguage").val()]),$(".datepicker").datepicker({minDate:new Date,isRTL:!1,dateFormat:"mm/dd/yy"}),$(window).on("scroll",(function(){var e=$(window).scrollTop();e>600&&$(".go-top").addClass("active"),e<600&&$(".go-top").removeClass("active")})),$(".go-top").on("click",(function(){$("html, body").animate({scrollTop:"0"},500)})),$(".testimonial-slider").length&&$(".testimonial-slider").length&&("ar"==$(".curruntLanguage").val()?($(".slick-slider").slick({slidesToShow:4,infinite:!0,slidesToScroll:1,autoplay:!1,autoplaySpeed:1500,dots:!0,rtl:!0,arrows:!1,responsive:[{breakpoint:1400,settings:{slidesToShow:3,slidesToScroll:1}},{breakpoint:992,settings:{slidesToShow:2,slidesToScroll:1}},{breakpoint:480,settings:{slidesToShow:1,slidesToScroll:1}}]}),$(".testimonial-slider").slick({slidesToShow:1,infinite:!0,slidesToScroll:1,autoplaySpeed:1500,rtl:!0,dots:!0,arrows:!0,prevArrow:'<span class="prev-arrow"><i class="fas fa-chevron-left fs-5"></i></span>',nextArrow:'<span class="next-arrow"><i class="fas fa-chevron-right fs-5"></i></span>',responsive:[{breakpoint:767,settings:{arrows:!1}}]})):($(".slick-slider").slick({slidesToShow:4,infinite:!0,slidesToScroll:1,autoplay:!1,autoplaySpeed:1500,dots:!0,arrows:!1,responsive:[{breakpoint:1400,settings:{slidesToShow:3,slidesToScroll:1}},{breakpoint:992,settings:{slidesToShow:2,slidesToScroll:1}},{breakpoint:480,settings:{slidesToShow:1,slidesToScroll:1}}]}),$(".testimonial-slider").slick({slidesToShow:1,infinite:!0,slidesToScroll:1,autoplaySpeed:1500,dots:!0,arrows:!0,prevArrow:'<span class="prev-arrow"><i class="fas fa-chevron-left fs-5"></i></span>',nextArrow:'<span class="next-arrow"><i class="fas fa-chevron-right fs-5"></i></span>',responsive:[{breakpoint:767,settings:{arrows:!1}}]})))})),(()=>{"use strict";var e,t;document.addEventListener("DOMContentLoaded",(function(){if(!$("#webAppointmentFormSubmit").length)return;$("#customFieldDate").val();var a=$("#customFieldDateTime").val();if($("#customFieldDate").datepicker({format:"Y-m-d",useCurrent:!1,sideBySide:!0,minDate:a||new Date}),$("#customFieldDateTime").flatpickr({format:"Y-m-d H:i",enableTime:!0,locale:$(".userCurrentLanguage").val(),defaultDate:a||new Date,onOpen:function(e,t,n){var a=n.calendarContainer;a.classList.add("custom-calendar");var o=a.querySelector(".flatpickr-day.today");o&&o.classList.add("selected")}}),$(".custom-field-select").selectize(),$(".custom-field-multi-select").selectize(),!$("#opdDate").length)return;$("#advancePaymentPatientId").selectize(),$("#webDepartmentId").selectize(),$("#appointmentDoctorId").selectize(),$("#appointmentPaymentModeId").selectize();var o=$("#doctor").val();Lang.setLocale($(".userCurrentLanguage").val());var r,d=$("#opdDate").datepicker({useCurrent:!1,sideBySide:!0,isRTL:!1,minDate:new Date,onSelect:function(a,o){var l=a;if(a,$(".doctor-schedule").css("display","none"),$(".error-message").css("display","none"),$(".available-slot-heading").css("display","none"),$(".color-information").css("display","none"),$(".time-slot").remove(),""==$("#webDepartmentId").val())return $("#validationErrorsBox").show().html(Lang.get("js.please_select_doctor_department")),$("#validationErrorsBox").delay(5e3).fadeOut(),$("#opdDate").val(""),!1;if(""==$("#appointmentDoctorId").val())return $("#validationErrorsBox").show().html(Lang.get("js.please_select_doctor")),$("#validationErrorsBox").delay(5e3).fadeOut(),$("#opdDate").val(""),!1;new Date(a);var d,c=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][$(this).datepicker("getDate").getDay()];if(a=o,null==c||""==c)return!1;if($.ajax({type:"GET",url:$("#homeDoctorScheduleList").val(),data:{day_name:c,doctor_id:n,date:moment(new Date(l)).format("YYYY-MM-DD")},success:function(t){if(t.success&&""!=t.data)if(0!=t.data.scheduleDay.length&&0==t.data.doctorHoliday.length){var n="";moment(new Date).format("MM/DD/YYYY")===l?(n=moment().ceil(moment.duration(t.data.perPatientTime[0].per_patient_time).asMinutes(),"minute"),n=moment(n.toString()).format("H:mm:ss")):n=t.data.scheduleDay[0].available_from;var o=a+" "+n,r=a+" "+t.data.scheduleDay[0].available_to,c=t.data.perPatientTime[0].per_patient_time.split(":"),p=60*+c[0]+ +c[1],u=i(o),f=i(r);if(e=s(u,f,p),null!=t.data.doctorBreak)for(var m=0;m<t.data.doctorBreak.length;++m){var g=i(a+" "+t.data.doctorBreak[m].break_from),h=i(a+" "+t.data.doctorBreak[m].break_to);d=s(g,h,1),e=e.filter((function(e){return!d.includes(e)}))}if(e.length>0){var v;$(".available-slot-heading").css("display","block"),$(".color-information").css("display","block");var w="";for(v=0;v<e.length;++v){var y=[{index:v,timeSlot:e[v]}];w+=prepareTemplateRender("#appointmentSlotTemplate",y)}$(".available-slot").append(w)}"00:00:00"!=n&&"00:00:00"!=t.data.scheduleDay[0].available_to&&o!=r?($(".doctor-schedule").css("display","block"),$(".color-information").css("display","block"),$(".day-name").html(Lang.get("js."+t.data.scheduleDay[0].available_on)),$(".schedule-time").html("["+n+" - "+t.data.scheduleDay[0].available_to+"]")):($(".doctor-schedule").css("display","none"),$(".color-information").css("display","none"),$(".error-message").css("display","block"),$(".error-message").html(Lang.get("js.doctor_schedule_not_available_on_this_date")))}else $(".doctor-schedule").css("display","none"),$(".color-information").css("display","none"),$(".error-message").css("display","block"),$(".error-message").html(Lang.get("js.doctor_schedule_not_available_on_this_date"))},error:function(e){displayErrorMessage(e.responseJSON.message)}}),$("#homeIsCreate").val()||$("#homeIsEdit").val()){setTimeout((function(){p=$("#homeIsCreate").val()?{editSelectedDate:moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"),doctor_id:n}:{editSelectedDate:moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"),editId:appointmentEditId,doctor_id:n},$.ajax({url:$("#homeGetBookingSlot").val(),type:"GET",data:p,success:function(n){t=n.data.bookingSlotArr,n.data.hasOwnProperty("onlyTime")?(n.data.bookingSlotArr.length>0&&(r=n.data.onlyTime.toString(),$.each(n.data.bookingSlotArr,(function(t,n){$.each(e,(function(e,t){n==t&&$(".time-interval").each((function(){$(this).data("id")==e&&$(this).html()!=r&&($(this).parent().css({"background-color":"#ffa721",border:"1px solid #ffa721",color:"#ffffff"}),$(this).parent().addClass("booked"),$(this).parent().children().prop("disabled",!0))}))}))}))),$(".time-interval").each((function(){$(this).html()==r&&n.data.bookingSlotArr.length>0&&($(this).parent().addClass("time-slot-book"),$(this).parent().removeClass("booked"),$(this).parent().children().prop("disabled",!1),$(this).click())}))):t.length>0&&$.each(t,(function(t,n){$.each(e,(function(e,t){n===t&&$(".time-interval").each((function(){$(this).data("id")===e&&($(this).parent().addClass("time-slot-book"),$(".time-slot-book").css({"background-color":"#FF8E4B",border:"1px solid #FF8E4B",color:"#ffffff"}),$(this).parent().addClass("booked"),$(this).parent().children().prop("disabled",!0))}))}))}))}})}),200);var p=null}}});$("#homeIsEdit").val()&&($("#appointmentDoctorId").trigger("change",(function(e){n=$(this).val()})),$("#opdDate").trigger("dp.change",(function(){new Date($(this).val())})));if($(".old-patient-email").focusout((function(){var e=$(".old-patient-email").val();l&&""!=e&&$.ajax({url:"appointments/"+e+"/patient-detail",type:"get",success:function(e){null!=e.data?($("#patient").empty(),$.each(e.data,(function(e,t){$("#patientName").val(t),$("#patient").val(e)}))):displayErrorMessage(Lang.get("js.patient_not_exists_or_status_is_not_active"))}})})),!$("#appointmentDate").val())return;var c=$("#appointmentDate").val();null!==c&&function(){if(d.datepicker("setDate",c),null!==d){Date;var a=d,l=c;$(".doctor-schedule").css("display","none"),$(".error-message").css("display","none"),$(".available-slot-heading").css("display","none"),$(".color-information").css("display","none"),$(".time-slot").remove();var p,u=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],f=(new Date(l),u[d.datepicker("getDate").getDay()]);if(l=a,null==f||""==f)return!1;if($.ajax({type:"GET",url:$("#homeDoctorScheduleList").val(),data:{day_name:f,doctor_id:o,date:moment(new Date(c)).format("YYYY-MM-DD")},success:function(t){if(t.success&&""!=t.data)if(0!=t.data.scheduleDay.length&&0==t.data.doctorHoliday.length){var n="";moment(new Date).format("MM/DD/YYYY")===c?(n=moment().ceil(moment.duration(t.data.perPatientTime[0].per_patient_time).asMinutes(),"minute"),n=moment(n.toString()).format("H:mm:ss")):n=t.data.scheduleDay[0].available_from;var a=l+" "+n,o=l+" "+t.data.scheduleDay[0].available_to,r=t.data.perPatientTime[0].per_patient_time.split(":"),d=60*+r[0]+ +r[1],u=i(a),f=i(o);if(e=s(u,f,d),null!=t.data.doctorBreak)for(var m=0;m<t.data.doctorBreak.length;++m){var g=i(l+" "+t.data.doctorBreak[m].break_from),h=i(l+" "+t.data.doctorBreak[m].break_to);p=s(g,h,1),e=e.filter((function(e){return!p.includes(e)}))}if(e.length>0){var v;$(".available-slot-heading").css("display","block"),$(".color-information").css("display","block");var w="";for(v=0;v<e.length;++v){var y=[{index:v,timeSlot:e[v]}];w+=prepareTemplateRender("#appointmentSlotTemplate",y)}$(".available-slot").append(w)}"00:00:00"!=n&&"00:00:00"!=t.data.scheduleDay[0].available_to&&a!=o?($(".doctor-schedule").css("display","block"),$(".color-information").css("display","block"),$(".day-name").html(Lang.get("js."+t.data.scheduleDay[0].available_on)),$(".schedule-time").html("["+n+" - "+t.data.scheduleDay[0].available_to+"]")):($(".doctor-schedule").css("display","none"),$(".color-information").css("display","none"),$(".error-message").css("display","block"),$(".error-message").html(Lang.get("js.doctor_schedule_not_available_on_this_date")))}else $(".doctor-schedule").css("display","none"),$(".color-information").css("display","none"),$(".error-message").css("display","block"),$(".error-message").html(Lang.get("js.doctor_schedule_not_available_on_this_date"))}}),$("#homeIsCreate").val()||$("#homeIsEdit").val()){setTimeout((function(){m=$("#homeIsCreate").val()?{editSelectedDate:moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"),doctor_id:n}:{editSelectedDate:moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"),editId:appointmentEditId,doctor_id:n},$.ajax({url:$("#homeGetBookingSlot").val(),type:"GET",data:m,success:function(n){t=n.data.bookingSlotArr,n.data.hasOwnProperty("onlyTime")?(n.data.bookingSlotArr.length>0&&(r=n.data.onlyTime.toString(),$.each(n.data.bookingSlotArr,(function(t,n){$.each(e,(function(e,t){n==t&&$(".time-interval").each((function(){$(this).data("id")==e&&$(this).html()!=r&&($(this).parent().css({"background-color":"#ffa721",border:"1px solid #ffa721",color:"#ffffff"}),$(this).parent().addClass("booked"),$(this).parent().children().prop("disabled",!0))}))}))}))),$(".time-interval").each((function(){$(this).html()==r&&n.data.bookingSlotArr.length>0&&($(this).parent().addClass("time-slot-book"),$(this).parent().removeClass("booked"),$(this).parent().children().prop("disabled",!1),$(this).click())}))):t.length>0&&$.each(t,(function(t,n){$.each(e,(function(e,t){n===t&&$(".time-interval").each((function(){$(this).data("id")===e&&($(this).parent().addClass("time-slot-book"),$(".time-slot-book").css({"background-color":"#FF8E4B",border:"1px solid #FF8E4B",color:"#ffffff"}),$(this).parent().addClass("booked"),$(this).parent().children().prop("disabled",!0))}))}))}))}})}),200);var m=null}}}()})),Lang.setLocale($(".userCurrentLanguage").val()),$("#patientId").first().focus();var n,a,o=$("#doctor").val(),r=($("#appointmentDate").val(),!1);function i(e){var t=new Date;return t.setHours(e.substring(16,18)),t.setMinutes(e.substring(19,21)),t}function s(e,t,n){var a=[];if(new Date>$("#opdDate").datepicker("getDate")&&(new Date).getTime()>t.getTime())return a;if(new Date>new Date($("#appointmentDate").val())&&(new Date).getTime()>t.getTime())return a;for(;e<t;)a.push(e.toTimeString().substring(0,5)),e.setMinutes(e.getMinutes()+n);return a}listenChange("#webDepartmentId",(function(){$(".error-message").css("display","none"),$("#appointmentDoctorId")[0].selectize.clearOptions(),$("#opdDate").val(""),$.ajax({url:$("#homeDoctorDepartmentUrl").val(),type:"get",dataType:"json",data:{id:$(this).val()},success:function(e){$("#appointmentDoctorId").empty(),$("#appointmentDoctorId").append($('<option value="">Select Doctor</option>')),$.each(e.data,(function(e,t){$("#appointmentDoctorId").append($("<option></option>").attr("value",e).text(t))}));var t=$(document.getElementById("appointmentDoctorId")).selectize()[0].selectize;$.each(e.data,(function(e,n){t.addOption({value:e,text:n})})),t.refreshOptions()}})})),listenChange("#appointmentDoctorId",(function(){r&&($(".error-message").css("display","none"),$("#opdDate").val(""),$(".doctor-schedule").css("display","none"),$(".error-message").css("display","none"),$(".available-slot-heading").css("display","none"),$(".color-information").css("display","none"),$(".time-slot").remove(),r=!0),$(".error-message").css("display","none"),n=$(this).val(),r=!0})),listenClick(".time-interval",(function(e){var t=$(e.currentTarget).attr("data-id");$(this).data("id")==t&&$(this).parent().hasClass("booked")&&$(".time-slot-book").css("background-color","#ffa0a0"),a=$(this).text(),$(".time-slot").removeClass("time-slot-book"),$(this).parent().addClass("time-slot-book")})),listenClick(".time-interval",(function(){$(this).text()}));var l=!1;function d(){$("#webAppointmentBtnSave").prop("disabled",!1)}listenChange(".new-patient-radio",(function(){$(this).is(":checked")&&($(".old-patient").addClass("d-none"),$(".first-name-div").removeClass("d-none"),$(".last-name-div").removeClass("d-none"),$(".gender-div").removeClass("d-none"),$(".password-div").removeClass("d-none"),$(".confirm-password-div").removeClass("d-none"),$(".appointment-slot").removeClass("d-none"),$("#firstName").prop("required",!0),$("#lastName").prop("required",!0),$("#password").prop("required",!0),$("#confirmPassword").prop("required",!0),l=!1)})),listenChange(".old-patient-radio",(function(){$(this).is(":checked")&&($(".old-patient").removeClass("d-none"),$(".first-name-div").addClass("d-none"),$(".last-name-div").addClass("d-none"),$(".gender-div").addClass("d-none"),$(".password-div").addClass("d-none"),$(".confirm-password-div").addClass("d-none"),$(".appointment-slot").removeClass("d-none"),$("#firstName").prop("required",!1),$("#lastName").prop("required",!1),$("#password").prop("required",!1),$("#confirmPassword").prop("required",!1),l=!0)})),$.ajax({url:$("#homeDoctorUrl").val(),type:"get",dataType:"json",data:{id:o},success:function(e){$("#appointmentDoctorId").empty();var t=$(document.getElementById("appointmentDoctorId")).selectize()[0].selectize;$.each(e.data,(function(e,n){t.addOption({value:e,text:n}),t.setValue(e)}))}}),listenChange("#appointmentDoctorId",(function(){$("#appointmentCharge").empty(),$.ajax({url:$(".webDoctorChargeUrl").val(),type:"get",dataType:"json",data:{id:$(this).val()},success:function(e){0!=e.data&&null!=e.data&&""!=e.data&&($(".web-appointment-charge").removeClass("d-none"),$("#appointmentCharge").val(e.data),$(".paymentType").removeClass("d-none"),$(".paymentMode").removeClass("d-none"),$("#appointmentPaymentModeId").prop("required",!0)),0!=e.data&&null!=e.data||($(".web-appointment-charge").addClass("d-none"),$("#appointmentCharge").val(""),$(".paymentType").addClass("d-none"))}})})),listenSubmit("#webAppointmentFormSubmit",(function(e){if((e.preventDefault(),!l)&&!function(){var e=$("#password").val(),t=$("#confirmPassword").val();if(""==e||""==t)return displayErrorMessage(Lang.get("js.please_fill_all_the_required_fields")),d(),!1;if(e!==t)return displayErrorMessage(Lang.get("js.password_and_confirm_password_not_match")),d(),!1;return!0}())return!1;if($(".dynamic-field").each((function(){var e=$(this).val(),t=$(this).closest(".appointment-form__input-block").find("label").text().replace(":","").trim();if($(this).is(':input[type="text"], :input[type="number"], textarea')){if(!e||""===e.trim())return displayErrorMessage(t+" "+Lang.get("js.field_required")),!1,d(),!1}else if($(this).is(':input[type="toggle"]')){if(!$(this).is(":checked"))return displayErrorMessage(t+" "+Lang.get("js.field_required")),!1,d(),!1}else if($(this).is("select")&&!e&&0===$(this).val().length&&""===e.trim())return displayErrorMessage(t+" "+Lang.get("js.field_required")),!1,d(),!1})),null==a||""===a)return displayErrorMessage(Lang.get("js.please_select_appointment_time_slot")),d(),!1;$("#opdDate").val(moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY")),$("#webAppointmentBtnSave").prop("disabled",!0);var t=$(this).serialize()+"&time="+a;$.ajax({url:$("#homeAppointmentSaveUrl").val(),type:"POST",dataType:"json",data:t,success:function(e){if(null==e.data)displaySuccessMessage(Lang.get("js.appointment")+" "+Lang.get("js.saved_successfully")),setTimeout((function(){window.location.href=$(".backUrl").val()}),5e3);else if(e.data&&e.data.payment_type)if(3==e.data.payment_type){var t=e.data[0].sessionId;stripe.redirectToCheckout({sessionId:t}).then((function(e){return manageAjaxErrors(e)}))}else if("4"==e.data.payment_type){var n=e.data.appointment_id,a=$("#webAppointmentFormSubmit").serialize()+"&appointment_id="+n;$.ajax({url:$("#webAppointmentRazorpayInit").val(),type:"POST",data:a,processData:!1,success:function(e){e.success&&(options.order_id=e.data.id,options.appointment_id=e.data.appointment_id,options.amount=e.data.amount,options.payment_mode=e.data.payment_mode,new Razorpay(options).open())},error:function(e){displayErrorMessage(e.responseJSON.message),setTimeout((function(){window.location.href=$(".webAppointmentIndexPage").val()}),2e3)}})}else"5"==e.data.payment_type?$.ajax({type:"GET",url:$("#webAppointmentPaypal").val(),data:{appointment_id:e.data.appointment_id,payment_type:e.data.payment_type,amount:e.data.amount},success:function(e){e.url&&(window.location.href=e.url)},error:function(e){displayErrorMessage(e.responseJSON.message)},complete:function(){}}):8==e.data.payment_type?null!=e.data.url&&(window.location.href=e.data.url):7==e.data.payment_type&&null!=e.data.url&&(window.location.href=e.data.url);else null!=e.data.payStackData&&9==e.data.payStackData.payment_type&&window.location.replace(route("appointment.paystack.init",{data:e.data.payStackData}))},error:function(e){displayErrorMessage(Lang.get("js.old_patient_email_exists")),$("#webAppointmentFormSubmit")[0].reset(),$(".appointment-slot").addClass("d-none")}})}))})(),document.addEventListener("DOMContentLoaded",(function(){if(Lang.setLocale($(".userCurrentLanguage").val()),$(".phoneNumber").length){var e=document.querySelector(".phoneNumber"),t=document.querySelector(".error-msg"),n=document.querySelector(".valid-msg"),a=[Lang.get("js.invalid_number"),Lang.get("js.invalid_country_code"),Lang.get("js.too_short"),Lang.get("js.too_long"),Lang.get("js.invalid_number")],o=window.intlTelInput(e,{initialCountry:"auto",separateDialCode:!0,geoIpLookup:function(e){$.get("https://ipinfo.io",(function(){}),"jsonp").always((function(t){var n=t&&t.country?t.country:"in";e(n)}))},utilsScript:$(".utilsScript").val()});e.addEventListener("blur",(function(){if(i(),e.value.trim())if(o.isValidNumber())n.classList.remove("d-none");else{e.classList.add("error");var r=o.getValidationError();(r<0||r>=a.length)&&(r=0),t.innerHTML=a[r],t.classList.remove("d-none")}s()})),e.addEventListener("change",i),e.addEventListener("keyup",i),e.addEventListener("keyup",s),e.addEventListener("change",s),e.addEventListener("countrychange",s),setTimeout((function(){s()}),300),$("form").on("submit",(function(){s()}));var r=$(".phoneNumber").val();r&&$(".phoneNumber").val(r.replace(/\s/g,""))}function i(){e.classList.remove("error"),t.innerHTML="",t.classList.add("d-none"),n.classList.add("d-none")}function s(){var e=o.getSelectedCountryData();e&&e.dialCode&&$(".prefix_code").val("+"+e.dialCode)}})),document.addEventListener("DOMContentLoaded",(function(){if(Lang.setLocale($(".userCurrentLanguage").val()),$("#contactUsGeneral").length)return!!$(".phoneNumber").length&&($("#contactUsGeneral").selectize(),void($("#g-recaptcha").length&&grecaptcha.render("g-recaptcha",{sitekey:$("#adminRecaptcha").val()})))})),listenSubmit("#enquiryCreateForm",(function(e){if(e.preventDefault(),""!==$(".error-msg").text())return $(".phoneNumber").focus(),!1;$.ajax({url:$("#frontInquiryUrl").val(),type:"POST",data:$(this).serialize(),success:function(e){e.success?(displaySuccessMessage(e.message),setTimeout((function(){$("#enquiryCreateForm")[0].reset(),$(".error-msg").addClass("d-none"),$(".valid-msg").addClass("d-none"),$("#contactUsGeneral").selectize()[0].selectize.setValue(1,!0),grecaptcha.reset()}),5e3)):(displayErrorMessage(e.message),setTimeout((function(){$("#enquiryCreateForm")[0].reset(),$(".contactUsGeneral").val(1).trigger("change"),grecaptcha.reset()}),5e3))},error:function(e){displayErrorMessage(e.responseJSON.message),grecaptcha.reset()},complete:function(){}})}))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/jsrender/jsrender.js":
+/*!*******************************************!*\
+  !*** ./node_modules/jsrender/jsrender.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+/*! JsRender v1.0.7: http://jsviews.com/#jsrender */
+/*! **VERSION FOR WEB** (For NODE.JS see http://jsviews.com/download/jsrender-node.js) */
+/*
+ * Best-of-breed templating in browser or on Node.js.
+ * Does not require jQuery, or HTML DOM
+ * Integrates with JsViews (http://jsviews.com/#jsviews)
+ *
+ * Copyright 2020, Boris Moore
+ * Released under the MIT License.
+ */
+
+//jshint -W018, -W041, -W120
+
+(function(factory, global) {
+	// global var is the this object, which is window when running in the usual browser environment
+	var $ = global.jQuery;
+
+	if (true) { // CommonJS e.g. Browserify
+		module.exports = $
+			? factory(global, $)
+			: function($) { // If no global jQuery, take optional jQuery passed as parameter: require('jsrender')(jQuery)
+				if ($ && !$.fn) {
+					throw "Provide jQuery or null";
+				}
+				return factory(global, $);
+			};
+	} else {}
+} (
+
+// factory (for jsrender.js)
+function(global, $) {
+"use strict";
+
+//========================== Top-level vars ==========================
+
+// global var is the this object, which is window when running in the usual browser environment
+var setGlobals = $ === false; // Only set globals if script block in browser (not AMD and not CommonJS)
+
+$ = $ && $.fn ? $ : global.jQuery; // $ is jQuery passed in by CommonJS loader (Browserify), or global jQuery.
+
+var versionNumber = "v1.0.7",
+	jsvStoreName, rTag, rTmplString, topView, $views, $expando,
+	_ocp = "_ocp",      // Observable contextual parameter
+
+	$isFunction, $isArray, $templates, $converters, $helpers, $tags, $sub, $subSettings, $subSettingsAdvanced, $viewsSettings,
+	delimOpenChar0, delimOpenChar1, delimCloseChar0, delimCloseChar1, linkChar, setting, baseOnError,
+
+	isRenderCall,
+	rNewLine = /[ \t]*(\r\n|\n|\r)/g,
+	rUnescapeQuotes = /\\(['"\\])/g, // Unescape quotes and trim
+	rEscapeQuotes = /['"\\]/g, // Escape quotes and \ character
+	rBuildHash = /(?:\x08|^)(onerror:)?(?:(~?)(([\w$.]+):)?([^\x08]+))\x08(,)?([^\x08]+)/gi,
+	rTestElseIf = /^if\s/,
+	rFirstElem = /<(\w+)[>\s]/,
+	rAttrEncode = /[\x00`><"'&=]/g, // Includes > encoding since rConvertMarkers in JsViews does not skip > characters in attribute strings
+	rIsHtml = /[\x00`><\"'&=]/,
+	rHasHandlers = /^on[A-Z]|^convert(Back)?$/,
+	rWrappedInViewMarker = /^\#\d+_`[\s\S]*\/\d+_`$/,
+	rHtmlEncode = rAttrEncode,
+	rDataEncode = /[&<>]/g,
+	rDataUnencode = /&(amp|gt|lt);/g,
+	rBracketQuote = /\[['"]?|['"]?\]/g,
+	viewId = 0,
+	charEntities = {
+		"&": "&amp;",
+		"<": "&lt;",
+		">": "&gt;",
+		"\x00": "&#0;",
+		"'": "&#39;",
+		'"': "&#34;",
+		"`": "&#96;",
+		"=": "&#61;"
+	},
+	charsFromEntities = {
+		amp: "&",
+		gt: ">",
+		lt: "<"
+	},
+	HTML = "html",
+	OBJECT = "object",
+	tmplAttr = "data-jsv-tmpl",
+	jsvTmpl = "jsvTmpl",
+	indexStr = "For #index in nested block use #getIndex().",
+	cpFnStore = {},     // Compiled furnctions for computed values in template expressions (properties, methods, helpers)
+	$render = {},
+
+	jsr = global.jsrender,
+	jsrToJq = jsr && $ && !$.render, // JsRender already loaded, without jQuery. but we will re-load it now to attach to jQuery
+
+	jsvStores = {
+		template: {
+			compile: compileTmpl
+		},
+		tag: {
+			compile: compileTag
+		},
+		viewModel: {
+			compile: compileViewModel
+		},
+		helper: {},
+		converter: {}
+	};
+
+	// views object ($.views if jQuery is loaded, jsrender.views if no jQuery, e.g. in Node.js)
+	$views = {
+		jsviews: versionNumber,
+		sub: {
+			// subscription, e.g. JsViews integration
+			rPath: /^(!*?)(?:null|true|false|\d[\d.]*|([\w$]+|\.|~([\w$]+)|#(view|([\w$]+))?)([\w$.^]*?)(?:[.[^]([\w$]+)\]?)?)$/g,
+			//        not                               object     helper    view  viewProperty pathTokens      leafToken
+
+			rPrm: /(\()(?=\s*\()|(?:([([])\s*)?(?:(\^?)(~?[\w$.^]+)?\s*((\+\+|--)|\+|-|~(?![\w$])|&&|\|\||===|!==|==|!=|<=|>=|[<>%*:?\/]|(=))\s*|(!*?(@)?[#~]?[\w$.^]+)([([])?)|(,\s*)|(?:(\()\s*)?\\?(?:(')|("))|(?:\s*(([)\]])(?=[.^]|\s*$|[^([])|[)\]])([([]?))|(\s+)/g,
+			//   lftPrn0           lftPrn         bound     path               operator     err                                          eq      path2 late            prn      comma  lftPrn2          apos quot        rtPrn  rtPrnDot                  prn2     space
+
+			View: View,
+			Err: JsViewsError,
+			tmplFn: tmplFn,
+			parse: parseParams,
+			extend: $extend,
+			extendCtx: extendCtx,
+			syntaxErr: syntaxError,
+			onStore: {
+				template: function(name, item) {
+					if (item === null) {
+						delete $render[name];
+					} else if (name) {
+						$render[name] = item;
+					}
+				}
+			},
+			addSetting: addSetting,
+			settings: {
+				allowCode: false
+			},
+			advSet: noop, // Update advanced settings
+			_thp: tagHandlersFromProps,
+			_gm: getMethod,
+			_tg: function() {}, // Constructor for tagDef
+			_cnvt: convertVal,
+			_tag: renderTag,
+			_er: error,
+			_err: onRenderError,
+			_cp: retVal, // Get observable contextual parameters (or properties) ~foo=expr. In JsRender, simply returns val.
+			_sq: function(token) {
+				if (token === "constructor") {
+					syntaxError("");
+				}
+				return token;
+			}
+		},
+		settings: {
+			delimiters: $viewsDelimiters,
+			advanced: function(value) {
+				return value
+					? (
+							$extend($subSettingsAdvanced, value),
+							$sub.advSet(),
+							$viewsSettings
+						)
+						: $subSettingsAdvanced;
+				}
+		},
+		map: dataMap // If jsObservable loaded first, use that definition of dataMap
+	};
+
+function getDerivedMethod(baseMethod, method) {
+	return function() {
+		var ret,
+			tag = this,
+			prevBase = tag.base;
+
+		tag.base = baseMethod; // Within method call, calling this.base will call the base method
+		ret = method.apply(tag, arguments); // Call the method
+		tag.base = prevBase; // Replace this.base to be the base method of the previous call, for chained calls
+		return ret;
+	};
+}
+
+function getMethod(baseMethod, method) {
+	// For derived methods (or handlers declared declaratively as in {{:foo onChange=~fooChanged}} replace by a derived method, to allow using this.base(...)
+	// or this.baseApply(arguments) to call the base implementation. (Equivalent to this._super(...) and this._superApply(arguments) in jQuery UI)
+	if ($isFunction(method)) {
+		method = getDerivedMethod(
+				!baseMethod
+					? noop // no base method implementation, so use noop as base method
+					: baseMethod._d
+						? baseMethod // baseMethod is a derived method, so use it
+						: getDerivedMethod(noop, baseMethod), // baseMethod is not derived so make its base method be the noop method
+				method
+			);
+		method._d = (baseMethod && baseMethod._d || 0) + 1; // Add flag for derived method (incremented for derived of derived...)
+	}
+	return method;
+}
+
+function tagHandlersFromProps(tag, tagCtx) {
+	var prop,
+		props = tagCtx.props;
+	for (prop in props) {
+		if (rHasHandlers.test(prop) && !(tag[prop] && tag[prop].fix)) { // Don't override handlers with fix expando (used in datepicker and spinner)
+			tag[prop] = prop !== "convert" ? getMethod(tag.constructor.prototype[prop], props[prop]) : props[prop];
+			// Copy over the onFoo props, convert and convertBack from tagCtx.props to tag (overrides values in tagDef).
+			// Note: unsupported scenario: if handlers are dynamically added ^onFoo=expression this will work, but dynamically removing will not work.
+		}
+	}
+}
+
+function retVal(val) {
+	return val;
+}
+
+function noop() {
+	return "";
+}
+
+function dbgBreak(val) {
+	// Usage examples: {{dbg:...}}, {{:~dbg(...)}}, {{dbg .../}}, {^{for ... onAfterLink=~dbg}} etc.
+	try {
+		console.log("JsRender dbg breakpoint: " + val);
+		throw "dbg breakpoint"; // To break here, stop on caught exceptions.
+	}
+	catch (e) {}
+	return this.base ? this.baseApply(arguments) : val;
+}
+
+function JsViewsError(message) {
+	// Error exception type for JsViews/JsRender
+	// Override of $.views.sub.Error is possible
+	this.name = ($.link ? "JsViews" : "JsRender") + " Error";
+	this.message = message || this.name;
+}
+
+function $extend(target, source) {
+	if (target) {
+		for (var name in source) {
+			target[name] = source[name];
+		}
+		return target;
+	}
+}
+
+(JsViewsError.prototype = new Error()).constructor = JsViewsError;
+
+//========================== Top-level functions ==========================
+
+//===================
+// views.delimiters
+//===================
+
+	/**
+	* Set the tag opening and closing delimiters and 'link' character. Default is "{{", "}}" and "^"
+	* openChars, closeChars: opening and closing strings, each with two characters
+	* $.views.settings.delimiters(...)
+	*
+	* @param {string}   openChars
+	* @param {string}   [closeChars]
+	* @param {string}   [link]
+	* @returns {Settings}
+	*
+	* Get delimiters
+	* delimsArray = $.views.settings.delimiters()
+	*
+	* @returns {string[]}
+	*/
+function $viewsDelimiters(openChars, closeChars, link) {
+	if (!openChars) {
+		return $subSettings.delimiters;
+	}
+	if ($isArray(openChars)) {
+		return $viewsDelimiters.apply($views, openChars);
+	}
+	linkChar = link ? link[0] : linkChar;
+	if (!/^(\W|_){5}$/.test(openChars + closeChars + linkChar)) {
+		error("Invalid delimiters"); // Must be non-word characters, and openChars and closeChars must each be length 2
+	}
+	delimOpenChar0 = openChars[0];
+	delimOpenChar1 = openChars[1];
+	delimCloseChar0 = closeChars[0];
+	delimCloseChar1 = closeChars[1];
+
+	$subSettings.delimiters = [delimOpenChar0 + delimOpenChar1, delimCloseChar0 + delimCloseChar1, linkChar];
+
+	// Escape the characters - since they could be regex special characters
+	openChars = "\\" + delimOpenChar0 + "(\\" + linkChar + ")?\\" + delimOpenChar1; // Default is "{^{"
+	closeChars = "\\" + delimCloseChar0 + "\\" + delimCloseChar1;                   // Default is "}}"
+	// Build regex with new delimiters
+	//          [tag    (followed by / space or })  or cvtr+colon or html or code] followed by space+params then convertBack?
+	rTag = "(?:(\\w+(?=[\\/\\s\\" + delimCloseChar0 + "]))|(\\w+)?(:)|(>)|(\\*))\\s*((?:[^\\"
+		+ delimCloseChar0 + "]|\\" + delimCloseChar0 + "(?!\\" + delimCloseChar1 + "))*?)";
+
+	// Make rTag available to JsViews (or other components) for parsing binding expressions
+	$sub.rTag = "(?:" + rTag + ")";
+	//                        { ^? {   tag+params slash?  or closingTag                                                   or comment
+	rTag = new RegExp("(?:" + openChars + rTag + "(\\/)?|\\" + delimOpenChar0 + "(\\" + linkChar + ")?\\" + delimOpenChar1 + "(?:(?:\\/(\\w+))\\s*|!--[\\s\\S]*?--))" + closeChars, "g");
+
+	// Default:  bind     tagName         cvt   cln html code    params            slash   bind2         closeBlk  comment
+	//      /(?:{(\^)?{(?:(\w+(?=[\/\s}]))|(\w+)?(:)|(>)|(\*))\s*((?:[^}]|}(?!}))*?)(\/)?|{(\^)?{(?:(?:\/(\w+))\s*|!--[\s\S]*?--))}}
+
+	$sub.rTmpl = new RegExp("^\\s|\\s$|<.*>|([^\\\\]|^)[{}]|" + openChars + ".*" + closeChars);
+	// $sub.rTmpl looks for initial or final white space, html tags or { or } char not preceded by \\, or JsRender tags {{xxx}}.
+	// Each of these strings are considered NOT to be jQuery selectors
+	return $viewsSettings;
+}
+
+//=========
+// View.get
+//=========
+
+function getView(inner, type) { //view.get(inner, type)
+	if (!type && inner !== true) {
+		// view.get(type)
+		type = inner;
+		inner = undefined;
+	}
+
+	var views, i, l, found,
+		view = this,
+		root = type === "root";
+		// view.get("root") returns view.root, view.get() returns view.parent, view.get(true) returns view.views[0].
+
+	if (inner) {
+		// Go through views - this one, and all nested ones, depth-first - and return first one with given type.
+		// If type is undefined, i.e. view.get(true), return first child view.
+		found = type && view.type === type && view;
+		if (!found) {
+			views = view.views;
+			if (view._.useKey) {
+				for (i in views) {
+					if (found = type ? views[i].get(inner, type) : views[i]) {
+						break;
+					}
+				}
+			} else {
+				for (i = 0, l = views.length; !found && i < l; i++) {
+					found = type ? views[i].get(inner, type) : views[i];
+				}
+			}
+		}
+	} else if (root) {
+		// Find root view. (view whose parent is top view)
+		found = view.root;
+	} else if (type) {
+		while (view && !found) {
+			// Go through views - this one, and all parent ones - and return first one with given type.
+			found = view.type === type ? view : undefined;
+			view = view.parent;
+		}
+	} else {
+		found = view.parent;
+	}
+	return found || undefined;
+}
+
+function getNestedIndex() {
+	var view = this.get("item");
+	return view ? view.index : undefined;
+}
+
+getNestedIndex.depends = function() {
+	return [this.get("item"), "index"];
+};
+
+function getIndex() {
+	return this.index;
+}
+
+getIndex.depends = "index";
+
+//==================
+// View.ctxPrm, etc.
+//==================
+
+/* Internal private: view._getOb() */
+function getPathObject(ob, path, ltOb, fn) {
+	// Iterate through path to late paths: @a.b.c paths
+	// Return "" (or noop if leaf is a function @a.b.c(...) ) if intermediate object not yet available
+	var prevOb, tokens, l,
+		i = 0;
+	if (ltOb === 1) {
+		fn = 1;
+		ltOb = undefined;
+	}
+	// Paths like ^a^b^c or ~^a^b^c will not throw if an object in path is undefined.
+	if (path) {
+		tokens = path.split(".");
+		l = tokens.length;
+
+		for (; ob && i < l; i++) {
+			prevOb = ob;
+			ob = tokens[i] ? ob[tokens[i]] : ob;
+		}
+	}
+	if (ltOb) {
+		ltOb.lt = ltOb.lt || i<l; // If i < l there was an object in the path not yet available
+	}
+	return ob === undefined
+		? fn ? noop : ""
+		: fn ? function() {
+			return ob.apply(prevOb, arguments);
+		} : ob;
+}
+
+function contextParameter(key, value, get) {
+	// Helper method called as view.ctxPrm(key) for helpers or template parameters ~foo - from compiled template or from context callback
+	var wrapped, deps, res, obsCtxPrm, tagElse, callView, newRes,
+		storeView = this,
+		isUpdate = !isRenderCall && arguments.length > 1,
+		store = storeView.ctx;
+	if (key) {
+		if (!storeView._) { // tagCtx.ctxPrm() call
+			tagElse = storeView.index;
+			storeView = storeView.tag;
+		}
+		callView = storeView;
+		if (store && store.hasOwnProperty(key) || (store = $helpers).hasOwnProperty(key)) {
+			res = store[key];
+			if (key === "tag" || key === "tagCtx" || key === "root" || key === "parentTags") {
+				return res;
+			}
+		} else {
+			store = undefined;
+		}
+		if (!isRenderCall && storeView.tagCtx || storeView.linked) { // Data-linked view, or tag instance
+			if (!res || !res._cxp) {
+				// Not a contextual parameter
+				// Set storeView to tag (if this is a tag.ctxPrm() call) or to root view ("data" view of linked template)
+				storeView = storeView.tagCtx || $isFunction(res)
+					? storeView // Is a tag, not a view, or is a computed contextual parameter, so scope to the callView, no the 'scope view'
+					: (storeView = storeView.scope || storeView,
+						!storeView.isTop && storeView.ctx.tag // If this view is in a tag, set storeView to the tag
+							|| storeView);
+				if (res !== undefined && storeView.tagCtx) {
+					// If storeView is a tag, but the contextual parameter has been set at at higher level (e.g. helpers)...
+					storeView = storeView.tagCtx.view.scope; // then move storeView to the outer level (scope of tag container view)
+				}
+				store = storeView._ocps;
+				res = store && store.hasOwnProperty(key) && store[key] || res;
+				if (!(res && res._cxp) && (get || isUpdate)) {
+					// Create observable contextual parameter
+					(store || (storeView._ocps = storeView._ocps || {}))[key]
+						= res
+						= [{
+							_ocp: res, // The observable contextual parameter value
+							_vw: callView,
+							_key: key
+						}];
+					res._cxp = {
+						path: _ocp,
+						ind: 0,
+						updateValue: function(val, path) {
+							$.observable(res[0]).setProperty(_ocp, val); // Set the value (res[0]._ocp)
+							return this;
+						}
+					};
+				}
+			}
+			if (obsCtxPrm = res && res._cxp) {
+				// If this helper resource is an observable contextual parameter
+				if (arguments.length > 2) {
+					deps = res[1] ? $sub._ceo(res[1].deps) : [_ocp]; // fn deps (with any exprObs cloned using $sub._ceo)
+					deps.unshift(res[0]); // view
+					deps._cxp = obsCtxPrm;
+					// In a context callback for a contextual param, we set get = true, to get ctxPrm [view, dependencies...] array - needed for observe call
+					return deps;
+				}
+				tagElse = obsCtxPrm.tagElse;
+				newRes = res[1] // linkFn for compiled expression
+					? obsCtxPrm.tag && obsCtxPrm.tag.cvtArgs
+						? obsCtxPrm.tag.cvtArgs(tagElse, 1)[obsCtxPrm.ind] // = tag.bndArgs() - for tag contextual parameter
+						: res[1](res[0].data, res[0], $sub) // = fn(data, view, $sub) for compiled binding expression
+					: res[0]._ocp; // Observable contextual parameter (uninitialized, or initialized as static expression, so no path dependencies)
+				if (isUpdate) {
+					$sub._ucp(key, value, storeView, obsCtxPrm); // Update observable contextual parameter
+					return storeView;
+				}
+				res = newRes;
+			}
+		}
+		if (res && $isFunction(res)) {
+			// If a helper is of type function we will wrap it, so if called with no this pointer it will be called with the
+			// view as 'this' context. If the helper ~foo() was in a data-link expression, the view will have a 'temporary' linkCtx property too.
+			// Note that helper functions on deeper paths will have specific this pointers, from the preceding path.
+			// For example, ~util.foo() will have the ~util object as 'this' pointer
+			wrapped = function() {
+				return res.apply((!this || this === global) ? callView : this, arguments);
+			};
+			$extend(wrapped, res); // Attach same expandos (if any) to the wrapped function
+		}
+		return wrapped || res;
+	}
+}
+
+/* Internal private: view._getTmpl() */
+function getTemplate(tmpl) {
+	return tmpl && (tmpl.fn
+		? tmpl
+		: this.getRsc("templates", tmpl) || $templates(tmpl)); // not yet compiled
+}
+
+//==============
+// views._cnvt
+//==============
+
+function convertVal(converter, view, tagCtx, onError) {
+	// Called from compiled template code for {{:}}
+	// self is template object or linkCtx object
+	var tag, linkCtx, value, argsLen, bindTo,
+		// If tagCtx is an integer, then it is the key for the compiled function to return the boundTag tagCtx
+		boundTag = typeof tagCtx === "number" && view.tmpl.bnds[tagCtx-1];
+
+	if (onError === undefined && boundTag && boundTag._lr) { // lateRender
+		onError = "";
+	}
+	if (onError !== undefined) {
+		tagCtx = onError = {props: {}, args: [onError]};
+	} else if (boundTag) {
+		tagCtx = boundTag(view.data, view, $sub);
+	}
+	boundTag = boundTag._bd && boundTag;
+	if (converter || boundTag) {
+		linkCtx = view._lc; // For data-link="{cvt:...}"... See onDataLinkedTagChange
+		tag = linkCtx && linkCtx.tag;
+		tagCtx.view = view;
+		if (!tag) {
+			tag = $extend(new $sub._tg(), {
+				_: {
+					bnd: boundTag,
+					unlinked: true,
+					lt: tagCtx.lt // If a late path @some.path has not returned @some object, mark tag as late
+				},
+				inline: !linkCtx,
+				tagName: ":",
+				convert: converter,
+				onArrayChange: true,
+				flow: true,
+				tagCtx: tagCtx,
+				tagCtxs: [tagCtx],
+				_is: "tag"
+			});
+			argsLen = tagCtx.args.length;
+			if (argsLen>1) {
+				bindTo = tag.bindTo = [];
+				while (argsLen--) {
+					bindTo.unshift(argsLen); // Bind to all the arguments - generate bindTo array: [0,1,2...]
+				}
+			}
+			if (linkCtx) {
+				linkCtx.tag = tag;
+				tag.linkCtx = linkCtx;
+			}
+			tagCtx.ctx = extendCtx(tagCtx.ctx, (linkCtx ? linkCtx.view : view).ctx);
+			tagHandlersFromProps(tag, tagCtx);
+		}
+		tag._er = onError && value;
+		tag.ctx = tagCtx.ctx || tag.ctx || {};
+		tagCtx.ctx = undefined;
+		value = tag.cvtArgs()[0]; // If there is a convertBack but no convert, converter will be "true"
+		tag._er = onError && value;
+	} else {
+		value = tagCtx.args[0];
+	}
+
+	// Call onRender (used by JsViews if present, to add binding annotations around rendered content)
+	value = boundTag && view._.onRender
+		? view._.onRender(value, view, tag)
+		: value;
+	return value != undefined ? value : "";
+}
+
+function convertArgs(tagElse, bound) { // tag.cvtArgs() or tag.cvtArgs(tagElse?, true?)
+	var l, key, boundArgs, args, bindFrom, tag, converter,
+		tagCtx = this;
+
+	if (tagCtx.tagName) {
+		tag = tagCtx;
+		tagCtx = (tag.tagCtxs || [tagCtx])[tagElse||0];
+		if (!tagCtx) {
+			return;
+		}
+	} else {
+		tag = tagCtx.tag;
+	}
+
+	bindFrom = tag.bindFrom;
+	args = tagCtx.args;
+
+	if ((converter = tag.convert) && "" + converter === converter) {
+		converter = converter === "true"
+			? undefined
+			: (tagCtx.view.getRsc("converters", converter) || error("Unknown converter: '" + converter + "'"));
+	}
+
+	if (converter && !bound) { // If there is a converter, use a copy of the tagCtx.args array for rendering, and replace the args[0] in
+		args = args.slice(); // the copied array with the converted value. But we do not modify the value of tag.tagCtx.args[0] (the original args array)
+	}
+	if (bindFrom) { // Get the values of the boundArgs
+		boundArgs = [];
+		l = bindFrom.length;
+		while (l--) {
+			key = bindFrom[l];
+			boundArgs.unshift(argOrProp(tagCtx, key));
+		}
+		if (bound) {
+			args = boundArgs; // Call to bndArgs() - returns the boundArgs
+		}
+	}
+	if (converter) {
+		converter = converter.apply(tag, boundArgs || args);
+		if (converter === undefined) {
+			return args; // Returning undefined from a converter is equivalent to not having a converter.
+		}
+		bindFrom = bindFrom || [0];
+		l = bindFrom.length;
+		if (!$isArray(converter) || converter.length !== l) {
+			converter = [converter];
+			bindFrom = [0];
+			l = 1;
+		}
+		if (bound) {        // Call to bndArgs() - so apply converter to all boundArgs
+			args = converter; // The array of values returned from the converter
+		} else {            // Call to cvtArgs()
+			while (l--) {
+				key = bindFrom[l];
+				if (+key === key) {
+					args[key] = converter[l];
+				}
+			}
+		}
+	}
+	return args;
+}
+
+function argOrProp(context, key) {
+	context = context[+key === key ? "args" : "props"];
+	return context && context[key];
+}
+
+function convertBoundArgs(tagElse) { // tag.bndArgs()
+	return this.cvtArgs(tagElse, 1);
+}
+
+//=============
+// views.tag
+//=============
+
+/* view.getRsc() */
+function getResource(resourceType, itemName) {
+	var res, store,
+		view = this;
+	if ("" + itemName === itemName) {
+		while ((res === undefined) && view) {
+			store = view.tmpl && view.tmpl[resourceType];
+			res = store && store[itemName];
+			view = view.parent;
+		}
+		return res || $views[resourceType][itemName];
+	}
+}
+
+function renderTag(tagName, parentView, tmpl, tagCtxs, isUpdate, onError) {
+	function bindToOrBindFrom(type) {
+		var bindArray = tag[type];
+
+		if (bindArray !== undefined) {
+			bindArray = $isArray(bindArray) ? bindArray : [bindArray];
+			m = bindArray.length;
+			while (m--) {
+				key = bindArray[m];
+				if (!isNaN(parseInt(key))) {
+					bindArray[m] = parseInt(key); // Convert "0" to 0, etc.
+				}
+			}
+		}
+
+		return bindArray || [0];
+	}
+
+	parentView = parentView || topView;
+	var tag, tagDef, template, tags, attr, parentTag, l, m, n, itemRet, tagCtx, tagCtxCtx, ctxPrm, bindTo, bindFrom, initVal,
+		content, callInit, mapDef, thisMap, args, bdArgs, props, tagDataMap, contentCtx, key, bindFromLength, bindToLength, linkedElement, defaultCtx,
+		i = 0,
+		ret = "",
+		linkCtx = parentView._lc || false, // For data-link="{myTag...}"... See onDataLinkedTagChange
+		ctx = parentView.ctx,
+		parentTmpl = tmpl || parentView.tmpl,
+		// If tagCtxs is an integer, then it is the key for the compiled function to return the boundTag tagCtxs
+		boundTag = typeof tagCtxs === "number" && parentView.tmpl.bnds[tagCtxs-1];
+
+	if (tagName._is === "tag") {
+		tag = tagName;
+		tagName = tag.tagName;
+		tagCtxs = tag.tagCtxs;
+		template = tag.template;
+	} else {
+		tagDef = parentView.getRsc("tags", tagName) || error("Unknown tag: {{" + tagName + "}} ");
+		template = tagDef.template;
+	}
+	if (onError === undefined && boundTag && (boundTag._lr = (tagDef.lateRender && boundTag._lr!== false || boundTag._lr))) {
+		onError = ""; // If lateRender, set temporary onError, to skip initial rendering (and render just "")
+	}
+	if (onError !== undefined) {
+		ret += onError;
+		tagCtxs = onError = [{props: {}, args: [], params: {props:{}}}];
+	} else if (boundTag) {
+		tagCtxs = boundTag(parentView.data, parentView, $sub);
+	}
+
+	l = tagCtxs.length;
+	for (; i < l; i++) {
+		tagCtx = tagCtxs[i];
+		content = tagCtx.tmpl;
+		if (!linkCtx || !linkCtx.tag || i && !linkCtx.tag.inline || tag._er || content && +content===content) {
+			// Initialize tagCtx
+			// For block tags, tagCtx.tmpl is an integer > 0
+			if (content && parentTmpl.tmpls) {
+				tagCtx.tmpl = tagCtx.content = parentTmpl.tmpls[content - 1]; // Set the tmpl property to the content of the block tag
+			}
+			tagCtx.index = i;
+			tagCtx.ctxPrm = contextParameter;
+			tagCtx.render = renderContent;
+			tagCtx.cvtArgs = convertArgs;
+			tagCtx.bndArgs = convertBoundArgs;
+			tagCtx.view = parentView;
+			tagCtx.ctx = extendCtx(extendCtx(tagCtx.ctx, tagDef && tagDef.ctx), ctx); // Clone and extend parentView.ctx
+		}
+		if (tmpl = tagCtx.props.tmpl) {
+			// If the tmpl property is overridden, set the value (when initializing, or, in case of binding: ^tmpl=..., when updating)
+			tagCtx.tmpl = parentView._getTmpl(tmpl);
+			tagCtx.content = tagCtx.content || tagCtx.tmpl;
+		}
+
+		if (!tag) {
+			// This will only be hit for initial tagCtx (not for {{else}}) - if the tag instance does not exist yet
+			// If the tag has not already been instantiated, we will create a new instance.
+			// ~tag will access the tag, even within the rendering of the template content of this tag.
+			// From child/descendant tags, can access using ~tag.parent, or ~parentTags.tagName
+			tag = new tagDef._ctr();
+			callInit = !!tag.init;
+
+			tag.parent = parentTag = ctx && ctx.tag;
+			tag.tagCtxs = tagCtxs;
+
+			if (linkCtx) {
+				tag.inline = false;
+				linkCtx.tag = tag;
+			}
+			tag.linkCtx = linkCtx;
+			if (tag._.bnd = boundTag || linkCtx.fn) {
+				// Bound if {^{tag...}} or data-link="{tag...}"
+				tag._.ths = tagCtx.params.props.this; // Tag has a this=expr binding, to get javascript reference to tag instance
+				tag._.lt = tagCtxs.lt; // If a late path @some.path has not returned @some object, mark tag as late
+				tag._.arrVws = {};
+			} else if (tag.dataBoundOnly) {
+				error(tagName + " must be data-bound:\n{^{" + tagName + "}}");
+			}
+			//TODO better perf for childTags() - keep child tag.tags array, (and remove child, when disposed)
+			// tag.tags = [];
+		} else if (linkCtx && linkCtx.fn._lr) {
+			callInit = !!tag.init;
+		}
+		tagDataMap = tag.dataMap;
+
+		tagCtx.tag = tag;
+		if (tagDataMap && tagCtxs) {
+			tagCtx.map = tagCtxs[i].map; // Copy over the compiled map instance from the previous tagCtxs to the refreshed ones
+		}
+		if (!tag.flow) {
+			tagCtxCtx = tagCtx.ctx = tagCtx.ctx || {};
+
+			// tags hash: tag.ctx.tags, merged with parentView.ctx.tags,
+			tags = tag.parents = tagCtxCtx.parentTags = ctx && extendCtx(tagCtxCtx.parentTags, ctx.parentTags) || {};
+			if (parentTag) {
+				tags[parentTag.tagName] = parentTag;
+				//TODO better perf for childTags: parentTag.tags.push(tag);
+			}
+			tags[tag.tagName] = tagCtxCtx.tag = tag;
+			tagCtxCtx.tagCtx = tagCtx;
+		}
+	}
+	if (!(tag._er = onError)) {
+		tagHandlersFromProps(tag, tagCtxs[0]);
+		tag.rendering = {rndr: tag.rendering}; // Provide object for state during render calls to tag and elses. (Used by {{if}} and {{for}}...)
+		for (i = 0; i < l; i++) { // Iterate tagCtx for each {{else}} block
+			tagCtx = tag.tagCtx = tagCtxs[i];
+			props = tagCtx.props;
+			tag.ctx = tagCtx.ctx;
+
+			if (!i) {
+				if (callInit) {
+					tag.init(tagCtx, linkCtx, tag.ctx);
+					callInit = undefined;
+				}
+				if (!tagCtx.args.length && tagCtx.argDefault !== false && tag.argDefault !== false) {
+					tagCtx.args = args = [tagCtx.view.data]; // Missing first arg defaults to the current data context
+					tagCtx.params.args = ["#data"];
+				}
+
+				bindTo = bindToOrBindFrom("bindTo");
+
+				if (tag.bindTo !== undefined) {
+					tag.bindTo = bindTo;
+				}
+
+				if (tag.bindFrom !== undefined) {
+					tag.bindFrom = bindToOrBindFrom("bindFrom");
+				} else if (tag.bindTo) {
+					tag.bindFrom = tag.bindTo = bindTo;
+				}
+				bindFrom = tag.bindFrom || bindTo;
+
+				bindToLength = bindTo.length;
+				bindFromLength = bindFrom.length;
+
+				if (tag._.bnd && (linkedElement = tag.linkedElement)) {
+					tag.linkedElement = linkedElement = $isArray(linkedElement) ? linkedElement: [linkedElement];
+
+					if (bindToLength !== linkedElement.length) {
+						error("linkedElement not same length as bindTo");
+					}
+				}
+				if (linkedElement = tag.linkedCtxParam) {
+					tag.linkedCtxParam = linkedElement = $isArray(linkedElement) ? linkedElement: [linkedElement];
+
+					if (bindFromLength !== linkedElement.length) {
+						error("linkedCtxParam not same length as bindFrom/bindTo");
+					}
+				}
+
+				if (bindFrom) {
+					tag._.fromIndex = {}; // Hash of bindFrom index which has same path value as bindTo index. fromIndex = tag._.fromIndex[toIndex]
+					tag._.toIndex = {}; // Hash of bindFrom index which has same path value as bindTo index. fromIndex = tag._.fromIndex[toIndex]
+					n = bindFromLength;
+					while (n--) {
+						key = bindFrom[n];
+						m = bindToLength;
+						while (m--) {
+							if (key === bindTo[m]) {
+								tag._.fromIndex[m] = n;
+								tag._.toIndex[n] = m;
+							}
+						}
+					}
+				}
+
+				if (linkCtx) {
+					// Set attr on linkCtx to ensure outputting to the correct target attribute.
+					// Setting either linkCtx.attr or this.attr in the init() allows per-instance choice of target attrib.
+					linkCtx.attr = tag.attr = linkCtx.attr || tag.attr || linkCtx._dfAt;
+				}
+				attr = tag.attr;
+				tag._.noVws = attr && attr !== HTML;
+			}
+			args = tag.cvtArgs(i);
+			if (tag.linkedCtxParam) {
+				bdArgs = tag.cvtArgs(i, 1);
+				m = bindFromLength;
+				defaultCtx = tag.constructor.prototype.ctx;
+				while (m--) {
+					if (ctxPrm = tag.linkedCtxParam[m]) {
+						key = bindFrom[m];
+						initVal = bdArgs[m];
+						// Create tag contextual parameter
+						tagCtx.ctx[ctxPrm] = $sub._cp(
+							defaultCtx && initVal === undefined ? defaultCtx[ctxPrm]: initVal,
+							initVal !== undefined && argOrProp(tagCtx.params, key),
+							tagCtx.view,
+							tag._.bnd && {tag: tag, cvt: tag.convert, ind: m, tagElse: i}
+						);
+					}
+				}
+			}
+			if ((mapDef = props.dataMap || tagDataMap) && (args.length || props.dataMap)) {
+				thisMap = tagCtx.map;
+				if (!thisMap || thisMap.src !== args[0] || isUpdate) {
+					if (thisMap && thisMap.src) {
+						thisMap.unmap(); // only called if observable map - not when only used in JsRender, e.g. by {{props}}
+					}
+					mapDef.map(args[0], tagCtx, thisMap, !tag._.bnd);
+					thisMap = tagCtx.map;
+				}
+				args = [thisMap.tgt];
+			}
+
+			itemRet = undefined;
+			if (tag.render) {
+				itemRet = tag.render.apply(tag, args);
+				if (parentView.linked && itemRet && !rWrappedInViewMarker.test(itemRet)) {
+					// When a tag renders content from the render method, with data linking then we need to wrap with view markers, if absent,
+					// to provide a contentView for the tag, which will correctly dispose bindings if deleted. The 'tmpl' for this view will
+					// be a dumbed-down template which will always return the itemRet string (no matter what the data is). The itemRet string
+					// is not compiled as template markup, so can include "{{" or "}}" without triggering syntax errors
+					tmpl = { // 'Dumbed-down' template which always renders 'static' itemRet string
+						links: []
+					};
+					tmpl.render = tmpl.fn = function() {
+						return itemRet;
+					};
+					itemRet = renderWithViews(tmpl, parentView.data, undefined, true, parentView, undefined, undefined, tag);
+				}
+			}
+			if (!args.length) {
+				args = [parentView]; // no arguments - (e.g. {{else}}) get data context from view.
+			}
+			if (itemRet === undefined) {
+				contentCtx = args[0]; // Default data context for wrapped block content is the first argument
+				if (tag.contentCtx) { // Set tag.contentCtx to true, to inherit parent context, or to a function to provide alternate context.
+					contentCtx = tag.contentCtx === true ? parentView : tag.contentCtx(contentCtx);
+				}
+				itemRet = tagCtx.render(contentCtx, true) || (isUpdate ? undefined : "");
+			}
+			ret = ret
+				? ret + (itemRet || "")
+				: itemRet !== undefined
+					? "" + itemRet
+					: undefined; // If no return value from render, and no template/content tagCtx.render(...), return undefined
+		}
+		tag.rendering = tag.rendering.rndr; // Remove tag.rendering object (if this is outermost render call. (In case of nested calls)
+	}
+	tag.tagCtx = tagCtxs[0];
+	tag.ctx = tag.tagCtx.ctx;
+
+	if (tag._.noVws && tag.inline) {
+		// inline tag with attr set to "text" will insert HTML-encoded content - as if it was element-based innerText
+		ret = attr === "text"
+			? $converters.html(ret)
+			: "";
+	}
+	return boundTag && parentView._.onRender
+		// Call onRender (used by JsViews if present, to add binding annotations around rendered content)
+		? parentView._.onRender(ret, parentView, tag)
+		: ret;
+}
+
+//=================
+// View constructor
+//=================
+
+function View(context, type, parentView, data, template, key, onRender, contentTmpl) {
+	// Constructor for view object in view hierarchy. (Augmented by JsViews if JsViews is loaded)
+	var views, parentView_, tag, self_,
+		self = this,
+		isArray = type === "array";
+		// If the data is an array, this is an 'array view' with a views array for each child 'item view'
+		// If the data is not an array, this is an 'item view' with a views 'hash' object for any child nested views
+
+	self.content = contentTmpl;
+	self.views = isArray ? [] : {};
+	self.data = data;
+	self.tmpl = template;
+	self_ = self._ = {
+		key: 0,
+		// ._.useKey is non zero if is not an 'array view' (owning a data array). Use this as next key for adding to child views hash
+		useKey: isArray ? 0 : 1,
+		id: "" + viewId++,
+		onRender: onRender,
+		bnds: {}
+	};
+	self.linked = !!onRender;
+	self.type = type || "top";
+	if (type) {
+		self.cache = {_ct: $subSettings._cchCt}; // Used for caching results of computed properties and helpers (view.getCache)
+	}
+
+	if (!parentView || parentView.type === "top") {
+		(self.ctx = context || {}).root = self.data;
+	}
+
+	if (self.parent = parentView) {
+		self.root = parentView.root || self; // view whose parent is top view
+		views = parentView.views;
+		parentView_ = parentView._;
+		self.isTop = parentView_.scp; // Is top content view of a link("#container", ...) call
+		self.scope = (!context.tag || context.tag === parentView.ctx.tag) && !self.isTop && parentView.scope || self;
+		// Scope for contextParams - closest non flow tag ancestor or root view
+		if (parentView_.useKey) {
+			// Parent is not an 'array view'. Add this view to its views object
+			// self._key = is the key in the parent view hash
+			views[self_.key = "_" + parentView_.useKey++] = self;
+			self.index = indexStr;
+			self.getIndex = getNestedIndex;
+		} else if (views.length === (self_.key = self.index = key)) { // Parent is an 'array view'. Add this view to its views array
+			views.push(self); // Adding to end of views array. (Using push when possible - better perf than splice)
+		} else {
+			views.splice(key, 0, self); // Inserting in views array
+		}
+		// If no context was passed in, use parent context
+		// If context was passed in, it should have been merged already with parent context
+		self.ctx = context || parentView.ctx;
+	} else if (type) {
+		self.root = self; // view whose parent is top view
+	}
+}
+
+View.prototype = {
+	get: getView,
+	getIndex: getIndex,
+	ctxPrm: contextParameter,
+	getRsc: getResource,
+	_getTmpl: getTemplate,
+	_getOb: getPathObject,
+	getCache: function(key) { // Get cached value of computed value
+		if ($subSettings._cchCt > this.cache._ct) {
+			this.cache = {_ct: $subSettings._cchCt};
+		}
+		return this.cache[key] || (this.cache[key] = cpFnStore[key](this.data, this, $sub));
+	},
+	_is: "view"
+};
+
+//====================================================
+// Registration
+//====================================================
+
+function compileChildResources(parentTmpl) {
+	var storeName, storeNames, resources;
+	for (storeName in jsvStores) {
+		storeNames = storeName + "s";
+		if (parentTmpl[storeNames]) {
+			resources = parentTmpl[storeNames];        // Resources not yet compiled
+			parentTmpl[storeNames] = {};               // Remove uncompiled resources
+			$views[storeNames](resources, parentTmpl); // Add back in the compiled resources
+		}
+	}
+}
+
+//===============
+// compileTag
+//===============
+
+function compileTag(name, tagDef, parentTmpl) {
+	var tmpl, baseTag, prop,
+		compiledDef = new $sub._tg();
+
+	function Tag() {
+		var tag = this;
+		tag._ = {
+			unlinked: true
+		};
+		tag.inline = true;
+		tag.tagName = name;
+	}
+
+	if ($isFunction(tagDef)) {
+		// Simple tag declared as function. No presenter instantation.
+		tagDef = {
+			depends: tagDef.depends,
+			render: tagDef
+		};
+	} else if ("" + tagDef === tagDef) {
+		tagDef = {template: tagDef};
+	}
+
+	if (baseTag = tagDef.baseTag) {
+		tagDef.flow = !!tagDef.flow; // Set flow property, so defaults to false even if baseTag has flow=true
+		baseTag = "" + baseTag === baseTag
+			? (parentTmpl && parentTmpl.tags[baseTag] || $tags[baseTag])
+			: baseTag;
+		if (!baseTag) {
+			error('baseTag: "' + tagDef.baseTag + '" not found');
+		}
+		compiledDef = $extend(compiledDef, baseTag);
+
+		for (prop in tagDef) {
+			compiledDef[prop] = getMethod(baseTag[prop], tagDef[prop]);
+		}
+	} else {
+		compiledDef = $extend(compiledDef, tagDef);
+	}
+
+	// Tag declared as object, used as the prototype for tag instantiation (control/presenter)
+	if ((tmpl = compiledDef.template) !== undefined) {
+		compiledDef.template = "" + tmpl === tmpl ? ($templates[tmpl] || $templates(tmpl)) : tmpl;
+	}
+	(Tag.prototype = compiledDef).constructor = compiledDef._ctr = Tag;
+
+	if (parentTmpl) {
+		compiledDef._parentTmpl = parentTmpl;
+	}
+	return compiledDef;
+}
+
+function baseApply(args) {
+	// In derived method (or handler declared declaratively as in {{:foo onChange=~fooChanged}} can call base method,
+	// using this.baseApply(arguments) (Equivalent to this._superApply(arguments) in jQuery UI)
+	return this.base.apply(this, args);
+}
+
+//===============
+// compileTmpl
+//===============
+
+function compileTmpl(name, tmpl, parentTmpl, options) {
+	// tmpl is either a template object, a selector for a template script block, or the name of a compiled template
+
+	//==== nested functions ====
+	function lookupTemplate(value) {
+		// If value is of type string - treat as selector, or name of compiled template
+		// Return the template object, if already compiled, or the markup string
+		var currentName, tmpl;
+		if (("" + value === value) || value.nodeType > 0 && (elem = value)) {
+			if (!elem) {
+				if (/^\.?\/[^\\:*?"<>]*$/.test(value)) {
+					// value="./some/file.html" (or "/some/file.html")
+					// If the template is not named, use "./some/file.html" as name.
+					if (tmpl = $templates[name = name || value]) {
+						value = tmpl;
+					} else {
+						// BROWSER-SPECIFIC CODE (not on Node.js):
+						// Look for server-generated script block with id "./some/file.html"
+						elem = document.getElementById(value);
+					}
+				} else if ($.fn && !$sub.rTmpl.test(value)) {
+					try {
+						elem = $(value, document)[0]; // if jQuery is loaded, test for selector returning elements, and get first element
+					} catch (e) {}
+				}// END BROWSER-SPECIFIC CODE
+			} //BROWSER-SPECIFIC CODE
+			if (elem) {
+				if (elem.tagName !== "SCRIPT") {
+					error(value + ": Use script block, not " + elem.tagName);
+				}
+				if (options) {
+					// We will compile a new template using the markup in the script element
+					value = elem.innerHTML;
+				} else {
+					// We will cache a single copy of the compiled template, and associate it with the name
+					// (renaming from a previous name if there was one).
+					currentName = elem.getAttribute(tmplAttr);
+					if (currentName) {
+						if (currentName !== jsvTmpl) {
+							value = $templates[currentName];
+							delete $templates[currentName];
+						} else if ($.fn) {
+							value = $.data(elem)[jsvTmpl]; // Get cached compiled template
+						}
+					}
+					if (!currentName || !value) { // Not yet compiled, or cached version lost
+						name = name || ($.fn ? jsvTmpl : value);
+						value = compileTmpl(name, elem.innerHTML, parentTmpl, options);
+					}
+					value.tmplName = name = name || currentName;
+					if (name !== jsvTmpl) {
+						$templates[name] = value;
+					}
+					elem.setAttribute(tmplAttr, name);
+					if ($.fn) {
+						$.data(elem, jsvTmpl, value);
+					}
+				}
+			} // END BROWSER-SPECIFIC CODE
+			elem = undefined;
+		} else if (!value.fn) {
+			value = undefined;
+			// If value is not a string. HTML element, or compiled template, return undefined
+		}
+		return value;
+	}
+
+	var elem, compiledTmpl,
+		tmplOrMarkup = tmpl = tmpl || "";
+	$sub._html = $converters.html;
+
+	//==== Compile the template ====
+	if (options === 0) {
+		options = undefined;
+		tmplOrMarkup = lookupTemplate(tmplOrMarkup); // Top-level compile so do a template lookup
+	}
+
+	// If options, then this was already compiled from a (script) element template declaration.
+	// If not, then if tmpl is a template object, use it for options
+	options = options || (tmpl.markup
+		? tmpl.bnds
+			? $extend({}, tmpl)
+			: tmpl
+		: {}
+	);
+
+	options.tmplName = options.tmplName || name || "unnamed";
+	if (parentTmpl) {
+		options._parentTmpl = parentTmpl;
+	}
+	// If tmpl is not a markup string or a selector string, then it must be a template object
+	// In that case, get it from the markup property of the object
+	if (!tmplOrMarkup && tmpl.markup && (tmplOrMarkup = lookupTemplate(tmpl.markup)) && tmplOrMarkup.fn) {
+		// If the string references a compiled template object, need to recompile to merge any modified options
+		tmplOrMarkup = tmplOrMarkup.markup;
+	}
+	if (tmplOrMarkup !== undefined) {
+		if (tmplOrMarkup.render || tmpl.render) {
+			// tmpl is already compiled, so use it
+			if (tmplOrMarkup.tmpls) {
+				compiledTmpl = tmplOrMarkup;
+			}
+		} else {
+			// tmplOrMarkup is a markup string, not a compiled template
+			// Create template object
+			tmpl = tmplObject(tmplOrMarkup, options);
+			// Compile to AST and then to compiled function
+			tmplFn(tmplOrMarkup.replace(rEscapeQuotes, "\\$&"), tmpl);
+		}
+		if (!compiledTmpl) {
+			compiledTmpl = $extend(function() {
+				return compiledTmpl.render.apply(compiledTmpl, arguments);
+			}, tmpl);
+
+			compileChildResources(compiledTmpl);
+		}
+		return compiledTmpl;
+	}
+}
+
+//==== /end of function compileTmpl ====
+
+//=================
+// compileViewModel
+//=================
+
+function getDefaultVal(defaultVal, data) {
+	return $isFunction(defaultVal)
+		? defaultVal.call(data)
+		: defaultVal;
+}
+
+function addParentRef(ob, ref, parent) {
+	Object.defineProperty(ob, ref, {
+		value: parent,
+		configurable: true
+	});
+}
+
+function compileViewModel(name, type) {
+	var i, constructor, parent,
+		viewModels = this,
+		getters = type.getters,
+		extend = type.extend,
+		id = type.id,
+		proto = $.extend({
+			_is: name || "unnamed",
+			unmap: unmap,
+			merge: merge
+		}, extend),
+		args = "",
+		cnstr = "",
+		getterCount = getters ? getters.length : 0,
+		$observable = $.observable,
+		getterNames = {};
+
+	function JsvVm(args) {
+		constructor.apply(this, args);
+	}
+
+	function vm() {
+		return new JsvVm(arguments);
+	}
+
+	function iterate(data, action) {
+		var getterType, defaultVal, prop, ob, parentRef,
+			j = 0;
+		for (; j < getterCount; j++) {
+			prop = getters[j];
+			getterType = undefined;
+			if (prop + "" !== prop) {
+				getterType = prop;
+				prop = getterType.getter;
+				parentRef = getterType.parentRef;
+			}
+			if ((ob = data[prop]) === undefined && getterType && (defaultVal = getterType.defaultVal) !== undefined) {
+				ob = getDefaultVal(defaultVal, data);
+			}
+			action(ob, getterType && viewModels[getterType.type], prop, parentRef);
+		}
+	}
+
+	function map(data) {
+		data = data + "" === data
+			? JSON.parse(data) // Accept JSON string
+			: data;            // or object/array
+		var l, prop, childOb, parentRef,
+			j = 0,
+			ob = data,
+			arr = [];
+
+		if ($isArray(data)) {
+			data = data || [];
+			l = data.length;
+			for (; j<l; j++) {
+				arr.push(this.map(data[j]));
+			}
+			arr._is = name;
+			arr.unmap = unmap;
+			arr.merge = merge;
+			return arr;
+		}
+
+		if (data) {
+			iterate(data, function(ob, viewModel) {
+				if (viewModel) { // Iterate to build getters arg array (value, or mapped value)
+					ob = viewModel.map(ob);
+				}
+				arr.push(ob);
+			});
+			ob = this.apply(this, arr); // Instantiate this View Model, passing getters args array to constructor
+			j = getterCount;
+			while (j--) {
+				childOb = arr[j];
+				parentRef = getters[j].parentRef;
+				if (parentRef && childOb && childOb.unmap) {
+					if ($isArray(childOb)) {
+						l = childOb.length;
+						while (l--) {
+							addParentRef(childOb[l], parentRef, ob);
+						}
+					} else {
+						addParentRef(childOb, parentRef, ob);
+					}
+				}
+			}
+			for (prop in data) { // Copy over any other properties. that are not get/set properties
+				if (prop !== $expando && !getterNames[prop]) {
+					ob[prop] = data[prop];
+				}
+			}
+		}
+		return ob;
+	}
+
+	function merge(data, parent, parentRef) {
+		data = data + "" === data
+			? JSON.parse(data) // Accept JSON string
+			: data;            // or object/array
+
+		var j, l, m, prop, mod, found, assigned, ob, newModArr, childOb,
+			k = 0,
+			model = this;
+
+		if ($isArray(model)) {
+			assigned = {};
+			newModArr = [];
+			l = data.length;
+			m = model.length;
+			for (; k<l; k++) {
+				ob = data[k];
+				found = false;
+				for (j=0; j<m && !found; j++) {
+					if (assigned[j]) {
+						continue;
+					}
+					mod = model[j];
+
+					if (id) {
+						assigned[j] = found = id + "" === id
+						? (ob[id] && (getterNames[id] ? mod[id]() : mod[id]) === ob[id])
+						: id(mod, ob);
+					}
+				}
+				if (found) {
+					mod.merge(ob);
+					newModArr.push(mod);
+				} else {
+					newModArr.push(childOb = vm.map(ob));
+					if (parentRef) {
+						addParentRef(childOb, parentRef, parent);
+					}
+				}
+			}
+			if ($observable) {
+				$observable(model).refresh(newModArr, true);
+			} else {
+				model.splice.apply(model, [0, model.length].concat(newModArr));
+			}
+			return;
+		}
+		iterate(data, function(ob, viewModel, getter, parentRef) {
+			if (viewModel) {
+				model[getter]().merge(ob, model, parentRef); // Update typed property
+			} else if (model[getter]() !== ob) {
+				model[getter](ob); // Update non-typed property
+			}
+		});
+		for (prop in data) {
+			if (prop !== $expando && !getterNames[prop]) {
+				model[prop] = data[prop];
+			}
+		}
+	}
+
+	function unmap() {
+		var ob, prop, getterType, arr, value,
+			k = 0,
+			model = this;
+
+		function unmapArray(modelArr) {
+			var arr = [],
+				i = 0,
+				l = modelArr.length;
+			for (; i<l; i++) {
+				arr.push(modelArr[i].unmap());
+			}
+			return arr;
+		}
+
+		if ($isArray(model)) {
+			return unmapArray(model);
+		}
+		ob = {};
+		for (; k < getterCount; k++) {
+			prop = getters[k];
+			getterType = undefined;
+			if (prop + "" !== prop) {
+				getterType = prop;
+				prop = getterType.getter;
+			}
+			value = model[prop]();
+			ob[prop] = getterType && value && viewModels[getterType.type]
+				? $isArray(value)
+					? unmapArray(value)
+					: value.unmap()
+				: value;
+		}
+		for (prop in model) {
+			if (model.hasOwnProperty(prop) && (prop.charAt(0) !== "_" || !getterNames[prop.slice(1)]) && prop !== $expando && !$isFunction(model[prop])) {
+				ob[prop] = model[prop];
+			}
+		}
+		return ob;
+	}
+
+	JsvVm.prototype = proto;
+
+	for (i=0; i < getterCount; i++) {
+		(function(getter) {
+			getter = getter.getter || getter;
+			getterNames[getter] = i+1;
+			var privField = "_" + getter;
+
+			args += (args ? "," : "") + getter;
+			cnstr += "this." + privField + " = " + getter + ";\n";
+			proto[getter] = proto[getter] || function(val) {
+				if (!arguments.length) {
+					return this[privField]; // If there is no argument, use as a getter
+				}
+				if ($observable) {
+					$observable(this).setProperty(getter, val);
+				} else {
+					this[privField] = val;
+				}
+			};
+
+			if ($observable) {
+				proto[getter].set = proto[getter].set || function(val) {
+					this[privField] = val; // Setter called by observable property change
+				};
+			}
+		})(getters[i]);
+	}
+
+	// Constructor for new viewModel instance.
+	cnstr = new Function(args, cnstr);
+
+	constructor = function() {
+		cnstr.apply(this, arguments);
+		// Pass additional parentRef str and parent obj to have a parentRef pointer on instance
+		if (parent = arguments[getterCount + 1]) {
+			addParentRef(this, arguments[getterCount], parent);
+		}
+	};
+
+	constructor.prototype = proto;
+	proto.constructor = constructor;
+
+	vm.map = map;
+	vm.getters = getters;
+	vm.extend = extend;
+	vm.id = id;
+	return vm;
+}
+
+function tmplObject(markup, options) {
+	// Template object constructor
+	var htmlTag,
+		wrapMap = $subSettingsAdvanced._wm || {}, // Only used in JsViews. Otherwise empty: {}
+		tmpl = {
+			tmpls: [],
+			links: {}, // Compiled functions for link expressions
+			bnds: [],
+			_is: "template",
+			render: renderContent
+		};
+
+	if (options) {
+		tmpl = $extend(tmpl, options);
+	}
+
+	tmpl.markup = markup;
+	if (!tmpl.htmlTag) {
+		// Set tmpl.tag to the top-level HTML tag used in the template, if any...
+		htmlTag = rFirstElem.exec(markup);
+		tmpl.htmlTag = htmlTag ? htmlTag[1].toLowerCase() : "";
+	}
+	htmlTag = wrapMap[tmpl.htmlTag];
+	if (htmlTag && htmlTag !== wrapMap.div) {
+		// When using JsViews, we trim templates which are inserted into HTML contexts where text nodes are not rendered (i.e. not 'Phrasing Content').
+		// Currently not trimmed for <li> tag. (Not worth adding perf cost)
+		tmpl.markup = $.trim(tmpl.markup);
+	}
+
+	return tmpl;
+}
+
+//==============
+// registerStore
+//==============
+
+/**
+* Internal. Register a store type (used for template, tags, helpers, converters)
+*/
+function registerStore(storeName, storeSettings) {
+
+/**
+* Generic store() function to register item, named item, or hash of items
+* Also used as hash to store the registered items
+* Used as implementation of $.templates(), $.views.templates(), $.views.tags(), $.views.helpers() and $.views.converters()
+*
+* @param {string|hash} name         name - or selector, in case of $.templates(). Or hash of items
+* @param {any}         [item]       (e.g. markup for named template)
+* @param {template}    [parentTmpl] For item being registered as private resource of template
+* @returns {any|$.views} item, e.g. compiled template - or $.views in case of registering hash of items
+*/
+	function theStore(name, item, parentTmpl) {
+		// The store is also the function used to add items to the store. e.g. $.templates, or $.views.tags
+
+		// For store of name 'thing', Call as:
+		//    $.views.things(items[, parentTmpl]),
+		// or $.views.things(name[, item, parentTmpl])
+
+		var compile, itemName, thisStore, cnt,
+			onStore = $sub.onStore[storeName];
+
+		if (name && typeof name === OBJECT && !name.nodeType && !name.markup && !name.getTgt && !(storeName === "viewModel" && name.getters || name.extend)) {
+			// Call to $.views.things(items[, parentTmpl]),
+
+			// Adding items to the store
+			// If name is a hash, then item is parentTmpl. Iterate over hash and call store for key.
+			for (itemName in name) {
+				theStore(itemName, name[itemName], item);
+			}
+			return item || $views;
+		}
+		// Adding a single unnamed item to the store
+		if (name && "" + name !== name) { // name must be a string
+			parentTmpl = item;
+			item = name;
+			name = undefined;
+		}
+		thisStore = parentTmpl
+			? storeName === "viewModel"
+				? parentTmpl
+				: (parentTmpl[storeNames] = parentTmpl[storeNames] || {})
+			: theStore;
+		compile = storeSettings.compile;
+
+		if (item === undefined) {
+			item = compile ? name : thisStore[name];
+			name = undefined;
+		}
+		if (item === null) {
+			// If item is null, delete this entry
+			if (name) {
+				delete thisStore[name];
+			}
+		} else {
+			if (compile) {
+				item = compile.call(thisStore, name, item, parentTmpl, 0) || {};
+				item._is = storeName; // Only do this for compiled objects (tags, templates...)
+			}
+			if (name) {
+				thisStore[name] = item;
+			}
+		}
+		if (onStore) {
+			// e.g. JsViews integration
+			onStore(name, item, parentTmpl, compile);
+		}
+		return item;
+	}
+
+	var storeNames = storeName + "s";
+	$views[storeNames] = theStore;
+}
+
+/**
+* Add settings such as:
+* $.views.settings.allowCode(true)
+* @param {boolean} value
+* @returns {Settings}
+*
+* allowCode = $.views.settings.allowCode()
+* @returns {boolean}
+*/
+function addSetting(st) {
+	$viewsSettings[st] = $viewsSettings[st] || function(value) {
+		return arguments.length
+			? ($subSettings[st] = value, $viewsSettings)
+			: $subSettings[st];
+	};
+}
+
+//========================
+// dataMap for render only
+//========================
+
+function dataMap(mapDef) {
+	function Map(source, options) {
+		this.tgt = mapDef.getTgt(source, options);
+		options.map = this;
+	}
+
+	if ($isFunction(mapDef)) {
+		// Simple map declared as function
+		mapDef = {
+			getTgt: mapDef
+		};
+	}
+
+	if (mapDef.baseMap) {
+		mapDef = $extend($extend({}, mapDef.baseMap), mapDef);
+	}
+
+	mapDef.map = function(source, options) {
+		return new Map(source, options);
+	};
+	return mapDef;
+}
+
+//==============
+// renderContent
+//==============
+
+/** Render the template as a string, using the specified data and helpers/context
+* $("#tmpl").render(), tmpl.render(), tagCtx.render(), $.render.namedTmpl()
+*
+* @param {any}        data
+* @param {hash}       [context]           helpers or context
+* @param {boolean}    [noIteration]
+* @param {View}       [parentView]        internal
+* @param {string}     [key]               internal
+* @param {function}   [onRender]          internal
+* @returns {string}   rendered template   internal
+*/
+function renderContent(data, context, noIteration, parentView, key, onRender) {
+	var i, l, tag, tmpl, tagCtx, isTopRenderCall, prevData, prevIndex,
+		view = parentView,
+		result = "";
+
+	if (context === true) {
+		noIteration = context; // passing boolean as second param - noIteration
+		context = undefined;
+	} else if (typeof context !== OBJECT) {
+		context = undefined; // context must be a boolean (noIteration) or a plain object
+	}
+
+	if (tag = this.tag) {
+		// This is a call from renderTag or tagCtx.render(...)
+		tagCtx = this;
+		view = view || tagCtx.view;
+		tmpl = view._getTmpl(tag.template || tagCtx.tmpl);
+		if (!arguments.length) {
+			data = tag.contentCtx && $isFunction(tag.contentCtx)
+				? data = tag.contentCtx(data)
+				: view; // Default data context for wrapped block content is the first argument
+		}
+	} else {
+		// This is a template.render(...) call
+		tmpl = this;
+	}
+
+	if (tmpl) {
+		if (!parentView && data && data._is === "view") {
+			view = data; // When passing in a view to render or link (and not passing in a parent view) use the passed-in view as parentView
+		}
+
+		if (view && data === view) {
+			// Inherit the data from the parent view.
+			data = view.data;
+		}
+
+		isTopRenderCall = !view;
+		isRenderCall = isRenderCall || isTopRenderCall;
+		if (isTopRenderCall) {
+			(context = context || {}).root = data; // Provide ~root as shortcut to top-level data.
+		}
+		if (!isRenderCall || $subSettingsAdvanced.useViews || tmpl.useViews || view && view !== topView) {
+			result = renderWithViews(tmpl, data, context, noIteration, view, key, onRender, tag);
+		} else {
+			if (view) { // In a block
+				prevData = view.data;
+				prevIndex = view.index;
+				view.index = indexStr;
+			} else {
+				view = topView;
+				prevData = view.data;
+				view.data = data;
+				view.ctx = context;
+			}
+			if ($isArray(data) && !noIteration) {
+				// Create a view for the array, whose child views correspond to each data item. (Note: if key and parentView are passed in
+				// along with parent view, treat as insert -e.g. from view.addViews - so parentView is already the view item for array)
+				for (i = 0, l = data.length; i < l; i++) {
+					view.index = i;
+					view.data = data[i];
+					result += tmpl.fn(data[i], view, $sub);
+				}
+			} else {
+				view.data = data;
+				result += tmpl.fn(data, view, $sub);
+			}
+			view.data = prevData;
+			view.index = prevIndex;
+		}
+		if (isTopRenderCall) {
+			isRenderCall = undefined;
+		}
+	}
+	return result;
+}
+
+function renderWithViews(tmpl, data, context, noIteration, view, key, onRender, tag) {
+	// Render template against data as a tree of subviews (nested rendered template instances), or as a string (top-level template).
+	// If the data is the parent view, treat as noIteration, re-render with the same data context.
+	// tmpl can be a string (e.g. rendered by a tag.render() method), or a compiled template.
+	var i, l, newView, childView, itemResult, swapContent, contentTmpl, outerOnRender, tmplName, itemVar, newCtx, tagCtx, noLinking,
+		result = "";
+
+	if (tag) {
+		// This is a call from renderTag or tagCtx.render(...)
+		tmplName = tag.tagName;
+		tagCtx = tag.tagCtx;
+		context = context ? extendCtx(context, tag.ctx) : tag.ctx;
+
+		if (tmpl === view.content) { // {{xxx tmpl=#content}}
+			contentTmpl = tmpl !== view.ctx._wrp // We are rendering the #content
+				? view.ctx._wrp // #content was the tagCtx.props.tmpl wrapper of the block content - so within this view, #content will now be the view.ctx._wrp block content
+				: undefined; // #content was the view.ctx._wrp block content - so within this view, there is no longer any #content to wrap.
+		} else if (tmpl !== tagCtx.content) {
+			if (tmpl === tag.template) { // Rendering {{tag}} tag.template, replacing block content.
+				contentTmpl = tagCtx.tmpl; // Set #content to block content (or wrapped block content if tagCtx.props.tmpl is set)
+				context._wrp = tagCtx.content; // Pass wrapped block content to nested views
+			} else { // Rendering tagCtx.props.tmpl wrapper
+				contentTmpl = tagCtx.content || view.content; // Set #content to wrapped block content
+			}
+		} else {
+			contentTmpl = view.content; // Nested views inherit same wrapped #content property
+		}
+
+		if (tagCtx.props.link === false) {
+			// link=false setting on block tag
+			// We will override inherited value of link by the explicit setting link=false taken from props
+			// The child views of an unlinked view are also unlinked. So setting child back to true will not have any effect.
+			context = context || {};
+			context.link = false;
+		}
+	}
+
+	if (view) {
+		onRender = onRender || view._.onRender;
+		noLinking = context && context.link === false;
+
+		if (noLinking && view._.nl) {
+			onRender = undefined;
+		}
+
+		context = extendCtx(context, view.ctx);
+		tagCtx = !tag && view.tag
+			? view.tag.tagCtxs[view.tagElse]
+			: tagCtx;
+	}
+
+	if (itemVar = tagCtx && tagCtx.props.itemVar) {
+		if (itemVar[0] !== "~") {
+			syntaxError("Use itemVar='~myItem'");
+		}
+		itemVar = itemVar.slice(1);
+	}
+
+	if (key === true) {
+		swapContent = true;
+		key = 0;
+	}
+
+	// If link===false, do not call onRender, so no data-linking marker nodes
+	if (onRender && tag && tag._.noVws) {
+		onRender = undefined;
+	}
+	outerOnRender = onRender;
+	if (onRender === true) {
+		// Used by view.refresh(). Don't create a new wrapper view.
+		outerOnRender = undefined;
+		onRender = view._.onRender;
+	}
+	// Set additional context on views created here, (as modified context inherited from the parent, and to be inherited by child views)
+	context = tmpl.helpers
+		? extendCtx(tmpl.helpers, context)
+		: context;
+
+	newCtx = context;
+	if ($isArray(data) && !noIteration) {
+		// Create a view for the array, whose child views correspond to each data item. (Note: if key and view are passed in
+		// along with parent view, treat as insert -e.g. from view.addViews - so view is already the view item for array)
+		newView = swapContent
+			? view
+			: (key !== undefined && view)
+				|| new View(context, "array", view, data, tmpl, key, onRender, contentTmpl);
+		newView._.nl= noLinking;
+		if (view && view._.useKey) {
+			// Parent is not an 'array view'
+			newView._.bnd = !tag || tag._.bnd && tag; // For array views that are data bound for collection change events, set the
+			// view._.bnd property to true for top-level link() or data-link="{for}", or to the tag instance for a data-bound tag, e.g. {^{for ...}}
+			newView.tag = tag;
+		}
+		for (i = 0, l = data.length; i < l; i++) {
+			// Create a view for each data item.
+			childView = new View(newCtx, "item", newView, data[i], tmpl, (key || 0) + i, onRender, newView.content);
+			if (itemVar) {
+				(childView.ctx = $extend({}, newCtx))[itemVar] = $sub._cp(data[i], "#data", childView);
+			}
+			itemResult = tmpl.fn(data[i], childView, $sub);
+			result += newView._.onRender ? newView._.onRender(itemResult, childView) : itemResult;
+		}
+	} else {
+		// Create a view for singleton data object. The type of the view will be the tag name, e.g. "if" or "mytag" except for
+		// "item", "array" and "data" views. A "data" view is from programmatic render(object) against a 'singleton'.
+		newView = swapContent ? view : new View(newCtx, tmplName || "data", view, data, tmpl, key, onRender, contentTmpl);
+
+		if (itemVar) {
+			(newView.ctx = $extend({}, newCtx))[itemVar] = $sub._cp(data, "#data", newView);
+		}
+
+		newView.tag = tag;
+		newView._.nl = noLinking;
+		result += tmpl.fn(data, newView, $sub);
+	}
+	if (tag) {
+		newView.tagElse = tagCtx.index;
+		tagCtx.contentView = newView;
+	}
+	return outerOnRender ? outerOnRender(result, newView) : result;
+}
+
+//===========================
+// Build and compile template
+//===========================
+
+// Generate a reusable function that will serve to render a template against data
+// (Compile AST then build template function)
+
+function onRenderError(e, view, fallback) {
+	var message = fallback !== undefined
+		? $isFunction(fallback)
+			? fallback.call(view.data, e, view)
+			: fallback || ""
+		: "{Error: " + (e.message||e) + "}";
+
+	if ($subSettings.onError && (fallback = $subSettings.onError.call(view.data, e, fallback && message, view)) !== undefined) {
+		message = fallback; // There is a settings.debugMode(handler) onError override. Call it, and use return value (if any) to replace message
+	}
+	return view && !view._lc ? $converters.html(message) : message; // For data-link=\"{... onError=...}"... See onDataLinkedTagChange
+}
+
+function error(message) {
+	throw new $sub.Err(message);
+}
+
+function syntaxError(message) {
+	error("Syntax error\n" + message);
+}
+
+function tmplFn(markup, tmpl, isLinkExpr, convertBack, hasElse) {
+	// Compile markup to AST (abtract syntax tree) then build the template function code from the AST nodes
+	// Used for compiling templates, and also by JsViews to build functions for data link expressions
+
+	//==== nested functions ====
+	function pushprecedingContent(shift) {
+		shift -= loc;
+		if (shift) {
+			content.push(markup.substr(loc, shift).replace(rNewLine, "\\n"));
+		}
+	}
+
+	function blockTagCheck(tagName, block) {
+		if (tagName) {
+			tagName += '}}';
+			//			'{{include}} block has {{/for}} with no open {{for}}'
+			syntaxError((
+				block
+					? '{{' + block + '}} block has {{/' + tagName + ' without {{' + tagName
+					: 'Unmatched or missing {{/' + tagName) + ', in template:\n' + markup);
+		}
+	}
+
+	function parseTag(all, bind, tagName, converter, colon, html, codeTag, params, slash, bind2, closeBlock, index) {
+/*
+
+     bind     tagName         cvt   cln html code    params            slash   bind2         closeBlk  comment
+/(?:{(\^)?{(?:(\w+(?=[\/\s}]))|(\w+)?(:)|(>)|(\*))\s*((?:[^}]|}(?!}))*?)(\/)?|{(\^)?{(?:(?:\/(\w+))\s*|!--[\s\S]*?--))}}/g
+
+(?:
+  {(\^)?{            bind
+  (?:
+    (\w+             tagName
+      (?=[\/\s}])
+    )
+    |
+    (\w+)?(:)        converter colon
+    |
+    (>)              html
+    |
+    (\*)             codeTag
+  )
+  \s*
+  (                  params
+    (?:[^}]|}(?!}))*?
+  )
+  (\/)?              slash
+  |
+  {(\^)?{            bind2
+  (?:
+    (?:\/(\w+))\s*   closeBlock
+    |
+    !--[\s\S]*?--    comment
+  )
+)
+}}/g
+
+*/
+		if (codeTag && bind || slash && !tagName || params && params.slice(-1) === ":" || bind2) {
+			syntaxError(all);
+		}
+
+		// Build abstract syntax tree (AST): [tagName, converter, params, content, hash, bindings, contentMarkup]
+		if (html) {
+			colon = ":";
+			converter = HTML;
+		}
+		slash = slash || isLinkExpr && !hasElse;
+
+		var late, openTagName, isLateOb,
+			pathBindings = (bind || isLinkExpr) && [[]], // pathBindings is an array of arrays for arg bindings and a hash of arrays for prop bindings
+			props = "",
+			args = "",
+			ctxProps = "",
+			paramsArgs = "",
+			paramsProps = "",
+			paramsCtxProps = "",
+			onError = "",
+			useTrigger = "",
+			// Block tag if not self-closing and not {{:}} or {{>}} (special case) and not a data-link expression
+			block = !slash && !colon;
+
+		//==== nested helper function ====
+		tagName = tagName || (params = params || "#data", colon); // {{:}} is equivalent to {{:#data}}
+		pushprecedingContent(index);
+		loc = index + all.length; // location marker - parsed up to here
+		if (codeTag) {
+			if (allowCode) {
+				content.push(["*", "\n" + params.replace(/^:/, "ret+= ").replace(rUnescapeQuotes, "$1") + ";\n"]);
+			}
+		} else if (tagName) {
+			if (tagName === "else") {
+				if (rTestElseIf.test(params)) {
+					syntaxError('For "{{else if expr}}" use "{{else expr}}"');
+				}
+				pathBindings = current[9] && [[]];
+				current[10] = markup.substring(current[10], index); // contentMarkup for block tag
+				openTagName = current[11] || current[0] || syntaxError("Mismatched: " + all);
+				// current[0] is tagName, but for {{else}} nodes, current[11] is tagName of preceding open tag
+				current = stack.pop();
+				content = current[2];
+				block = true;
+			}
+			if (params) {
+				// remove newlines from the params string, to avoid compiled code errors for unterminated strings
+				parseParams(params.replace(rNewLine, " "), pathBindings, tmpl, isLinkExpr)
+					.replace(rBuildHash, function(all, onerror, isCtxPrm, key, keyToken, keyValue, arg, param) {
+						if (key === "this:") {
+							keyValue = "undefined"; // this=some.path is always a to parameter (one-way), so don't need to compile/evaluate some.path initialization
+						}
+						if (param) {
+							isLateOb = isLateOb || param[0] === "@";
+						}
+						key = "'" + keyToken + "':";
+						if (arg) {
+							args += isCtxPrm + keyValue + ",";
+							paramsArgs += "'" + param + "',";
+						} else if (isCtxPrm) { // Contextual parameter, ~foo=expr
+							ctxProps += key + 'j._cp(' + keyValue + ',"' + param + '",view),';
+							// Compiled code for evaluating tagCtx on a tag will have: ctx:{'foo':j._cp(compiledExpr, "expr", view)}
+							paramsCtxProps += key + "'" + param + "',";
+						} else if (onerror) {
+							onError += keyValue;
+						} else {
+							if (keyToken === "trigger") {
+								useTrigger += keyValue;
+							}
+							if (keyToken === "lateRender") {
+								late = param !== "false"; // Render after first pass
+							}
+							props += key + keyValue + ",";
+							paramsProps += key + "'" + param + "',";
+							hasHandlers = hasHandlers || rHasHandlers.test(keyToken);
+						}
+						return "";
+					}).slice(0, -1);
+			}
+
+			if (pathBindings && pathBindings[0]) {
+				pathBindings.pop(); // Remove the binding that was prepared for next arg. (There is always an extra one ready).
+			}
+
+			newNode = [
+					tagName,
+					converter || !!convertBack || hasHandlers || "",
+					block && [],
+					parsedParam(paramsArgs || (tagName === ":" ? "'#data'," : ""), paramsProps, paramsCtxProps), // {{:}} equivalent to {{:#data}}
+					parsedParam(args || (tagName === ":" ? "data," : ""), props, ctxProps),
+					onError,
+					useTrigger,
+					late,
+					isLateOb,
+					pathBindings || 0
+				];
+			content.push(newNode);
+			if (block) {
+				stack.push(current);
+				current = newNode;
+				current[10] = loc; // Store current location of open tag, to be able to add contentMarkup when we reach closing tag
+				current[11] = openTagName; // Used for checking syntax (matching close tag)
+			}
+		} else if (closeBlock) {
+			blockTagCheck(closeBlock !== current[0] && closeBlock !== current[11] && closeBlock, current[0]); // Check matching close tag name
+			current[10] = markup.substring(current[10], index); // contentMarkup for block tag
+			current = stack.pop();
+		}
+		blockTagCheck(!current && closeBlock);
+		content = current[2];
+	}
+	//==== /end of nested functions ====
+
+	var i, result, newNode, hasHandlers, bindings,
+		allowCode = $subSettings.allowCode || tmpl && tmpl.allowCode
+			|| $viewsSettings.allowCode === true, // include direct setting of settings.allowCode true for backward compat only
+		astTop = [],
+		loc = 0,
+		stack = [],
+		content = astTop,
+		current = [,,astTop];
+
+	if (allowCode && tmpl._is) {
+		tmpl.allowCode = allowCode;
+	}
+
+//TODO	result = tmplFnsCache[markup]; // Only cache if template is not named and markup length < ...,
+//and there are no bindings or subtemplates?? Consider standard optimization for data-link="a.b.c"
+//		if (result) {
+//			tmpl.fn = result;
+//		} else {
+
+//		result = markup;
+	if (isLinkExpr) {
+		if (convertBack !== undefined) {
+			markup = markup.slice(0, -convertBack.length - 2) + delimCloseChar0;
+		}
+		markup = delimOpenChar0 + markup + delimCloseChar1;
+	}
+
+	blockTagCheck(stack[0] && stack[0][2].pop()[0]);
+	// Build the AST (abstract syntax tree) under astTop
+	markup.replace(rTag, parseTag);
+
+	pushprecedingContent(markup.length);
+
+	if (loc = astTop[astTop.length - 1]) {
+		blockTagCheck("" + loc !== loc && (+loc[10] === loc[10]) && loc[0]);
+	}
+//			result = tmplFnsCache[markup] = buildCode(astTop, tmpl);
+//		}
+
+	if (isLinkExpr) {
+		result = buildCode(astTop, markup, isLinkExpr);
+		bindings = [];
+		i = astTop.length;
+		while (i--) {
+			bindings.unshift(astTop[i][9]); // With data-link expressions, pathBindings array for tagCtx[i] is astTop[i][9]
+		}
+		setPaths(result, bindings);
+	} else {
+		result = buildCode(astTop, tmpl);
+	}
+	return result;
+}
+
+function setPaths(fn, pathsArr) {
+	var key, paths,
+		i = 0,
+		l = pathsArr.length;
+	fn.deps = [];
+	fn.paths = []; // The array of path binding (array/dictionary)s for each tag/else block's args and props
+	for (; i < l; i++) {
+		fn.paths.push(paths = pathsArr[i]);
+		for (key in paths) {
+			if (key !== "_jsvto" && paths.hasOwnProperty(key) && paths[key].length && !paths[key].skp) {
+				fn.deps = fn.deps.concat(paths[key]); // deps is the concatenation of the paths arrays for the different bindings
+			}
+		}
+	}
+}
+
+function parsedParam(args, props, ctx) {
+	return [args.slice(0, -1), props.slice(0, -1), ctx.slice(0, -1)];
+}
+
+function paramStructure(paramCode, paramVals) {
+	return '\n\tparams:{args:[' + paramCode[0] + '],\n\tprops:{' + paramCode[1] + '}'
+		+ (paramCode[2] ? ',\n\tctx:{' + paramCode[2] + '}' : "")
+		+ '},\n\targs:[' + paramVals[0] + '],\n\tprops:{' + paramVals[1] + '}'
+		+ (paramVals[2] ? ',\n\tctx:{' + paramVals[2] + '}' : "");
+}
+
+function parseParams(params, pathBindings, tmpl, isLinkExpr) {
+
+	function parseTokens(all, lftPrn0, lftPrn, bound, path, operator, err, eq, path2, late, prn,
+												comma, lftPrn2, apos, quot, rtPrn, rtPrnDot, prn2, space, index, full) {
+	// /(\()(?=\s*\()|(?:([([])\s*)?(?:(\^?)(~?[\w$.^]+)?\s*((\+\+|--)|\+|-|~(?![\w$])|&&|\|\||===|!==|==|!=|<=|>=|[<>%*:?\/]|(=))\s*|(!*?(@)?[#~]?[\w$.^]+)([([])?)|(,\s*)|(?:(\()\s*)?\\?(?:(')|("))|(?:\s*(([)\]])(?=[.^]|\s*$|[^([])|[)\]])([([]?))|(\s+)/g,
+	//lftPrn0           lftPrn         bound     path               operator     err                                          eq      path2 late            prn      comma  lftPrn2          apos quot        rtPrn  rtPrnDot                  prn2     space
+	// (left paren? followed by (path? followed by operator) or (path followed by paren?)) or comma or apos or quot or right paren or space
+
+		function parsePath(allPath, not, object, helper, view, viewProperty, pathTokens, leafToken) {
+			// /^(!*?)(?:null|true|false|\d[\d.]*|([\w$]+|\.|~([\w$]+)|#(view|([\w$]+))?)([\w$.^]*?)(?:[.[^]([\w$]+)\]?)?)$/g,
+			//    not                               object     helper    view  viewProperty pathTokens      leafToken
+			subPath = object === ".";
+			if (object) {
+				path = path.slice(not.length);
+				if (/^\.?constructor$/.test(leafToken||path)) {
+					syntaxError(allPath);
+				}
+				if (!subPath) {
+					allPath = (late // late path @a.b.c: not throw on 'property of undefined' if a undefined, and will use _getOb() after linking to resolve late.
+							? (isLinkExpr ? '' : '(ltOb.lt=ltOb.lt||') + '(ob='
+							: ""
+						)
+						+ (helper
+							? 'view.ctxPrm("' + helper + '")'
+							: view
+								? "view"
+								: "data")
+						+ (late
+							? ')===undefined' + (isLinkExpr ? '' : ')') + '?"":view._getOb(ob,"'
+							: ""
+						)
+						+ (leafToken
+							? (viewProperty
+								? "." + viewProperty
+								: helper
+									? ""
+									: (view ? "" : "." + object)
+								) + (pathTokens || "")
+							: (leafToken = helper ? "" : view ? viewProperty || "" : object, ""));
+					allPath = allPath + (leafToken ? "." + leafToken : "");
+
+					allPath = not + (allPath.slice(0, 9) === "view.data"
+						? allPath.slice(5) // convert #view.data... to data...
+						: allPath)
+					+ (late
+							? (isLinkExpr ? '"': '",ltOb') + (prn ? ',1)':')')
+							: ""
+						);
+				}
+				if (bindings) {
+					binds = named === "_linkTo" ? (bindto = pathBindings._jsvto = pathBindings._jsvto || []) : bndCtx.bd;
+					if (theOb = subPath && binds[binds.length-1]) {
+						if (theOb._cpfn) { // Computed property exprOb
+							while (theOb.sb) {
+								theOb = theOb.sb;
+							}
+							if (theOb.prm) {
+								if (theOb.bnd) {
+									path = "^" + path.slice(1);
+								}
+								theOb.sb = path;
+								theOb.bnd = theOb.bnd || path[0] === "^";
+							}
+						}
+					} else {
+						binds.push(path);
+					}
+					if (prn && !subPath) {
+						pathStart[fnDp] = ind;
+						compiledPathStart[fnDp] = compiledPath[fnDp].length;
+					}
+				}
+			}
+			return allPath;
+		}
+
+		//bound = bindings && bound;
+		if (bound && !eq) {
+			path = bound + path; // e.g. some.fn(...)^some.path - so here path is "^some.path"
+		}
+		operator = operator || "";
+		lftPrn2 = lftPrn2 || "";
+		lftPrn = lftPrn || lftPrn0 || lftPrn2;
+		path = path || path2;
+
+		if (late && (late = !/\)|]/.test(full[index-1]))) {
+			path = path.slice(1).split(".").join("^"); // Late path @z.b.c. Use "^" rather than "." to ensure that deep binding will be used
+		}
+		// Could do this - but not worth perf cost?? :-
+		// if (!path.lastIndexOf("#data.", 0)) { path = path.slice(6); } // If path starts with "#data.", remove that.
+		prn = prn || prn2 || "";
+		var expr, binds, theOb, newOb, subPath, lftPrnFCall, ret,
+			ind = index;
+
+		if (!aposed && !quoted) {
+			if (err) {
+				syntaxError(params);
+			}
+			if (rtPrnDot && bindings) {
+				// This is a binding to a path in which an object is returned by a helper/data function/expression, e.g. foo()^x.y or (a?b:c)^x.y
+				// We create a compiled function to get the object instance (which will be called when the dependent data of the subexpression changes, to return the new object, and trigger re-binding of the subsequent path)
+				expr = pathStart[fnDp-1];
+				if (full.length - 1 > ind - (expr || 0)) { // We need to compile a subexpression
+					expr = $.trim(full.slice(expr, ind + all.length));
+					binds = bindto || bndStack[fnDp-1].bd;
+					// Insert exprOb object, to be used during binding to return the computed object
+					theOb = binds[binds.length-1];
+					if (theOb && theOb.prm) {
+						while (theOb.sb && theOb.sb.prm) {
+							theOb = theOb.sb;
+						}
+						newOb = theOb.sb = {path: theOb.sb, bnd: theOb.bnd};
+					} else {
+						binds.push(newOb = {path: binds.pop()}); // Insert exprOb object, to be used during binding to return the computed object
+					}
+					if (theOb && theOb.sb === newOb) {
+						compiledPath[fnDp] = compiledPath[fnDp-1].slice(theOb._cpPthSt) + compiledPath[fnDp];
+						compiledPath[fnDp-1] = compiledPath[fnDp-1].slice(0, theOb._cpPthSt);
+					}
+					newOb._cpPthSt = compiledPathStart[fnDp-1];
+					newOb._cpKey = expr;
+
+					compiledPath[fnDp] += full.slice(prevIndex, index);
+					prevIndex = index;
+
+					newOb._cpfn = cpFnStore[expr] = cpFnStore[expr] || // Compiled function for computed value: get from store, or compile and store
+						new Function("data,view,j", // Compiled function for computed value in template
+					"//" + expr + "\nvar v;\nreturn ((v=" + compiledPath[fnDp] + (rtPrn === "]" ? ")]" : rtPrn) + ")!=null?v:null);");
+
+					compiledPath[fnDp-1] += (fnCall[prnDp] && $subSettingsAdvanced.cache ? "view.getCache(\"" + expr.replace(rEscapeQuotes, "\\$&") + "\"" : compiledPath[fnDp]);
+
+					newOb.prm = bndCtx.bd;
+					newOb.bnd = newOb.bnd || newOb.path && newOb.path.indexOf("^") >= 0;
+				}
+				compiledPath[fnDp] = "";
+			}
+			if (prn === "[") {
+				prn = "[j._sq(";
+			}
+			if (lftPrn === "[") {
+				lftPrn = "[j._sq(";
+			}
+		}
+		ret = (aposed
+			// within single-quoted string
+			? (aposed = !apos, (aposed ? all : lftPrn2 + '"'))
+			: quoted
+			// within double-quoted string
+				? (quoted = !quot, (quoted ? all : lftPrn2 + '"'))
+				:
+			(
+				(lftPrn
+					? (
+						prnStack[++prnDp] = true,
+						prnInd[prnDp] = 0,
+						bindings && (
+							pathStart[fnDp++] = ind++,
+							bndCtx = bndStack[fnDp] = {bd: []},
+							compiledPath[fnDp] = "",
+							compiledPathStart[fnDp] = 1
+						),
+						lftPrn) // Left paren, (not a function call paren)
+					: "")
+				+ (space
+					? (prnDp
+						? "" // A space within parens or within function call parens, so not a separator for tag args
+			// New arg or prop - so insert backspace \b (\x08) as separator for named params, used subsequently by rBuildHash, and prepare new bindings array
+						: (paramIndex = full.slice(paramIndex, ind), named
+							? (named = boundName = bindto = false, "\b")
+							: "\b,") + paramIndex + (paramIndex = ind + all.length, bindings && pathBindings.push(bndCtx.bd = []), "\b")
+					)
+					: eq
+			// named param. Remove bindings for arg and create instead bindings array for prop
+						? (fnDp && syntaxError(params), bindings && pathBindings.pop(), named = "_" + path, boundName = bound, paramIndex = ind + all.length,
+								bindings && ((bindings = bndCtx.bd = pathBindings[named] = []), bindings.skp = !bound), path + ':')
+						: path
+			// path
+							? (path.split("^").join(".").replace($sub.rPath, parsePath)
+								+ (prn || operator)
+							)
+							: operator
+			// operator
+								? operator
+								: rtPrn
+			// function
+									? rtPrn === "]" ? ")]" : ")"
+									: comma
+										? (fnCall[prnDp] || syntaxError(params), ",") // We don't allow top-level literal arrays or objects
+										: lftPrn0
+											? ""
+											: (aposed = apos, quoted = quot, '"')
+			))
+		);
+
+		if (!aposed && !quoted) {
+			if (rtPrn) {
+				fnCall[prnDp] = false;
+				prnDp--;
+			}
+		}
+
+		if (bindings) {
+			if (!aposed && !quoted) {
+				if (rtPrn) {
+					if (prnStack[prnDp+1]) {
+						bndCtx = bndStack[--fnDp];
+						prnStack[prnDp+1] = false;
+					}
+					prnStart = prnInd[prnDp+1];
+				}
+				if (prn) {
+					prnInd[prnDp+1] = compiledPath[fnDp].length + (lftPrn ? 1 : 0);
+					if (path || rtPrn) {
+						bndCtx = bndStack[++fnDp] = {bd: []};
+						prnStack[prnDp+1] = true;
+					}
+				}
+			}
+
+			compiledPath[fnDp] = (compiledPath[fnDp]||"") + full.slice(prevIndex, index);
+			prevIndex = index+all.length;
+
+			if (!aposed && !quoted) {
+				if (lftPrnFCall = lftPrn && prnStack[prnDp+1]) {
+					compiledPath[fnDp-1] += lftPrn;
+					compiledPathStart[fnDp-1]++;
+				}
+				if (prn === "(" && subPath && !newOb) {
+					compiledPath[fnDp] = compiledPath[fnDp-1].slice(prnStart) + compiledPath[fnDp];
+					compiledPath[fnDp-1] = compiledPath[fnDp-1].slice(0, prnStart);
+				}
+			}
+			compiledPath[fnDp] += lftPrnFCall ? ret.slice(1) : ret;
+		}
+
+		if (!aposed && !quoted && prn) {
+			prnDp++;
+			if (path && prn === "(") {
+				fnCall[prnDp] = true;
+			}
+		}
+
+		if (!aposed && !quoted && prn2) {
+			if (bindings) {
+				compiledPath[fnDp] += prn;
+			}
+			ret += prn;
+		}
+		return ret;
+	}
+
+	var named, bindto, boundName, result,
+		quoted, // boolean for string content in double quotes
+		aposed, // or in single quotes
+		bindings = pathBindings && pathBindings[0], // bindings array for the first arg
+		bndCtx = {bd: bindings},
+		bndStack = {0: bndCtx},
+		paramIndex = 0, // list,
+		// The following are used for tracking path parsing including nested paths, such as "a.b(c^d + (e))^f", and chained computed paths such as
+		// "a.b().c^d().e.f().g" - which has four chained paths, "a.b()", "^c.d()", ".e.f()" and ".g"
+		prnDp = 0,     // For tracking paren depth (not function call parens)
+		fnDp = 0,      // For tracking depth of function call parens
+		prnInd = {},   // We are in a function call
+		prnStart = 0,  // tracks the start of the current path such as c^d() in the above example
+		prnStack = {}, // tracks parens which are not function calls, and so are associated with new bndStack contexts
+		fnCall = {},   // We are in a function call
+		pathStart = {},// tracks the start of the current path such as c^d() in the above example
+		compiledPathStart = {0: 0},
+		compiledPath = {0:""},
+		prevIndex = 0;
+
+	if (params[0] === "@") {
+		params = params.replace(rBracketQuote, ".");
+	}
+	result = (params + (tmpl ? " " : "")).replace($sub.rPrm, parseTokens);
+
+	if (bindings) {
+		result = compiledPath[0];
+	}
+
+	return !prnDp && result || syntaxError(params); // Syntax error if unbalanced parens in params expression
+}
+
+function buildCode(ast, tmpl, isLinkExpr) {
+	// Build the template function code from the AST nodes, and set as property on the passed-in template object
+	// Used for compiling templates, and also by JsViews to build functions for data link expressions
+	var i, node, tagName, converter, tagCtx, hasTag, hasEncoder, getsVal, hasCnvt, useCnvt, tmplBindings, pathBindings, params, boundOnErrStart,
+		boundOnErrEnd, tagRender, nestedTmpls, tmplName, nestedTmpl, tagAndElses, content, markup, nextIsElse, oldCode, isElse, isGetVal, tagCtxFn,
+		onError, tagStart, trigger, lateRender, retStrOpen, retStrClose,
+		tmplBindingKey = 0,
+		useViews = $subSettingsAdvanced.useViews || tmpl.useViews || tmpl.tags || tmpl.templates || tmpl.helpers || tmpl.converters,
+		code = "",
+		tmplOptions = {},
+		l = ast.length;
+
+	if ("" + tmpl === tmpl) {
+		tmplName = isLinkExpr ? 'data-link="' + tmpl.replace(rNewLine, " ").slice(1, -1) + '"' : tmpl;
+		tmpl = 0;
+	} else {
+		tmplName = tmpl.tmplName || "unnamed";
+		if (tmpl.allowCode) {
+			tmplOptions.allowCode = true;
+		}
+		if (tmpl.debug) {
+			tmplOptions.debug = true;
+		}
+		tmplBindings = tmpl.bnds;
+		nestedTmpls = tmpl.tmpls;
+	}
+	for (i = 0; i < l; i++) {
+		// AST nodes: [0: tagName, 1: converter, 2: content, 3: params, 4: code, 5: onError, 6: trigger, 7:pathBindings, 8: contentMarkup]
+		node = ast[i];
+
+		// Add newline for each callout to t() c() etc. and each markup string
+		if ("" + node === node) {
+			// a markup string to be inserted
+			code += '+"' + node + '"';
+		} else {
+			// a compiled tag expression to be inserted
+			tagName = node[0];
+			if (tagName === "*") {
+				// Code tag: {{* }}
+				code += ";\n" + node[1] + "\nret=ret";
+			} else {
+				converter = node[1];
+				content = !isLinkExpr && node[2];
+				tagCtx = paramStructure(node[3], params = node[4]);
+				trigger = node[6];
+				lateRender = node[7];
+				if (node[8]) { // latePath @a.b.c or @~a.b.c
+					retStrOpen = "\nvar ob,ltOb={},ctxs=";
+					retStrClose = ";\nctxs.lt=ltOb.lt;\nreturn ctxs;";
+				} else {
+					retStrOpen = "\nreturn ";
+					retStrClose = "";
+				}
+				markup = node[10] && node[10].replace(rUnescapeQuotes, "$1");
+				if (isElse = tagName === "else") {
+					if (pathBindings) {
+						pathBindings.push(node[9]);
+					}
+				} else {
+					onError = node[5] || $subSettings.debugMode !== false && "undefined"; // If debugMode not false, set default onError handler on tag to "undefined" (see onRenderError)
+					if (tmplBindings && (pathBindings = node[9])) { // Array of paths, or false if not data-bound
+						pathBindings = [pathBindings];
+						tmplBindingKey = tmplBindings.push(1); // Add placeholder in tmplBindings for compiled function
+					}
+				}
+				useViews = useViews || params[1] || params[2] || pathBindings || /view.(?!index)/.test(params[0]);
+				// useViews is for perf optimization. For render() we only use views if necessary - for the more advanced scenarios.
+				// We use views if there are props, contextual properties or args with #... (other than #index) - but you can force
+				// using the full view infrastructure, (and pay a perf price) by opting in: Set useViews: true on the template, manually...
+				if (isGetVal = tagName === ":") {
+					if (converter) {
+						tagName = converter === HTML ? ">" : converter + tagName;
+					}
+				} else {
+					if (content) { // TODO optimize - if content.length === 0 or if there is a tmpl="..." specified - set content to null / don't run this compilation code - since content won't get used!!
+						// Create template object for nested template
+						nestedTmpl = tmplObject(markup, tmplOptions);
+						nestedTmpl.tmplName = tmplName + "/" + tagName;
+						// Compile to AST and then to compiled function
+						nestedTmpl.useViews = nestedTmpl.useViews || useViews;
+						buildCode(content, nestedTmpl);
+						useViews = nestedTmpl.useViews;
+						nestedTmpls.push(nestedTmpl);
+					}
+
+					if (!isElse) {
+						// This is not an else tag.
+						tagAndElses = tagName;
+						useViews = useViews || tagName && (!$tags[tagName] || !$tags[tagName].flow);
+						// Switch to a new code string for this bound tag (and its elses, if it has any) - for returning the tagCtxs array
+						oldCode = code;
+						code = "";
+					}
+					nextIsElse = ast[i + 1];
+					nextIsElse = nextIsElse && nextIsElse[0] === "else";
+				}
+				tagStart = onError ? ";\ntry{\nret+=" : "\n+";
+				boundOnErrStart = "";
+				boundOnErrEnd = "";
+
+				if (isGetVal && (pathBindings || trigger || converter && converter !== HTML || lateRender)) {
+					// For convertVal we need a compiled function to return the new tagCtx(s)
+					tagCtxFn = new Function("data,view,j", "// " + tmplName + " " + (++tmplBindingKey) + " " + tagName
+						+ retStrOpen + "{" + tagCtx + "};" + retStrClose);
+					tagCtxFn._er = onError;
+					tagCtxFn._tag = tagName;
+					tagCtxFn._bd = !!pathBindings; // data-linked tag {^{.../}}
+					tagCtxFn._lr = lateRender;
+
+					if (isLinkExpr) {
+						return tagCtxFn;
+					}
+
+					setPaths(tagCtxFn, pathBindings);
+					tagRender = 'c("' + converter + '",view,';
+					useCnvt = true;
+					boundOnErrStart = tagRender + tmplBindingKey + ",";
+					boundOnErrEnd = ")";
+				}
+				code += (isGetVal
+					? (isLinkExpr ? (onError ? "try{\n" : "") + "return " : tagStart) + (useCnvt // Call _cnvt if there is a converter: {{cnvt: ... }} or {^{cnvt: ... }}
+						? (useCnvt = undefined, useViews = hasCnvt = true, tagRender + (tagCtxFn
+							? ((tmplBindings[tmplBindingKey - 1] = tagCtxFn), tmplBindingKey) // Store the compiled tagCtxFn in tmpl.bnds, and pass the key to convertVal()
+							: "{" + tagCtx + "}") + ")")
+						: tagName === ">"
+							? (hasEncoder = true, "h(" + params[0] + ")")
+							: (getsVal = true, "((v=" + params[0] + ')!=null?v:' + (isLinkExpr ? 'null)' : '"")'))
+							// Non strict equality so data-link="title{:expr}" with expr=null/undefined removes title attribute
+					)
+					: (hasTag = true, "\n{view:view,content:false,tmpl:" // Add this tagCtx to the compiled code for the tagCtxs to be passed to renderTag()
+						+ (content ? nestedTmpls.length : "false") + "," // For block tags, pass in the key (nestedTmpls.length) to the nested content template
+						+ tagCtx + "},"));
+
+				if (tagAndElses && !nextIsElse) {
+					// This is a data-link expression or an inline tag without any elses, or the last {{else}} of an inline tag
+					// We complete the code for returning the tagCtxs array
+					code = "[" + code.slice(0, -1) + "]";
+					tagRender = 't("' + tagAndElses + '",view,this,';
+					if (isLinkExpr || pathBindings) {
+						// This is a bound tag (data-link expression or inline bound tag {^{tag ...}}) so we store a compiled tagCtxs function in tmp.bnds
+						code = new Function("data,view,j", " // " + tmplName + " " + tmplBindingKey + " " + tagAndElses + retStrOpen + code
+							+ retStrClose);
+						code._er = onError;
+						code._tag = tagAndElses;
+						if (pathBindings) {
+							setPaths(tmplBindings[tmplBindingKey - 1] = code, pathBindings);
+						}
+						code._lr = lateRender;
+						if (isLinkExpr) {
+							return code; // For a data-link expression we return the compiled tagCtxs function
+						}
+						boundOnErrStart = tagRender + tmplBindingKey + ",undefined,";
+						boundOnErrEnd = ")";
+					}
+
+					// This is the last {{else}} for an inline tag.
+					// For a bound tag, pass the tagCtxs fn lookup key to renderTag.
+					// For an unbound tag, include the code directly for evaluating tagCtxs array
+					code = oldCode + tagStart + tagRender + (pathBindings && tmplBindingKey || code) + ")";
+					pathBindings = 0;
+					tagAndElses = 0;
+				}
+				if (onError && !nextIsElse) {
+					useViews = true;
+					code += ';\n}catch(e){ret' + (isLinkExpr ? "urn " : "+=") + boundOnErrStart + 'j._err(e,view,' + onError + ')' + boundOnErrEnd + ';}' + (isLinkExpr ? "" : '\nret=ret');
+				}
+			}
+		}
+	}
+	// Include only the var references that are needed in the code
+	code = "// " + tmplName
+		+ (tmplOptions.debug ? "\ndebugger;" : "")
+		+ "\nvar v"
+		+ (hasTag ? ",t=j._tag" : "")                // has tag
+		+ (hasCnvt ? ",c=j._cnvt" : "")              // converter
+		+ (hasEncoder ? ",h=j._html" : "")           // html converter
+		+ (isLinkExpr
+				? (node[8] // late @... path?
+						? ", ob"
+						: ""
+					) + ";\n"
+				: ',ret=""')
+		+ code
+		+ (isLinkExpr ? "\n" : ";\nreturn ret;");
+
+	try {
+		code = new Function("data,view,j", code);
+	} catch (e) {
+		syntaxError("Compiled template code:\n\n" + code + '\n: "' + (e.message||e) + '"');
+	}
+	if (tmpl) {
+		tmpl.fn = code;
+		tmpl.useViews = !!useViews;
+	}
+	return code;
+}
+
+//==========
+// Utilities
+//==========
+
+// Merge objects, in particular contexts which inherit from parent contexts
+function extendCtx(context, parentContext) {
+	// Return copy of parentContext, unless context is defined and is different, in which case return a new merged context
+	// If neither context nor parentContext are defined, return undefined
+	return context && context !== parentContext
+		? (parentContext
+			? $extend($extend({}, parentContext), context)
+			: context)
+		: parentContext && $extend({}, parentContext);
+}
+
+function getTargetProps(source, tagCtx) {
+	// this pointer is theMap - which has tagCtx.props too
+	// arguments: tagCtx.args.
+	var key, prop,
+		map = tagCtx.map,
+		propsArr = map && map.propsArr;
+
+	if (!propsArr) { // map.propsArr is the full array of {key:..., prop:...} objects
+		propsArr = [];
+		if (typeof source === OBJECT || $isFunction(source)) {
+			for (key in source) {
+				prop = source[key];
+				if (key !== $expando && source.hasOwnProperty(key) && (!tagCtx.props.noFunctions || !$.isFunction(prop))) {
+					propsArr.push({key: key, prop: prop});
+				}
+			}
+		}
+		if (map) {
+			map.propsArr = map.options && propsArr; // If bound {^{props}} and not isRenderCall, store propsArr on map (map.options is defined only for bound, && !isRenderCall)
+		}
+	}
+	return getTargetSorted(propsArr, tagCtx); // Obtains map.tgt, by filtering, sorting and splicing the full propsArr
+}
+
+function getTargetSorted(value, tagCtx) {
+	// getTgt
+	var mapped, start, end,
+		tag = tagCtx.tag,
+		props = tagCtx.props,
+		propParams = tagCtx.params.props,
+		filter = props.filter,
+		sort = props.sort,
+		directSort = sort === true,
+		step = parseInt(props.step),
+		reverse = props.reverse ? -1 : 1;
+
+	if (!$isArray(value)) {
+		return value;
+	}
+	if (directSort || sort && "" + sort === sort) {
+		// Temporary mapped array holds objects with index and sort-value
+		mapped = value.map(function(item, i) {
+			item = directSort ? item : getPathObject(item, sort);
+			return {i: i, v: "" + item === item ? item.toLowerCase() : item};
+		});
+		// Sort mapped array
+		mapped.sort(function(a, b) {
+			return a.v > b.v ? reverse : a.v < b.v ? -reverse : 0;
+		});
+		// Map to new array with resulting order
+		value = mapped.map(function(item){
+			return value[item.i];
+		});
+	} else if ((sort || reverse < 0) && !tag.dataMap) {
+		value = value.slice(); // Clone array first if not already a new array
+	}
+	if ($isFunction(sort)) {
+		value = value.sort(function() { // Wrap the sort function to provide tagCtx as 'this' pointer
+			return sort.apply(tagCtx, arguments);
+		});
+	}
+	if (reverse < 0 && (!sort || $isFunction(sort))) { // Reverse result if not already reversed in sort
+		value = value.reverse();
+	}
+
+	if (value.filter && filter) { // IE8 does not support filter
+		value = value.filter(filter, tagCtx);
+		if (tagCtx.tag.onFilter) {
+			tagCtx.tag.onFilter(tagCtx);
+		}
+	}
+
+	if (propParams.sorted) {
+		mapped = (sort || reverse < 0) ? value : value.slice();
+		if (tag.sorted) {
+			$.observable(tag.sorted).refresh(mapped); // Note that this might cause the start and end props to be modified - e.g. by pager tag control
+		} else {
+			tagCtx.map.sorted = mapped;
+		}
+	}
+
+	start = props.start; // Get current value - after possible changes triggered by tag.sorted refresh() above
+	end = props.end;
+	if (propParams.start && start === undefined || propParams.end && end === undefined) {
+		start = end = 0;
+	}
+	if (!isNaN(start) || !isNaN(end)) { // start or end specified, but not the auto-create Number array scenario of {{for start=xxx end=yyy}}
+		start = +start || 0;
+		end = end === undefined || end > value.length ? value.length : +end;
+		value = value.slice(start, end);
+	}
+	if (step > 1) {
+		start = 0;
+		end = value.length;
+		mapped = [];
+		for (; start<end; start+=step) {
+			mapped.push(value[start]);
+		}
+		value = mapped;
+	}
+	if (propParams.paged && tag.paged) {
+		$observable(tag.paged).refresh(value);
+	}
+
+	return value;
+}
+
+/** Render the template as a string, using the specified data and helpers/context
+* $("#tmpl").render()
+*
+* @param {any}        data
+* @param {hash}       [helpersOrContext]
+* @param {boolean}    [noIteration]
+* @returns {string}   rendered template
+*/
+function $fnRender(data, context, noIteration) {
+	var tmplElem = this.jquery && (this[0] || error('Unknown template')), // Targeted element not found for jQuery template selector such as "#myTmpl"
+		tmpl = tmplElem.getAttribute(tmplAttr);
+
+	return renderContent.call(tmpl && $.data(tmplElem)[jsvTmpl] || $templates(tmplElem),
+		data, context, noIteration);
+}
+
+//========================== Register converters ==========================
+
+function getCharEntity(ch) {
+	// Get character entity for HTML, Attribute and optional data encoding
+	return charEntities[ch] || (charEntities[ch] = "&#" + ch.charCodeAt(0) + ";");
+}
+
+function getCharFromEntity(match, token) {
+	// Get character from HTML entity, for optional data unencoding
+	return charsFromEntities[token] || "";
+}
+
+function htmlEncode(text) {
+	// HTML encode: Replace < > & ' " ` etc. by corresponding entities.
+	return text != undefined ? rIsHtml.test(text) && ("" + text).replace(rHtmlEncode, getCharEntity) || text : "";
+}
+
+function dataEncode(text) {
+	// Encode just < > and & - intended for 'safe data' along with {{:}} rather than {{>}}
+  return "" + text === text ? text.replace(rDataEncode, getCharEntity) : text;
+}
+
+function dataUnencode(text) {
+  // Unencode just < > and & - intended for 'safe data' along with {{:}} rather than {{>}}
+  return "" + text === text ? text.replace(rDataUnencode, getCharFromEntity) : text;
+}
+
+//========================== Initialize ==========================
+
+$sub = $views.sub;
+$viewsSettings = $views.settings;
+
+if (!(jsr || $ && $.render)) {
+	// JsRender/JsViews not already loaded (or loaded without jQuery, and we are now moving from jsrender namespace to jQuery namepace)
+	for (jsvStoreName in jsvStores) {
+		registerStore(jsvStoreName, jsvStores[jsvStoreName]);
+	}
+
+	$converters = $views.converters;
+	$helpers = $views.helpers;
+	$tags = $views.tags;
+
+	$sub._tg.prototype = {
+		baseApply: baseApply,
+		cvtArgs: convertArgs,
+		bndArgs: convertBoundArgs,
+		ctxPrm: contextParameter
+	};
+
+	topView = $sub.topView = new View();
+
+	//BROWSER-SPECIFIC CODE
+	if ($) {
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		// jQuery (= $) is loaded
+
+		$.fn.render = $fnRender;
+		$expando = $.expando;
+		if ($.observable) {
+			if (versionNumber !== (versionNumber = $.views.jsviews)) {
+				// Different version of jsRender was loaded
+				throw "jquery.observable.js requires jsrender.js " + versionNumber;
+			}
+			$extend($sub, $.views.sub); // jquery.observable.js was loaded before jsrender.js
+			$views.map = $.views.map;
+		}
+
+	} else {
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		// jQuery is not loaded.
+
+		$ = {};
+
+		if (setGlobals) {
+			global.jsrender = $; // We are loading jsrender.js from a script element, not AMD or CommonJS, so set global
+		}
+
+		// Error warning if jsrender.js is used as template engine on Node.js (e.g. Express or Hapi...)
+		// Use jsrender-node.js instead...
+		$.renderFile = $.__express = $.compile = function() { throw "Node.js: use npm jsrender, or jsrender-node.js"; };
+
+		//END BROWSER-SPECIFIC CODE
+		$.isFunction = function(ob) {
+			return typeof ob === "function";
+		};
+
+		$.isArray = Array.isArray || function(obj) {
+			return ({}.toString).call(obj) === "[object Array]";
+		};
+
+		$sub._jq = function(jq) { // private method to move from JsRender APIs from jsrender namespace to jQuery namespace
+			if (jq !== $) {
+				$extend(jq, $); // map over from jsrender namespace to jQuery namespace
+				$ = jq;
+				$.fn.render = $fnRender;
+				delete $.jsrender;
+				$expando = $.expando;
+			}
+		};
+
+		$.jsrender = versionNumber;
+	}
+	$subSettings = $sub.settings;
+	$subSettings.allowCode = false;
+	$isFunction = $.isFunction;
+	$.render = $render;
+	$.views = $views;
+	$.templates = $templates = $views.templates;
+
+	for (setting in $subSettings) {
+		addSetting(setting);
+	}
+
+	/**
+	* $.views.settings.debugMode(true)
+	* @param {boolean} debugMode
+	* @returns {Settings}
+	*
+	* debugMode = $.views.settings.debugMode()
+	* @returns {boolean}
+	*/
+	($viewsSettings.debugMode = function(debugMode) {
+		return debugMode === undefined
+			? $subSettings.debugMode
+			: (
+				$subSettings._clFns && $subSettings._clFns(), // Clear linkExprStore (cached compiled expressions), since debugMode setting affects compilation for expressions
+				$subSettings.debugMode = debugMode,
+				$subSettings.onError = debugMode + "" === debugMode
+					? function() { return debugMode; }
+					: $isFunction(debugMode)
+						? debugMode
+						: undefined,
+				$viewsSettings);
+	})(false); // jshint ignore:line
+
+	$subSettingsAdvanced = $subSettings.advanced = {
+		cache: true, // By default use cached values of computed values (Otherwise, set advanced cache setting to false)
+		useViews: false,
+		_jsv: false // For global access to JsViews store
+	};
+
+	//========================== Register tags ==========================
+
+	$tags({
+		"if": {
+			render: function(val) {
+				// This function is called once for {{if}} and once for each {{else}}.
+				// We will use the tag.rendering object for carrying rendering state across the calls.
+				// If not done (a previous block has not been rendered), look at expression for this block and render the block if expression is truthy
+				// Otherwise return ""
+				var self = this,
+					tagCtx = self.tagCtx,
+					ret = (self.rendering.done || !val && (tagCtx.args.length || !tagCtx.index))
+						? ""
+						: (self.rendering.done = true,
+							self.selected = tagCtx.index,
+							undefined); // Test is satisfied, so render content on current context
+				return ret;
+			},
+			contentCtx: true, // Inherit parent view data context
+			flow: true
+		},
+		"for": {
+			sortDataMap: dataMap(getTargetSorted),
+			init: function(val, cloned) {
+				this.setDataMap(this.tagCtxs);
+			},
+			render: function(val) {
+				// This function is called once for {{for}} and once for each {{else}}.
+				// We will use the tag.rendering object for carrying rendering state across the calls.
+				var value, filter, srtField, isArray, i, sorted, end, step,
+					self = this,
+					tagCtx = self.tagCtx,
+					range = tagCtx.argDefault === false,
+					props = tagCtx.props,
+					iterate = range || tagCtx.args.length, // Not final else and not auto-create range
+					result = "",
+					done = 0;
+
+				if (!self.rendering.done) {
+					value = iterate ? val : tagCtx.view.data; // For the final else, defaults to current data without iteration.
+
+					if (range) {
+						range = props.reverse ? "unshift" : "push";
+						end = +props.end;
+						step = +props.step || 1;
+						value = []; // auto-create integer array scenario of {{for start=xxx end=yyy}}
+						for (i = +props.start || 0; (end - i) * step > 0; i += step) {
+							value[range](i);
+						}
+					}
+					if (value !== undefined) {
+						isArray = $isArray(value);
+						result += tagCtx.render(value, !iterate || props.noIteration);
+						// Iterates if data is an array, except on final else - or if noIteration property
+						// set to true. (Use {{include}} to compose templates without array iteration)
+						done += isArray ? value.length : 1;
+					}
+					if (self.rendering.done = done) {
+						self.selected = tagCtx.index;
+					}
+					// If nothing was rendered we will look at the next {{else}}. Otherwise, we are done.
+				}
+				return result;
+			},
+			setDataMap: function(tagCtxs) {
+				var tagCtx, props, paramsProps,
+					self = this,
+					l = tagCtxs.length;
+				while (l--) {
+					tagCtx = tagCtxs[l];
+					props = tagCtx.props;
+					paramsProps = tagCtx.params.props;
+					tagCtx.argDefault = props.end === undefined || tagCtx.args.length > 0; // Default to #data except for auto-create range scenario {{for start=xxx end=yyy step=zzz}}
+					props.dataMap = (tagCtx.argDefault !== false && $isArray(tagCtx.args[0]) &&
+						(paramsProps.sort || paramsProps.start || paramsProps.end || paramsProps.step || paramsProps.filter || paramsProps.reverse
+						|| props.sort || props.start || props.end || props.step || props.filter || props.reverse))
+						&& self.sortDataMap;
+				}
+			},
+			flow: true
+		},
+		props: {
+			baseTag: "for",
+			dataMap: dataMap(getTargetProps),
+			init: noop, // Don't execute the base init() of the "for" tag
+			flow: true
+		},
+		include: {
+			flow: true
+		},
+		"*": {
+			// {{* code... }} - Ignored if template.allowCode and $.views.settings.allowCode are false. Otherwise include code in compiled template
+			render: retVal,
+			flow: true
+		},
+		":*": {
+			// {{:* returnedExpression }} - Ignored if template.allowCode and $.views.settings.allowCode are false. Otherwise include code in compiled template
+			render: retVal,
+			flow: true
+		},
+		dbg: $helpers.dbg = $converters.dbg = dbgBreak // Register {{dbg/}}, {{dbg:...}} and ~dbg() to throw and catch, as breakpoints for debugging.
+	});
+
+	$converters({
+		html: htmlEncode,
+		attr: htmlEncode, // Includes > encoding since rConvertMarkers in JsViews does not skip > characters in attribute strings
+		encode: dataEncode,
+		unencode: dataUnencode, // Includes > encoding since rConvertMarkers in JsViews does not skip > characters in attribute strings
+		url: function(text) {
+			// URL encoding helper.
+			return text != undefined ? encodeURI("" + text) : text === null ? text : ""; // null returns null, e.g. to remove attribute. undefined returns ""
+		}
+	});
+}
+//========================== Define default delimiters ==========================
+$subSettings = $sub.settings;
+$isArray = ($||jsr).isArray;
+$viewsSettings.delimiters("{{", "}}", "^");
+
+if (jsrToJq) { // Moving from jsrender namespace to jQuery namepace - copy over the stored items (templates, converters, helpers...)
+	jsr.views.sub._jq($);
+}
+return $ || jsr;
+}, window));
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+/*!*******************************************!*\
+  !*** ./resources/assets/js/web/plugin.js ***!
+  \*******************************************/
+document.addEventListener('DOMContentLoaded', loadPluginLightGallery);
+
+function loadPluginLightGallery() {
+  if (!$('.lightGallery').length) {
+    return;
+  }
+
+  $('.lightgallery').lightGallery({
+    mode: 'lg-slide-circular',
+    counter: false
+  });
+}
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/*!***********************************************!*\
+  !*** ./resources/assets/js/custom/helpers.js ***!
+  \***********************************************/
+
+
+window.isEmpty = function (value) {
+  return value === undefined || value === null || value === '';
+};
+
+window.randomCode = function () {
+  var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 6;
+  return Math.random().toString(36).slice(-length);
+};
+
+window.listen = function (event, selector, callback) {
+  $(document).on(event, selector, callback);
+};
+
+window.listenClick = function (selector, callback) {
+  $(document).on('click', selector, callback);
+};
+
+window.listenSubmit = function (selector, callback) {
+  $(document).on('submit', selector, callback);
+};
+
+window.listenHiddenBsModal = function (selector, callback) {
+  $(document).on('hidden.bs.modal', selector, callback);
+};
+
+window.listenChange = function (selector, callback) {
+  $(document).on('change', selector, callback);
+};
+
+window.listenKeyup = function (selector, callback) {
+  $(document).on('keyup', selector, callback);
+};
+
+window.listenShownBsModal = function (selector, callback) {
+  $(document).on('shown.bs.modal', selector, callback);
+};
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/*!**********************************************!*\
+  !*** ./resources/assets/js/custom/custom.js ***!
+  \**********************************************/
+
+
+var jsrender = __webpack_require__(/*! jsrender */ "./node_modules/jsrender/jsrender.js");
+
+var csrfToken = $('meta[name="csrf-token"]').attr("content");
+$.ajaxSetup({
+  headers: {
+    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+  }
+});
+document.addEventListener("DOMContentLoaded", initAllComponents);
+
+function initAllComponents() {
+  var userCurrentLanguage = $(".userCurrentLanguage").val();
+  select2initialize();
+  refreshCsrfToken();
+  alertInitialize();
+  modalInputFocus();
+  inputFocus();
+  IOInitImageComponent();
+  IOInitSidebar();
+
+  if (userCurrentLanguage == 'ar') {
+    toastr.options = {
+      closeButton: true,
+      debug: false,
+      rtl: true,
+      newestOnTop: false,
+      progressBar: true,
+      positionClass: "toast-top-left",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: "300",
+      hideDuration: "1000",
+      timeOut: "5000",
+      extendedTimeOut: "1000",
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut"
+    };
+  } else {
+    toastr.options = {
+      closeButton: true,
+      debug: false,
+      newestOnTop: false,
+      progressBar: true,
+      positionClass: "toast-top-right",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: "300",
+      hideDuration: "1000",
+      timeOut: "5000",
+      extendedTimeOut: "1000",
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut"
+    };
+  }
+}
+
+var firstTime = true;
+
+function select2initialize() {
+  $('[data-control="select2"]').each(function () {
+    $(this).select2();
+  });
+}
+
+$(".getLanguage").val();
+
+function refreshCsrfToken() {
+  csrfToken = $('meta[name="csrf-token"]').attr("content");
+  $.ajaxSetup({
+    headers: {
+      "X-CSRF-TOKEN": csrfToken
+    }
+  });
+}
+
+function alertInitialize() {
+  $(".alert").delay(5000).slideUp(300);
+}
+
+var modalInputFocus = function modalInputFocus() {
+  $(function () {
+    $(".modal").on("shown.bs.modal", function () {
+      $(this).find("input:text").first().focus();
+    });
+  });
+};
+
+var inputFocus = function inputFocus() {
+  $('input:text:not([readonly="readonly"]):not([name="search"]):not(.front-input)').first().focus();
+};
+
+$(document).on("keydown", function (e) {
+  if (e.keyCode === 27) {
+    $(".modal").modal("hide");
+  }
+});
+$('input:text:not([readonly="readonly"])').first().focus();
+$(document).on("select2:open", function () {
+  var allFound = document.querySelectorAll(".select2-container--open .select2-search__field");
+  allFound[allFound.length - 1].focus();
+});
+$('[data-control="select2"]').each(function () {
+  $(this).select2();
+});
+document.addEventListener("livewire:load", function () {
+  window.livewire.hook("message.processed", function () {
+    $('[data-control="select2"]').each(function () {
+      $(this).select2();
+    });
+  });
+});
+$(document).on("focus", ".select2.select2-container", function (e) {
+  var isOriginalEvent = e.originalEvent; // don't re-open on closing focus event
+
+  var isSingleSelect = $(this).find(".select2-selection--single").length > 0; // multi-select will pass focus to input
+
+  if (isOriginalEvent && isSingleSelect) {
+    $(this).siblings("select:enabled").select2("open");
+  }
+});
+$(document).ready(function () {
+  // initializer script for bootstrap 4 tooltip
+  $('[data-bs-toggle="tooltip"]').tooltip();
+
+  function tooltip() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  } // script to active parent menu if sub menu has currently active
+
+
+  var hasActiveMenu = $(document).find(".nav-item.nav-dropdown ul li.nav-item").hasClass("active");
+  if (hasActiveMenu) $(document).find(".nav-item.nav-dropdown ul li.nav-item.active").parent("ul").parent("li").addClass("open");
+  listenClick(".nav-item.nav-dropdown", function () {
+    var openLiSelector = $(document).find(".nav-item.nav-dropdown").hasClass("open");
+    if (openLiSelector && $(this).hasClass("open")) setTimeout(function () {
+      $(this).removeClass("open");
+    }, 1000);else $(document).find(".nav-item.nav-dropdown").removeClass("open");
+  }); // remove capital letters from email validation script.
+
+  listenKeyup('input[name="email"]', function () {
+    this.value = this.value.toLowerCase();
+  });
+  $('input[name="email"]').keypress(function (e) {
+    if (e.which === 32) return false;
+  });
+});
+$(function () {
+  listenShownBsModal(".modal", function () {
+    $(this).find("input:text").first().focus();
+  });
+  listenHiddenBsModal(".modal", function () {
+    $(".image-input.image-input-empty").attr("style", "display:inline-block");
+  });
+});
+
+window.resetModalForm = function (formId, validationBox) {
+  var inputs = $(formId)[0].elements;
+  $.each(inputs, function (index, value) {
+    if (typeof value._flatpickr !== "undefined") {
+      value._flatpickr.clear();
+
+      value._flatpickr.setDate(new Date());
+    }
+  });
+  $(formId)[0].reset();
+  $("select.select2Selector").each(function (index, element) {
+    var drpSelector = "#" + $(this).attr("id");
+    $(drpSelector).val("");
+    $(drpSelector).trigger("change");
+  });
+  $(validationBox).hide();
+};
+
+window.processingBtn = function (selecter, btnId) {
+  var state = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var loadingButton = $(selecter).find(btnId);
+
+  if (state === "loading") {
+    loadingButton.button("loading");
+  } else {
+    loadingButton.button("reset");
+  }
+};
+
+window.printErrorMessage = function (selector, errorResult) {
+  // $(selector).show().html("");
+  // $(selector).text(errorResult.responseJSON.message);
+  displayErrorMessage(errorResult.responseJSON.message);
+};
+
+window.manageAjaxErrors = function (data) {
+  var errorDivId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "editValidationErrorsBox";
+
+  if (data.status == 404) {
+    toastr.error(data.responseJSON.message);
+  } else {
+    printErrorMessage("#" + errorDivId, data);
+  }
+};
+
+window.displaySuccessMessage = function (message) {
+  toastr.success(message);
+};
+
+window.displayErrorMessage = function (message) {
+  toastr.error(message);
+};
+
+window.displayPhoto = function (input, selector) {
+  var displayPreview = true;
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      var image = new Image();
+      image.src = e.target.result;
+
+      image.onload = function () {
+        $(selector).attr("src", e.target.result);
+        displayPreview = true;
+      };
+    };
+
+    if (displayPreview) {
+      reader.readAsDataURL(input.files[0]);
+      $(selector).show();
+    }
+  }
+};
+
+window.isValidFile = function (inputSelector, validationMessageSelector) {
+  var ext = $(inputSelector).val().split(".").pop().toLowerCase();
+
+  if ($.inArray(ext, ["gif", "png", "jpg", "jpeg"]) == -1) {
+    $(inputSelector).val("");
+    $(validationMessageSelector).html(Lang.get("js.validate_image_type")).removeClass("d-none").show();
+    setTimeout(function () {
+      $(validationMessageSelector).slideUp(300);
+    }, 5000);
+    return false;
+  }
+
+  $(validationMessageSelector).addClass("d-none");
+  return true;
+};
+
+window.format = function (dateTime) {
+  var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "YYYY-MM-DD";
+  return moment(dateTime).format(format);
+};
+
+window.DatetimepickerDefaults = function (opts) {
+  return $.extend({}, {
+    sideBySide: true,
+    ignoreReadonly: true,
+    icons: {
+      up: "icon-arrow-up-circle icons font-2xl",
+      down: "icon-arrow-down-circle icons font-2xl",
+      previous: "icon-arrow-left icons",
+      next: "icon-arrow-right icons",
+      time: "fa fa-clock-o",
+      date: "fa fa-calendar",
+      today: "fa fa-crosshairs",
+      clear: "fa fa-trash",
+      close: "fa fa-times"
+    }
+  }, opts);
+};
+
+window.screenLock = function () {
+  $("#overlay-screen-lock").show();
+  $("body").css({
+    "pointer-events": "none",
+    opacity: "0.6"
+  });
+};
+
+window.screenUnLock = function () {
+  $("body").css({
+    "pointer-events": "auto",
+    opacity: "1"
+  });
+  $("#overlay-screen-lock").hide();
+};
+
+window.prepareTemplateRender = function (templateSelector, data) {
+  var template = jsrender.templates(templateSelector);
+  return template.render(data);
+};
+/**
+ * @return string
+ */
+
+
+window.getCurrentCurrencyClass = function () {
+  return "<b>" + $(".currentCurrency").val() + "</b>";
+};
+/**
+ * @return string
+ */
+
+
+window.getCurrentCurrency = function () {
+  return $(".getCurrentCurrency").val();
+};
+
+window.hideDropdownManually = function (dropdownBtnEle, dropdownEle) {
+  dropdownBtnEle.removeClass("show");
+  dropdownEle.removeClass("show");
+};
+
+window.displayDocument = function (input, selector, extension) {
+  var displayPreview = true;
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      var image = new Image();
+
+      if ($.inArray(extension, ["pdf", "doc", "docx", "mp3", "mp4"]) == -1) {
+        image.src = e.target.result;
+      } else {
+        if (extension == "pdf") {
+          $("#editPhoto").css("background-image", 'url("' + $(".pdfDocumentImageUrl").val() + '")');
+          image.src = $(".pdfDocumentImageUrl").val();
+        } else if (extension == "mp3") {
+          image.src = $(".audioDocumentImageUrl").val();
+        } else if (extension == "mp4") {
+          image.src = $(".videoDocumentImageUrl").val();
+        } else {
+          image.src = $(".docxDocumentImageUrl").val();
+        }
+      }
+
+      image.onload = function () {
+        $(selector).attr("src", image.src);
+        $(selector).css("background-image", 'url("' + image.src + '")');
+        displayPreview = true;
+      };
+    };
+
+    if (displayPreview) {
+      reader.readAsDataURL(input.files[0]);
+      $(selector).show();
+    }
+  }
+};
+
+var ajaxCallIsRunning = $(".ajaxCallIsRunning").val();
+
+window.ajaxCallInProgress = function () {
+  ajaxCallIsRunning = true;
+};
+
+window.ajaxCallCompleted = function () {
+  ajaxCallIsRunning = false;
+};
+
+window.UnprocessableInputError = function (data) {
+  toastr.error(data.responseJSON.message);
+}; // set N/A if span tag is empty
+
+
+window.setValueOfEmptySpan = function () {
+  $("span.showSpan").each(function () {
+    if (!$(this).text()) {
+      $(this).text(Lang.get("js.n/a"));
+    }
+  });
+}; // Add comma into numbers
+
+
+window.addCommas = function (number) {
+  number += "";
+  var x = number.split(".");
+  var x1 = x[0];
+  var x2 = x.length > 1 ? "." + x[1] : "";
+  var rgx = /(\d+)(\d{3})/;
+
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, "$1" + "," + "$2");
+  }
+
+  return x1 + x2;
+};
+
+$(function () {
+  listenClick(".notification", function (e) {
+    e.stopPropagation();
+    var notificationId = $(this).data("id");
+    var notification = $(this);
+    $('[data-toggle="tooltip"]').tooltip("hide");
+    $.ajax({
+      type: "get",
+      url: "/notification/" + notificationId + "/read",
+      success: function success() {
+        notification.remove();
+        displaySuccessMessage(Lang.get("js.notification_read_successfully"));
+        var notificationCounter = document.getElementsByClassName("notification").length;
+        $("#counter").text(notificationCounter);
+
+        if (notificationCounter == 0) {
+          $(".read-all-notification").addClass("d-none");
+          $(".empty-state").removeClass("d-none");
+          $("#counter").text(notificationCounter);
+          $(".notification-count").addClass("d-none");
+        }
+      },
+      error: function error(result) {
+        manageAjaxErrors(result);
+      }
+    });
+  });
+  listenClick("#readAllNotification", function (e) {
+    e.stopPropagation();
+    $.ajax({
+      type: "post",
+      url: "/read-all-notification",
+      success: function success() {
+        $(".notification").remove();
+        var notificationCounter = document.getElementsByClassName("notification").length;
+        $("#counter").text(notificationCounter);
+        $("#readAllNotification").addClass("d-none");
+        $(".empty-state").addClass("d-none");
+        $(".empty-state.empty-notification").removeClass("d-none");
+        $(".notification-count").addClass("d-none");
+        displaySuccessMessage(Lang.get("js.all_notification_read_successfully"));
+      },
+      error: function error(result) {
+        manageAjaxErrors(result);
+      }
+    });
+  });
+});
+
+window.avoidSpace = function (event) {
+  var k = event ? event.which : window.event.keyCode;
+
+  if (k == 32 && event.path[0].value.length <= 0) {
+    return false;
+  }
+};
+
+var defaultAvatarImageUrl = "asset('assets/img/avatar.png')";
+
+window.defaultImagePreview = function (imagePreviewSelector) {
+  var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+  if (id == 1) {
+    $(imagePreviewSelector).css("background-image", 'url("' + defaultAvatarImageUrl + '")');
+  } else {
+    $(imagePreviewSelector).css("background-image", 'url("' + $(".defaultDocumentImageUrl").val() + '")');
+  }
+};
+
+window.cancelAppointment = function (url, tableId, header, appointmentId) {
+  swal({
+    title: Lang.get("js.cancel") + " " + Lang.get("js.appointment"),
+    text: Lang.get("js.are_you_sure_want_to_cancel") + " " + header + " ?",
+    type: "warning",
+    icon: "warning",
+    closeOnConfirm: false,
+    confirmButtonColor: "#000000",
+    showLoaderOnConfirm: true,
+    buttons: {
+      confirm: Lang.get("js.yes"),
+      cancel: Lang.get("js.no")
+    }
+  }).then(function (result) {
+    if (result) {
+      cancelAppointmentAjax(url, tableId, header, appointmentId);
+    }
+  });
+};
+
+function cancelAppointmentAjax(url, tableId, header, appointmentId) {
+  $.ajax({
+    url: url,
+    type: "POST",
+    success: function success(obj) {
+      if (obj.success) {
+        Livewire.dispatch("refresh");
+      }
+
+      swal({
+        title: Lang.get("js.canceled") + " " + Lang.get("js.appointment"),
+        text: header + Lang.get("js.has_been_cancelled"),
+        icon: "success",
+        confirmButtonColor: "#D9214E",
+        buttons: {
+          confirm: Lang.get("js.ok")
+        },
+        timer: 2000
+      });
+    },
+    error: function error(data) {
+      swal({
+        title: "Error",
+        icon: "error",
+        text: data.responseJSON.message,
+        type: "error",
+        confirmButtonColor: "#D9214E",
+        buttons: {
+          confirm: Lang.get("js.ok")
+        },
+        timer: 5000
+      });
+    }
+  });
+}
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+/*!****************************************!*\
+  !*** ./resources/assets/js/web/web.js ***!
+  \****************************************/
+document.addEventListener('DOMContentLoaded', loadWebContentData);
+
+function loadWebContentData() {
+  // if(!$('.doctor-name-filter').length) {
+  //     return
+  // }
+  //
+  // if(!$('.datepicker').length) {
+  //     return
+  // }
+  $('.doctor-name-filter').selectize();
+  $.datepicker.setDefaults($.datepicker.regional[$('.userCurrentLanguage').val()]);
+  $('.datepicker').datepicker({
+    minDate: new Date(),
+    isRTL: false,
+    dateFormat: 'mm/dd/yy'
+  });
+  $(window).on('scroll', function () {
+    var scrolled = $(window).scrollTop();
+    if (scrolled > 600) $('.go-top').addClass('active');
+    if (scrolled < 600) $('.go-top').removeClass('active');
+  });
+  $('.go-top').on('click', function () {
+    $("html, body").animate({
+      scrollTop: "0"
+    }, 500);
+  });
+
+  if (!$(".testimonial-slider").length) {
+    return;
+  }
+
+  if (!$(".testimonial-slider").length) {
+    return;
+  }
+
+  var currentLocale = $('.curruntLanguage').val();
+
+  if (currentLocale == 'ar') {
+    $(".slick-slider").slick({
+      slidesToShow: 4,
+      infinite: true,
+      slidesToScroll: 1,
+      autoplay: false,
+      autoplaySpeed: 1500,
+      dots: true,
+      rtl: true,
+      arrows: false,
+      responsive: [{
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      }, {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      }, {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }]
+    });
+    $(".testimonial-slider").slick({
+      slidesToShow: 1,
+      infinite: true,
+      slidesToScroll: 1,
+      // autoplay: true,
+      autoplaySpeed: 1500,
+      rtl: true,
+      dots: true,
+      arrows: true,
+      prevArrow: '<span class="prev-arrow"><i class="fas fa-chevron-left fs-5"></i></span>',
+      nextArrow: '<span class="next-arrow"><i class="fas fa-chevron-right fs-5"></i></span>',
+      responsive: [{
+        breakpoint: 767,
+        settings: {
+          arrows: false
+        }
+      }]
+    });
+  } else {
+    $(".slick-slider").slick({
+      slidesToShow: 4,
+      infinite: true,
+      slidesToScroll: 1,
+      autoplay: false,
+      autoplaySpeed: 1500,
+      dots: true,
+      arrows: false,
+      responsive: [{
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      }, {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      }, {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }]
+    });
+    $(".testimonial-slider").slick({
+      slidesToShow: 1,
+      infinite: true,
+      slidesToScroll: 1,
+      // autoplay: true,
+      autoplaySpeed: 1500,
+      dots: true,
+      arrows: true,
+      prevArrow: '<span class="prev-arrow"><i class="fas fa-chevron-left fs-5"></i></span>',
+      nextArrow: '<span class="next-arrow"><i class="fas fa-chevron-right fs-5"></i></span>',
+      responsive: [{
+        breakpoint: 767,
+        settings: {
+          arrows: false
+        }
+      }]
+    });
+  }
+}
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+/*!************************************************!*\
+  !*** ./resources/assets/js/web/appointment.js ***!
+  \************************************************/
+
+
+document.addEventListener("DOMContentLoaded", loadWebAppointmentDate);
+
+function loadWebAppointmentDate() {
+  if (!$("#webAppointmentFormSubmit").length) {
+    return;
+  }
+
+  var customDate = $("#customFieldDate").val();
+  var customDateTime = $("#customFieldDateTime").val();
+  $("#customFieldDate").datepicker({
+    format: "Y-m-d",
+    useCurrent: false,
+    sideBySide: true,
+    minDate: customDateTime ? customDateTime : new Date()
+  });
+  $("#customFieldDateTime").flatpickr({
+    format: "Y-m-d H:i",
+    enableTime: true,
+    locale: $(".userCurrentLanguage").val(),
+    defaultDate: customDateTime ? customDateTime : new Date(),
+    onOpen: function onOpen(selectedDates, dateStr, instance) {
+      var calendar = instance.calendarContainer;
+      calendar.classList.add("custom-calendar");
+      var todayElement = calendar.querySelector(".flatpickr-day.today");
+
+      if (todayElement) {
+        todayElement.classList.add("selected");
+      }
+    }
+  }); // $("#customFieldDateTime").datepicker({
+  //     format: "Y-m-d H:i",
+  //     useCurrent: false,
+  //     sideBySide: true,
+  //     minDate: customDateTime ? customDateTime : new Date(),
+  // });
+
+  $(".custom-field-select").selectize();
+  $(".custom-field-multi-select").selectize();
+
+  if (!$("#opdDate").length) {
+    return;
+  }
+
+  $("#advancePaymentPatientId").selectize();
+  $("#webDepartmentId").selectize();
+  $("#appointmentDoctorId").selectize();
+  $("#appointmentPaymentModeId").selectize();
+  var doctor = $("#doctor").val();
+  Lang.setLocale($(".userCurrentLanguage").val());
+  var opdDate = $("#opdDate").datepicker({
+    useCurrent: false,
+    sideBySide: true,
+    isRTL: false,
+    minDate: new Date(),
+    // dateFormat: 'dd/mm/yy',
+    onSelect: function onSelect(selectedDate, dateStr) {
+      var selectDate = selectedDate;
+      dateSelectSlot = selectedDate;
+      $(".doctor-schedule").css("display", "none");
+      $(".error-message").css("display", "none");
+      $(".available-slot-heading").css("display", "none");
+      $(".color-information").css("display", "none");
+      $(".time-slot").remove();
+
+      if ($("#webDepartmentId").val() == "") {
+        $("#validationErrorsBox").show().html(Lang.get("js.please_select_doctor_department"));
+        $("#validationErrorsBox").delay(5000).fadeOut();
+        $("#opdDate").val(""); // opdDate.clear();
+
+        return false;
+      } else if ($("#appointmentDoctorId").val() == "") {
+        $("#validationErrorsBox").show().html(Lang.get("js.please_select_doctor"));
+        $("#validationErrorsBox").delay(5000).fadeOut();
+        $("#opdDate").val(""); // opdDate.clear();
+
+        return false;
+      }
+
+      var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var selected = new Date(selectedDate);
+      var selectedAppDate = $(this).datepicker("getDate");
+      var dayName = weekday[selectedAppDate.getDay()];
+      var appointmentBreakIntervals;
+      selectedDate = dateStr; //if dayName is blank, then ajax call not run.
+
+      if (dayName == null || dayName == "") {
+        return false;
+      } //get doctor schedule list with time slot.
+
+
+      $.ajax({
+        type: "GET",
+        url: $("#homeDoctorScheduleList").val(),
+        data: {
+          day_name: dayName,
+          doctor_id: doctorId,
+          date: moment(new Date(selectDate)).format("YYYY-MM-DD")
+        },
+        success: function success(result) {
+          if (result.success) {
+            if (result.data != "") {
+              if (result.data.scheduleDay.length != 0 && result.data.doctorHoliday.length == 0) {
+                var availableFrom = "";
+
+                if (moment(new Date()).format("MM/DD/YYYY") === selectDate) {
+                  // availableFrom = moment(new Date()).
+                  // format('H:mm:ss')
+                  availableFrom = moment().ceil(moment.duration(result.data.perPatientTime[0].per_patient_time).asMinutes(), "minute");
+                  availableFrom = moment(availableFrom.toString()).format("H:mm:ss"); // availableFrom = moment.duration(
+                  //     result.data.perPatientTime[0].per_patient_time).
+                  //     asMinutes()
+                  // availableFrom = moment(
+                  //     availableFrom.toString()).
+                  //     format('H:mm:ss')
+                  // availableFrom = moment().ceil(moment.duration( result.data.perPatientTime[0].per_patient_time).asMinutes(), 'minute');
+                  // availableFrom = moment.duration( result.data.perPatientTime[0].per_patient_time).asMinutes();
+                  // availableFrom = moment(availableFrom.toString()).format('H:mm:ss');
+                  // console.log(availableFrom)
+                  // availableFrom = moment(new Date()).
+                  //     add(result.data.perPatientTime[0].per_patient_time,
+                  //         'minutes').
+                  //     format('H:mm:ss')
+                } else {
+                  availableFrom = result.data.scheduleDay[0].available_from;
+                }
+
+                var doctorStartTime = selectedDate + " " + availableFrom;
+                var doctorEndTime = selectedDate + " " + result.data.scheduleDay[0].available_to;
+                var doctorPatientTime = result.data.perPatientTime[0].per_patient_time; // console.log(moment(new Date()).format('LTS'))
+                // console.log(result.data.scheduleDay[0].available_to)
+                // console.log(moment(new Date()).format('LTS') > result.data.scheduleDay[0].available_to)
+                //perPatientTime convert to Minute
+
+                var a = doctorPatientTime.split(":"); // split it at the colons
+
+                var minutes = +a[0] * 60 + +a[1]; // convert to minute
+                //parse In
+
+                var startTime = parseIn(doctorStartTime); // let now =  new Date();
+                // if(selectedDate.selectedDay == now.getDate()){
+                //     startTime.setTime(startTime.getTime() + 1000 * 60);
+                // }
+
+                var endTime = parseIn(doctorEndTime); //call to getTimeIntervals function
+
+                intervals = getTimeIntervals(startTime, endTime, minutes);
+
+                if (result.data.doctorBreak != null) {
+                  for (var breakIndex = 0; breakIndex < result.data.doctorBreak.length; ++breakIndex) {
+                    var startBreakTime = parseIn(selectedDate + " " + result.data.doctorBreak[breakIndex].break_from);
+                    var endBreakTime = parseIn(selectedDate + " " + result.data.doctorBreak[breakIndex].break_to);
+                    appointmentBreakIntervals = getTimeIntervals(startBreakTime, endBreakTime, 1);
+                    intervals = intervals.filter(function (slot) {
+                      return !appointmentBreakIntervals.includes(slot);
+                    });
+                  }
+                } //if intervals array length is grater then 0 then process
+
+
+                if (intervals.length > 0) {
+                  $(".available-slot-heading").css("display", "block");
+                  $(".color-information").css("display", "block");
+                  var index;
+                  var timeStlots = "";
+
+                  for (index = 0; index < intervals.length; ++index) {
+                    var data = [{
+                      index: index,
+                      timeSlot: intervals[index]
+                    }];
+                    var timeSlot = prepareTemplateRender("#appointmentSlotTemplate", data);
+                    timeStlots += timeSlot;
+                  }
+
+                  $(".available-slot").append(timeStlots);
+                } // display Day Name and time
+
+
+                if (availableFrom != "00:00:00" && result.data.scheduleDay[0].available_to != "00:00:00" && doctorStartTime != doctorEndTime) {
+                  $(".doctor-schedule").css("display", "block");
+                  $(".color-information").css("display", "block");
+                  $(".day-name").html(Lang.get('js.' + result.data.scheduleDay[0].available_on));
+                  $(".schedule-time").html("[" + availableFrom + " - " + result.data.scheduleDay[0].available_to + "]");
+                } else {
+                  $(".doctor-schedule").css("display", "none");
+                  $(".color-information").css("display", "none");
+                  $(".error-message").css("display", "block");
+                  $(".error-message").html(Lang.get("js.doctor_schedule_not_available_on_this_date"));
+                }
+              } else {
+                $(".doctor-schedule").css("display", "none");
+                $(".color-information").css("display", "none");
+                $(".error-message").css("display", "block");
+                $(".error-message").html(Lang.get("js.doctor_schedule_not_available_on_this_date"));
+              }
+            }
+          }
+        },
+        error: function error(result) {
+          displayErrorMessage(result.responseJSON.message);
+        }
+      });
+
+      if ($("#homeIsCreate").val() || $("#homeIsEdit").val()) {
+        var getCreateTimeSlot = function getCreateTimeSlot() {
+          if ($("#homeIsCreate").val()) {
+            slotsData = {
+              editSelectedDate: moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"),
+              doctor_id: doctorId
+            };
+          } else {
+            slotsData = {
+              editSelectedDate: moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"),
+              editId: appointmentEditId,
+              doctor_id: doctorId
+            };
+          }
+
+          $.ajax({
+            url: $("#homeGetBookingSlot").val(),
+            type: "GET",
+            data: slotsData,
+            success: function success(result) {
+              alreadyCreateTimeSlot = result.data.bookingSlotArr;
+
+              if (result.data.hasOwnProperty("onlyTime")) {
+                if (result.data.bookingSlotArr.length > 0) {
+                  editTimeSlot = result.data.onlyTime.toString();
+                  $.each(result.data.bookingSlotArr, function (index, value) {
+                    $.each(intervals, function (i, v) {
+                      if (value == v) {
+                        $(".time-interval").each(function () {
+                          if ($(this).data("id") == i) {
+                            if ($(this).html() != editTimeSlot) {
+                              $(this).parent().css({
+                                "background-color": "#ffa721",
+                                border: "1px solid #ffa721",
+                                color: "#ffffff"
+                              });
+                              $(this).parent().addClass("booked");
+                              $(this).parent().children().prop("disabled", true);
+                            }
+                          }
+                        });
+                      }
+                    });
+                  });
+                }
+
+                $(".time-interval").each(function () {
+                  if ($(this).html() == editTimeSlot && result.data.bookingSlotArr.length > 0) {
+                    $(this).parent().addClass("time-slot-book");
+                    $(this).parent().removeClass("booked");
+                    $(this).parent().children().prop("disabled", false);
+                    $(this).click();
+                  }
+                });
+              } else if (alreadyCreateTimeSlot.length > 0) {
+                $.each(alreadyCreateTimeSlot, function (index, value) {
+                  $.each(intervals, function (i, v) {
+                    if (value === v) {
+                      $(".time-interval").each(function () {
+                        if ($(this).data("id") === i) {
+                          $(this).parent().addClass("time-slot-book");
+                          $(".time-slot-book").css({
+                            "background-color": "#FF8E4B",
+                            border: "1px solid #FF8E4B",
+                            color: "#ffffff"
+                          });
+                          $(this).parent().addClass("booked");
+                          $(this).parent().children().prop("disabled", true);
+                        }
+                      });
+                    }
+                  });
+                });
+              }
+            }
+          });
+        };
+
+        var delayCall = 200;
+        setTimeout(getCreateTimeSlot, delayCall);
+        var slotsData = null;
+      }
+    }
+  }); // opdDate.datepicker(
+  //     $.extend({}, $.datepicker.regional[$('.userCurrentLanguage').val()]))
+  // if edit record then trigger change
+
+  var editTimeSlot;
+
+  if ($("#homeIsEdit").val()) {
+    $("#appointmentDoctorId").trigger("change", function (event) {
+      doctorId = $(this).val();
+    });
+    $("#opdDate").trigger("dp.change", function () {
+      var selected = new Date($(this).val());
+    });
+  }
+
+  $(".old-patient-email").focusout(function () {
+    var email = $(".old-patient-email").val();
+
+    if (oldPatient && email != "") {
+      $.ajax({
+        url: "appointments" + "/" + email + "/patient-detail",
+        type: "get",
+        success: function success(result) {
+          if (result.data != null) {
+            $("#patient").empty();
+            $.each(result.data, function (index, value) {
+              $("#patientName").val(value);
+              $("#patient").val(index);
+            });
+          } else {
+            displayErrorMessage(Lang.get("js.patient_not_exists_or_status_is_not_active"));
+          }
+        }
+      });
+    }
+  });
+
+  if (!$("#appointmentDate").val()) {
+    return;
+  }
+
+  var appointmentDate = $("#appointmentDate").val(); // var doctor = $('#doctor').val()
+
+  if (appointmentDate !== null) {
+    loadAppointmentDate();
+  }
+
+  function loadAppointmentDate() {
+    opdDate.datepicker("setDate", appointmentDate); // opdDate.datepicker($.extend({},
+    //     $.datepicker.regional[$('.userCurrentLanguage').val()]))
+
+    if (opdDate !== null) {
+      opdDate instanceof Date;
+      var dateStr = opdDate;
+      var _selectedDate = appointmentDate;
+      $(".doctor-schedule").css("display", "none");
+      $(".error-message").css("display", "none");
+      $(".available-slot-heading").css("display", "none");
+      $(".color-information").css("display", "none");
+      $(".time-slot").remove(); // if ($('#departmentId').val() == '') {
+      //     $('#validationErrorsBox').
+      //         show().
+      //         html('Please select Doctor Department');
+      //     $('#validationErrorsBox').delay(5000).fadeOut();
+      //     $('#opdDate').val('');
+      //     // opdDate.clear();
+      //     return false;
+      // } else if ($('#doctorId').val() == '') {
+      //     $('#validationErrorsBox').show().html('Please select Doctor');
+      //     $('#validationErrorsBox').delay(5000).fadeOut();
+      //     $('#opdDate').val('');
+      //     // opdDate.clear();
+      //     return false;
+      // }
+
+      var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var selected = new Date(_selectedDate);
+      var selectedAppDate = opdDate.datepicker("getDate");
+      var dayName = weekday[selectedAppDate.getDay()]; // let dayName = weekday[selected.getDay()]
+
+      var appointmentBreakIntervals;
+      _selectedDate = dateStr; //if dayName is blank, then ajax call not run.
+
+      if (dayName == null || dayName == "") {
+        return false;
+      } //get doctor schedule list with time slot.
+
+
+      $.ajax({
+        type: "GET",
+        url: $("#homeDoctorScheduleList").val(),
+        data: {
+          day_name: dayName,
+          doctor_id: doctor,
+          date: moment(new Date(appointmentDate)).format("YYYY-MM-DD")
+        },
+        success: function success(result) {
+          if (result.success) {
+            if (result.data != "") {
+              if (result.data.scheduleDay.length != 0 && result.data.doctorHoliday.length == 0) {
+                var availableFrom = "";
+
+                if (moment(new Date()).format("MM/DD/YYYY") === appointmentDate) {
+                  // availableFrom = moment(new Date()).
+                  // add(result.data.perPatientTime[0].per_patient_time,
+                  //     'minutes').
+                  // format('H:mm:ss')
+                  // availableFrom = moment.duration(
+                  //     result.data.perPatientTime[0].per_patient_time).
+                  //     asMinutes()
+                  // availableFrom = moment(
+                  //     availableFrom.toString()).
+                  //     format('H:mm:ss')
+                  availableFrom = moment().ceil(moment.duration(result.data.perPatientTime[0].per_patient_time).asMinutes(), "minute"); // availableFrom = moment.duration( result.data.perPatientTime[0].per_patient_time).asMinutes();
+
+                  availableFrom = moment(availableFrom.toString()).format("H:mm:ss"); // availableFrom = moment(new Date()).
+                  //     add(result.data.perPatientTime[0].per_patient_time,
+                  //         'minutes').
+                  //     format('H:mm:ss')
+                } else {
+                  availableFrom = result.data.scheduleDay[0].available_from;
+                }
+
+                var doctorStartTime = _selectedDate + " " + availableFrom;
+                var doctorEndTime = _selectedDate + " " + result.data.scheduleDay[0].available_to;
+                var doctorPatientTime = result.data.perPatientTime[0].per_patient_time; //perPatientTime convert to Minute
+
+                var a = doctorPatientTime.split(":"); // split it at the colons
+
+                var minutes = +a[0] * 60 + +a[1]; // convert to minute
+                //parse In
+
+                var startTime = parseIn(doctorStartTime);
+                var endTime = parseIn(doctorEndTime); //call to getTimeIntervals function
+
+                intervals = getTimeIntervals(startTime, endTime, minutes);
+
+                if (result.data.doctorBreak != null) {
+                  for (var breakIndex = 0; breakIndex < result.data.doctorBreak.length; ++breakIndex) {
+                    var startBreakTime = parseIn(_selectedDate + " " + result.data.doctorBreak[breakIndex].break_from);
+                    var endBreakTime = parseIn(_selectedDate + " " + result.data.doctorBreak[breakIndex].break_to);
+                    appointmentBreakIntervals = getTimeIntervals(startBreakTime, endBreakTime, 1);
+                    intervals = intervals.filter(function (slot) {
+                      return !appointmentBreakIntervals.includes(slot);
+                    });
+                  }
+                } //if intervals array length is grater then 0 then process
+
+
+                if (intervals.length > 0) {
+                  $(".available-slot-heading").css("display", "block");
+                  $(".color-information").css("display", "block");
+                  var index;
+                  var timeStlots = "";
+
+                  for (index = 0; index < intervals.length; ++index) {
+                    var data = [{
+                      index: index,
+                      timeSlot: intervals[index]
+                    }];
+                    var timeSlot = prepareTemplateRender("#appointmentSlotTemplate", data);
+                    timeStlots += timeSlot;
+                  }
+
+                  $(".available-slot").append(timeStlots);
+                } // display Day Name and time
+
+
+                if (availableFrom != "00:00:00" && result.data.scheduleDay[0].available_to != "00:00:00" && doctorStartTime != doctorEndTime) {
+                  $(".doctor-schedule").css("display", "block");
+                  $(".color-information").css("display", "block");
+                  $(".day-name").html(Lang.get('js.' + result.data.scheduleDay[0].available_on));
+                  $(".schedule-time").html("[" + availableFrom + " - " + result.data.scheduleDay[0].available_to + "]");
+                } else {
+                  $(".doctor-schedule").css("display", "none");
+                  $(".color-information").css("display", "none");
+                  $(".error-message").css("display", "block");
+                  $(".error-message").html(Lang.get("js.doctor_schedule_not_available_on_this_date"));
+                }
+              } else {
+                $(".doctor-schedule").css("display", "none");
+                $(".color-information").css("display", "none");
+                $(".error-message").css("display", "block");
+                $(".error-message").html(Lang.get("js.doctor_schedule_not_available_on_this_date"));
+              }
+            }
+          }
+        }
+      });
+
+      if ($("#homeIsCreate").val() || $("#homeIsEdit").val()) {
+        var getCreateTimeSlot = function getCreateTimeSlot() {
+          if ($("#homeIsCreate").val()) {
+            slotsData = {
+              editSelectedDate: moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"),
+              doctor_id: doctorId
+            };
+          } else {
+            slotsData = {
+              editSelectedDate: moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"),
+              editId: appointmentEditId,
+              doctor_id: doctorId
+            };
+          }
+
+          $.ajax({
+            url: $("#homeGetBookingSlot").val(),
+            type: "GET",
+            data: slotsData,
+            success: function success(result) {
+              alreadyCreateTimeSlot = result.data.bookingSlotArr;
+
+              if (result.data.hasOwnProperty("onlyTime")) {
+                if (result.data.bookingSlotArr.length > 0) {
+                  editTimeSlot = result.data.onlyTime.toString();
+                  $.each(result.data.bookingSlotArr, function (index, value) {
+                    $.each(intervals, function (i, v) {
+                      if (value == v) {
+                        $(".time-interval").each(function () {
+                          if ($(this).data("id") == i) {
+                            if ($(this).html() != editTimeSlot) {
+                              $(this).parent().css({
+                                "background-color": "#ffa721",
+                                border: "1px solid #ffa721",
+                                color: "#ffffff"
+                              });
+                              $(this).parent().addClass("booked");
+                              $(this).parent().children().prop("disabled", true);
+                            }
+                          }
+                        });
+                      }
+                    });
+                  });
+                }
+
+                $(".time-interval").each(function () {
+                  if ($(this).html() == editTimeSlot && result.data.bookingSlotArr.length > 0) {
+                    $(this).parent().addClass("time-slot-book");
+                    $(this).parent().removeClass("booked");
+                    $(this).parent().children().prop("disabled", false);
+                    $(this).click();
+                  }
+                });
+              } else if (alreadyCreateTimeSlot.length > 0) {
+                $.each(alreadyCreateTimeSlot, function (index, value) {
+                  $.each(intervals, function (i, v) {
+                    if (value === v) {
+                      $(".time-interval").each(function () {
+                        if ($(this).data("id") === i) {
+                          $(this).parent().addClass("time-slot-book");
+                          $(".time-slot-book").css({
+                            "background-color": "#FF8E4B",
+                            border: "1px solid #FF8E4B",
+                            color: "#ffffff"
+                          });
+                          $(this).parent().addClass("booked");
+                          $(this).parent().children().prop("disabled", true);
+                        }
+                      });
+                    }
+                  });
+                });
+              }
+            }
+          });
+        };
+
+        var delayCall = 200;
+        setTimeout(getCreateTimeSlot, delayCall);
+        var slotsData = null;
+      }
+    }
+  }
+}
+
+var selectedDate;
+var intervals;
+var alreadyCreateTimeSlot;
+var dateSelectSlot;
+Lang.setLocale($(".userCurrentLanguage").val());
+$("#patientId").first().focus();
+var doctor = $("#doctor").val();
+var appointmentDate = $("#appointmentDate").val();
+var doctorId;
+var doctorChange = false;
+listenChange("#webDepartmentId", function () {
+  $(".error-message").css("display", "none");
+  var selectize = $("#appointmentDoctorId")[0].selectize;
+  selectize.clearOptions();
+  $("#opdDate").val(""); // opdDate.clear();
+
+  $.ajax({
+    url: $("#homeDoctorDepartmentUrl").val(),
+    type: "get",
+    dataType: "json",
+    data: {
+      id: $(this).val()
+    },
+    success: function success(data) {
+      $("#appointmentDoctorId").empty();
+      $("#appointmentDoctorId").append($('<option value="">Select Doctor</option>'));
+      $.each(data.data, function (i, v) {
+        $("#appointmentDoctorId").append($("<option></option>").attr("value", i).text(v));
+      });
+      var $select = $(document.getElementById("appointmentDoctorId")).selectize();
+      var selectize = $select[0].selectize;
+      $.each(data.data, function (i, v) {
+        selectize.addOption({
+          value: i,
+          text: v
+        });
+      });
+      selectize.refreshOptions();
+    }
+  });
+});
+listenChange("#appointmentDoctorId", function () {
+  if (doctorChange) {
+    $(".error-message").css("display", "none");
+    $("#opdDate").val(""); // opdDate.clear();
+
+    $(".doctor-schedule").css("display", "none");
+    $(".error-message").css("display", "none");
+    $(".available-slot-heading").css("display", "none");
+    $(".color-information").css("display", "none");
+    $(".time-slot").remove();
+    doctorChange = true;
+  }
+
+  $(".error-message").css("display", "none");
+  doctorId = $(this).val();
+  doctorChange = true;
+}); //parseIn date_time
+
+function parseIn(date_time) {
+  var d = new Date();
+  d.setHours(date_time.substring(16, 18));
+  d.setMinutes(date_time.substring(19, 21));
+  return d;
+} //make time slot list
+
+
+function getTimeIntervals(time1, time2, duration) {
+  var arr = [];
+
+  if (new Date() > $("#opdDate").datepicker("getDate") && new Date().getTime() > time2.getTime()) {
+    return arr;
+  } else if (new Date() > new Date($("#appointmentDate").val()) && new Date().getTime() > time2.getTime()) {
+    return arr;
+  } else {
+    while (time1 < time2) {
+      arr.push(time1.toTimeString().substring(0, 5));
+      time1.setMinutes(time1.getMinutes() + duration);
+    }
+
+    return arr;
+  }
+} //slot click change color
+
+
+var selectedTime;
+listenClick(".time-interval", function (event) {
+  var appointmentId = $(event.currentTarget).attr("data-id");
+
+  if ($(this).data("id") == appointmentId) {
+    if ($(this).parent().hasClass("booked")) {
+      $(".time-slot-book").css("background-color", "#ffa0a0");
+    }
+  }
+
+  selectedTime = $(this).text();
+  $(".time-slot").removeClass("time-slot-book");
+  $(this).parent().addClass("time-slot-book");
+});
+var editTimeSlot;
+listenClick(".time-interval", function () {
+  editTimeSlot = $(this).text();
+});
+var oldPatient = false;
+listenChange(".new-patient-radio", function () {
+  // loadAppointmentDate();
+  if ($(this).is(":checked")) {
+    $(".old-patient").addClass("d-none");
+    $(".first-name-div").removeClass("d-none");
+    $(".last-name-div").removeClass("d-none");
+    $(".gender-div").removeClass("d-none");
+    $(".password-div").removeClass("d-none");
+    $(".confirm-password-div").removeClass("d-none");
+    $(".appointment-slot").removeClass("d-none");
+    $("#firstName").prop("required", true);
+    $("#lastName").prop("required", true);
+    $("#password").prop("required", true);
+    $("#confirmPassword").prop("required", true);
+    oldPatient = false;
+  }
+}); // console.log($('.old-patient-radio').val())
+
+listenChange(".old-patient-radio", function () {
+  // console.log('radio button change')
+  if ($(this).is(":checked")) {
+    $(".old-patient").removeClass("d-none");
+    $(".first-name-div").addClass("d-none");
+    $(".last-name-div").addClass("d-none");
+    $(".gender-div").addClass("d-none");
+    $(".password-div").addClass("d-none");
+    $(".confirm-password-div").addClass("d-none");
+    $(".appointment-slot").removeClass("d-none");
+    $("#firstName").prop("required", false);
+    $("#lastName").prop("required", false);
+    $("#password").prop("required", false);
+    $("#confirmPassword").prop("required", false);
+    oldPatient = true;
+  }
+}); // function showScreenLoader () {
+//     $('#overlay-screen-lock').removeClass('d-none');
+// }
+//
+// function hideScreenLoader () {
+//     $('#overlay-screen-lock').addClass('d-none');
+// }
+// listen('keypress', '#firstName, #lastName', function (e) {
+//     if (e.which === 32)
+//         return false;
+// });
+
+$.ajax({
+  url: $("#homeDoctorUrl").val(),
+  type: "get",
+  dataType: "json",
+  data: {
+    id: doctor
+  },
+  success: function success(data) {
+    $("#appointmentDoctorId").empty();
+    var $select = $(document.getElementById("appointmentDoctorId")).selectize();
+    var selectize = $select[0].selectize;
+    $.each(data.data, function (i, v) {
+      selectize.addOption({
+        value: i,
+        text: v
+      });
+      selectize.setValue(i);
+    });
+  }
+});
+listenChange("#appointmentDoctorId", function () {
+  $("#appointmentCharge").empty();
+  $.ajax({
+    url: $(".webDoctorChargeUrl").val(),
+    type: "get",
+    dataType: "json",
+    data: {
+      id: $(this).val()
+    },
+    success: function success(data) {
+      if (data.data != 0 && data.data != null && data.data != "") {
+        $(".web-appointment-charge").removeClass("d-none");
+        $("#appointmentCharge").val(data.data);
+        $(".paymentType").removeClass("d-none");
+        $(".paymentMode").removeClass("d-none");
+        $("#appointmentPaymentModeId").prop("required", true);
+      }
+
+      if (data.data == 0 || data.data == undefined) {
+        $(".web-appointment-charge").addClass("d-none");
+        $("#appointmentCharge").val("");
+        $(".paymentType").addClass("d-none");
+      }
+    }
+  });
+});
+
+function disableSubmitButton() {
+  $("#webAppointmentBtnSave").prop("disabled", true);
+}
+
+function enableSubmitButton() {
+  $("#webAppointmentBtnSave").prop("disabled", false);
+}
+
+function formReset() {
+  $(".old-patient").addClass("d-none");
+  $(".first-name-div").removeClass("d-none");
+  $(".last-name-div").removeClass("d-none");
+  $(".gender-div").removeClass("d-none");
+  $(".password-div").removeClass("d-none");
+  $(".confirm-password-div").removeClass("d-none");
+  $(".appointment-slot").removeClass("d-none");
+  $("#firstName").prop("required", true);
+  $("#lastName").prop("required", true);
+  $("#password").prop("required", true);
+  $("#confirmPassword").prop("required", true);
+} //create appointment
+
+
+listenSubmit("#webAppointmentFormSubmit", function (event) {
+  event.preventDefault();
+
+  if (!oldPatient) {
+    var isValidate = validatePassword();
+
+    if (!isValidate) {
+      return false;
+    }
+  }
+
+  var isValid = true;
+  $(".dynamic-field").each(function () {
+    var fieldValue = $(this).val();
+    var fieldLabel = $(this).closest(".appointment-form__input-block").find("label").text().replace(":", "").trim();
+
+    if ($(this).is(':input[type="text"], :input[type="number"], textarea')) {
+      if (!fieldValue || fieldValue.trim() === "") {
+        displayErrorMessage(fieldLabel + ' ' + Lang.get('js.field_required'));
+        isValid = false;
+        enableSubmitButton();
+        return false;
+      }
+    } else if ($(this).is(':input[type="toggle"]')) {
+      if (!$(this).is(":checked")) {
+        displayErrorMessage(fieldLabel + ' ' + Lang.get('js.field_required'));
+        isValid = false;
+        enableSubmitButton();
+        return false;
+      }
+    } else if ($(this).is("select")) {
+      if (!fieldValue && $(this).val().length === 0 && fieldValue.trim() === "") {
+        displayErrorMessage(fieldLabel + ' ' + Lang.get('js.field_required'));
+        isValid = false;
+        enableSubmitButton();
+        return false;
+      }
+    }
+  });
+
+  if (selectedTime == null || selectedTime === "") {
+    displayErrorMessage(Lang.get("js.please_select_appointment_time_slot"));
+    enableSubmitButton();
+    return false;
+  }
+
+  $("#opdDate").val(moment($("#opdDate").datepicker("getDate")).format("MM/DD/YYYY"));
+  disableSubmitButton();
+  var formData = $(this).serialize() + "&time=" + selectedTime;
+  $.ajax({
+    url: $("#homeAppointmentSaveUrl").val(),
+    type: "POST",
+    dataType: "json",
+    data: formData,
+    success: function success(result) {
+      if (result.data == null) {
+        displaySuccessMessage(Lang.get("js.appointment") + " " + Lang.get("js.saved_successfully"));
+        setTimeout(function () {
+          window.location.href = $('.backUrl').val();
+        }, 5000);
+      } else {
+        if (result.data && result.data.payment_type) {
+          if (result.data.payment_type == 3) {
+            var sessionId = result.data[0].sessionId;
+            stripe.redirectToCheckout({
+              sessionId: sessionId
+            }).then(function (mainResult) {
+              return manageAjaxErrors(mainResult);
+            });
+          } else if (result.data.payment_type == "4") {
+            var appId = result.data.appointment_id;
+
+            var _formData = $("#webAppointmentFormSubmit").serialize() + "&appointment_id=" + appId;
+
+            $.ajax({
+              url: $("#webAppointmentRazorpayInit").val(),
+              type: "POST",
+              data: _formData,
+              processData: false,
+              success: function success(data) {
+                if (data.success) {
+                  options.order_id = data.data.id;
+                  options.appointment_id = data.data.appointment_id;
+                  options.amount = data.data.amount;
+                  options.payment_mode = data.data.payment_mode;
+                  var rzp = new Razorpay(options);
+                  rzp.open();
+                }
+              },
+              error: function error(_error) {
+                displayErrorMessage(_error.responseJSON.message);
+                setTimeout(function () {
+                  window.location.href = $(".webAppointmentIndexPage").val();
+                }, 2000);
+              }
+            });
+          } else if (result.data.payment_type == "5") {
+            $.ajax({
+              type: "GET",
+              url: $("#webAppointmentPaypal").val(),
+              data: {
+                appointment_id: result.data.appointment_id,
+                payment_type: result.data.payment_type,
+                amount: result.data.amount
+              },
+              success: function success(data) {
+                if (data.url) {
+                  window.location.href = data.url;
+                }
+              },
+              error: function error(data) {
+                displayErrorMessage(data.responseJSON.message);
+              },
+              complete: function complete() {}
+            });
+          } else if (result.data.payment_type == 8) {
+            if (result.data.url != null) {
+              window.location.href = result.data.url;
+            }
+          } else if (result.data.payment_type == 7) {
+            if (result.data.url != null) {
+              window.location.href = result.data.url;
+            }
+          }
+        } else if (result.data.payStackData != null) {
+          if (result.data.payStackData.payment_type == 9) {
+            window.location.replace(route("appointment.paystack.init", {
+              data: result.data.payStackData
+            }));
+          }
+        }
+      }
+    },
+    error: function error(result) {
+      // console.log(result.responseJSON.message)
+      displayErrorMessage(Lang.get("js.old_patient_email_exists"));
+      $("#webAppointmentFormSubmit")[0].reset();
+      $(".appointment-slot").addClass("d-none");
+    }
+  });
+});
+
+function validatePassword() {
+  var password = $("#password").val();
+  var confirmPassword = $("#confirmPassword").val();
+
+  if (password == "" || confirmPassword == "") {
+    displayErrorMessage(Lang.get("js.please_fill_all_the_required_fields"));
+    enableSubmitButton();
+    return false;
+  }
+
+  if (password !== confirmPassword) {
+    displayErrorMessage(Lang.get("js.password_and_confirm_password_not_match"));
+    enableSubmitButton();
+    return false;
+  }
+
+  return true;
+}
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+/*!****************************************************************************!*\
+  !*** ./resources/assets/js/custom/front-side-phone-number-country-code.js ***!
+  \****************************************************************************/
+document.addEventListener("DOMContentLoaded", loadFrontPhoneNumberCountryCodeData);
+
+function loadFrontPhoneNumberCountryCodeData() {
+  Lang.setLocale($(".userCurrentLanguage").val());
+
+  if (!$(".phoneNumber").length) {
+    return;
+  }
+
+  var input = document.querySelector(".phoneNumber");
+  var errorMsg = document.querySelector(".error-msg");
+  var validMsg = document.querySelector(".valid-msg");
+  var errorMap = [Lang.get("js.invalid_number"), Lang.get("js.invalid_country_code"), Lang.get("js.too_short"), Lang.get("js.too_long"), Lang.get("js.invalid_number")];
+  var intl = window.intlTelInput(input, {
+    initialCountry: "auto",
+    separateDialCode: true,
+    geoIpLookup: function geoIpLookup(success) {
+      $.get("https://ipinfo.io", function () {}, "jsonp").always(function (resp) {
+        var countryCode = resp && resp.country ? resp.country : "in";
+        success(countryCode);
+      });
+    },
+    utilsScript: $(".utilsScript").val()
+  });
+
+  function reset() {
+    input.classList.remove("error");
+    errorMsg.innerHTML = "";
+    errorMsg.classList.add("d-none");
+    validMsg.classList.add("d-none");
+  }
+
+  function updatePrefixCode() {
+    var countryData = intl.getSelectedCountryData();
+
+    if (countryData && countryData.dialCode) {
+      $(".prefix_code").val("+" + countryData.dialCode);
+    }
+  }
+
+  input.addEventListener("blur", function () {
+    reset();
+
+    if (input.value.trim()) {
+      if (intl.isValidNumber()) {
+        validMsg.classList.remove("d-none");
+      } else {
+        input.classList.add("error");
+        var errorCode = intl.getValidationError();
+
+        if (errorCode < 0 || errorCode >= errorMap.length) {
+          errorCode = 0;
+        }
+
+        errorMsg.innerHTML = errorMap[errorCode];
+        errorMsg.classList.remove("d-none");
+      }
+    }
+
+    updatePrefixCode();
+  });
+  input.addEventListener("change", reset);
+  input.addEventListener("keyup", reset);
+  input.addEventListener("keyup", updatePrefixCode);
+  input.addEventListener("change", updatePrefixCode);
+  input.addEventListener("countrychange", updatePrefixCode);
+  setTimeout(function () {
+    updatePrefixCode();
+  }, 300);
+  $("form").on("submit", function () {
+    updatePrefixCode();
+  });
+  var phoneNumber = $(".phoneNumber").val();
+
+  if (phoneNumber) {
+    $(".phoneNumber").val(phoneNumber.replace(/\s/g, ""));
+  }
+}
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+/*!**********************************************************!*\
+  !*** ./resources/assets/js/front_settings/contact_us.js ***!
+  \**********************************************************/
+document.addEventListener("DOMContentLoaded", loadFrontSettingContactData);
+
+function loadFrontSettingContactData() {
+  Lang.setLocale($(".userCurrentLanguage").val());
+
+  if (!$("#contactUsGeneral").length) {
+    return;
+  }
+
+  if (!$(".phoneNumber").length) {
+    return false;
+  }
+
+  $("#contactUsGeneral").selectize();
+
+  if ($("#g-recaptcha").length) {
+    grecaptcha.render("g-recaptcha", {
+      sitekey: $("#adminRecaptcha").val()
+    });
+  }
+}
+
+listenSubmit("#enquiryCreateForm", function (e) {
+  e.preventDefault();
+  var response = "";
+
+  if ($(".error-msg").text() !== "") {
+    $(".phoneNumber").focus();
+    return false;
+  }
+
+  $.ajax({
+    url: $("#frontInquiryUrl").val(),
+    type: "POST",
+    data: $(this).serialize(),
+    success: function success(result) {
+      if (result.success) {
+        displaySuccessMessage(result.message); // resetModalForm('#enquiryCreateForm')
+
+        setTimeout(function () {
+          $("#enquiryCreateForm")[0].reset();
+          $(".error-msg").addClass("d-none");
+          $(".valid-msg").addClass("d-none");
+          var $select = $("#contactUsGeneral").selectize();
+          var control = $select[0].selectize;
+          control.setValue(1, true);
+          grecaptcha.reset();
+        }, 5000);
+      } else {
+        displayErrorMessage(result.message);
+        setTimeout(function () {
+          $("#enquiryCreateForm")[0].reset();
+          $(".contactUsGeneral").val(1).trigger("change");
+          grecaptcha.reset();
+        }, 5000);
+      }
+    },
+    error: function error(result) {
+      displayErrorMessage(result.responseJSON.message);
+      grecaptcha.reset();
+    },
+    complete: function complete() {// setTimeout(
+      //     function(){$(".general").val("").change();},
+      //     5000
+      // );
+      // $('.general').val("")
+    }
+  });
+});
+})();
+
+/******/ })()
+;
