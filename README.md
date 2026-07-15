@@ -22,13 +22,15 @@
 
 ### Login
 
-<img src="docs/screenshots/login_page.png" alt="Tenadam Login Page" width="100%">
+Secure authentication page with language selection support.
+
+<img src="docs/screenshots/login.png" alt="Tenadam Login Page" width="100%">
 
 ---
 
 ### 👑 Admin Dashboard
 
-Full control over every module — patients, doctors, billing, pharmacy, inventory, and more. The admin sees comprehensive analytics, revenue charts, appointment stats, and quick-access cards for all hospital operations.
+Full control over every module — patients, doctors, billing, pharmacy, inventory, and more. Comprehensive analytics with revenue charts, appointment stats, staff counts, and quick-access cards for all hospital operations.
 
 <img src="docs/screenshots/admin_dashboard.png" alt="Admin Dashboard" width="100%">
 
@@ -36,7 +38,7 @@ Full control over every module — patients, doctors, billing, pharmacy, invento
 
 ### 👨‍⚕️ Doctor Dashboard
 
-Doctors see their daily appointments, patient lists, OPD/IPD cases, prescriptions, and schedules at a glance. Quick access to diagnosis and prescription workflows.
+Doctors see the employee directory and manage their patient roster, OPD/IPD cases, prescriptions, and daily schedules at a glance with quick access to clinical workflows.
 
 <img src="docs/screenshots/doctor_dashboard.png" alt="Doctor Dashboard" width="100%">
 
@@ -44,7 +46,7 @@ Doctors see their daily appointments, patient lists, OPD/IPD cases, prescription
 
 ### 👩‍⚕️ Nurse Dashboard
 
-Nurses are redirected to bed management — tracking bed types, bed availability, ward status, and patient bed assignments in real-time.
+Nurses manage bed types and bed availability in real-time — tracking ward status, managing patient bed assignments, and monitoring IPD patient flow across departments.
 
 <img src="docs/screenshots/nurse_dashboard.png" alt="Nurse Dashboard" width="100%">
 
@@ -52,7 +54,7 @@ Nurses are redirected to bed management — tracking bed types, bed availability
 
 ### 🏢 Receptionist Dashboard
 
-Receptionists manage the front desk — appointment booking, patient registration, visitor logs, and the daily appointment flow.
+Receptionists manage the front desk — appointment booking, patient registration, visitor management, and the complete daily appointment flow with calendar views.
 
 <img src="docs/screenshots/receptionist_dashboard.png" alt="Receptionist Dashboard" width="100%">
 
@@ -60,7 +62,7 @@ Receptionists manage the front desk — appointment booking, patient registratio
 
 ### 💊 Pharmacist Dashboard
 
-Pharmacists manage the entire medicine inventory — stock levels, purchase orders, medicine categories, brands, and prescription fulfillment.
+Pharmacists manage the complete medicine billing workflow — prescription fulfillment, medicine sales tracking, and billing reports for the pharmacy.
 
 <img src="docs/screenshots/pharmacist_dashboard.png" alt="Pharmacist Dashboard" width="100%">
 
@@ -68,7 +70,7 @@ Pharmacists manage the entire medicine inventory — stock levels, purchase orde
 
 ### 💰 Accountant Dashboard
 
-Accountants handle financial operations — accounts, invoices, payments, income/expense tracking, payroll management, and financial reporting.
+Accountants handle all financial operations — invoice management, bill tracking, payment records, and comprehensive financial reporting across the organization.
 
 <img src="docs/screenshots/accountant_dashboard.png" alt="Accountant Dashboard" width="100%">
 
@@ -76,7 +78,7 @@ Accountants handle financial operations — accounts, invoices, payments, income
 
 ### 📋 Case Manager Dashboard
 
-Case managers coordinate patient cases — tracking case progression, assigning doctors, managing patient flow between departments, and ensuring continuity of care.
+Case managers coordinate patient cases through the employee directory — tracking case progression, assigning doctors, managing patient flow between departments, and ensuring continuity of care.
 
 <img src="docs/screenshots/case_manager_dashboard.png" alt="Case Manager Dashboard" width="100%">
 
@@ -84,7 +86,7 @@ Case managers coordinate patient cases — tracking case progression, assigning 
 
 ### 🧪 Lab Technician Dashboard
 
-Lab technicians access the employee/doctor directory and manage pathology and radiology test workflows — test categories, parameters, investigation reports, and results.
+Lab technicians manage radiology test workflows — test categories, parameters, investigation reports, and results processing across all diagnostic services.
 
 <img src="docs/screenshots/lab_technician_dashboard.png" alt="Lab Technician Dashboard" width="100%">
 
@@ -95,6 +97,43 @@ Lab technicians access the employee/doctor directory and manage pathology and ra
 Patients get a self-service portal — viewing their appointments, medical records, prescriptions, bills, vaccination history, and communicating with their healthcare providers.
 
 <img src="docs/screenshots/patient_dashboard.png" alt="Patient Dashboard" width="100%">
+
+---
+
+### 📊 Feature Pages — Admin View
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/patients.png" alt="Patient Management"></td>
+<td width="50%"><img src="docs/screenshots/doctors.png" alt="Doctor Management"></td>
+</tr>
+<tr>
+<td align="center"><b>Patients</b> — Full patient directory with smart search, filters, and OPD/IPD tracking</td>
+<td align="center"><b>Doctors</b> — Doctor profiles, departments, specialties, and schedule management</td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/appointments.png" alt="Appointments"></td>
+<td width="50%"><img src="docs/screenshots/medicines.png" alt="Medicine Inventory"></td>
+</tr>
+<tr>
+<td align="center"><b>Appointments</b> — Calendar and list views with status tracking and booking management</td>
+<td align="center"><b>Medicines</b> — Complete inventory with categories, brands, and stock alerts</td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/bills.png" alt="Bills"></td>
+<td width="50%"><img src="docs/screenshots/invoices.png" alt="Invoices"></td>
+</tr>
+<tr>
+<td align="center"><b>Bills</b> — OPD and IPD billing with multi-payment support and PDF export</td>
+<td align="center"><b>Invoices</b> — Invoice generation, tracking, and payment status management</td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/pathology.png" alt="Pathology Tests"></td>
+</tr>
+<tr>
+<td align="center"><b>Pathology</b> — Test categories, parameters, units, and investigation report generation</td>
+</tr>
+</table>
 
 ---
 
